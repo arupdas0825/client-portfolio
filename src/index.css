@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #020818;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-biotech {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 16px;
+  }
+  .glass-beauty {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(224, 64, 251, 0.2);
+    border-radius: 16px;
+  }
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  .glow-magenta {
+    box-shadow: 0 0 30px rgba(224, 64, 251, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #00D4FF, #00FFA3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-beauty {
+    background: linear-gradient(135deg, #E040FB, #B39DDB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
