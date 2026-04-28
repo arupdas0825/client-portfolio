@@ -9,9 +9,8 @@ const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
   const seminarCerts = [
-    { id: 1, name: "Molecular Biology Workshop", image: "/images/cert1.jpg" },
-    { id: 2, name: "Bioinformatics Seminar", image: "/images/cert2.jpg" },
-    { id: 3, name: "Clinical Lab Management", image: "/images/cert3.jpg" },
+    { id: 1, name: "Molecular Biology Workshop", image: "/seminar1.jpg" },
+    { id: 2, name: "Bioinformatics Seminar", image: "/seminar2.jpg" },
   ];
 
   return (
@@ -69,9 +68,11 @@ const Certificates = () => {
                     onClick={() => setSelectedCert(cert)}
                   >
                     <div className="aspect-[4/3] rounded-lg overflow-hidden relative group">
-                      <div className="w-full h-full bg-[#0A2540] flex items-center justify-center">
-                        <LuFileText className="text-white/20" size={40} />
-                      </div>
+                      <img 
+                        src={cert.image} 
+                        alt={cert.name} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
                       <div className="absolute inset-0 bg-[#00D4FF]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div className="p-4">
@@ -109,8 +110,12 @@ const Certificates = () => {
               >
                 <LuX size={20} />
               </button>
-              <div className="aspect-video bg-[#0A2540] rounded-lg flex items-center justify-center">
-                <LuAward size={80} className="text-[#00D4FF] opacity-20" />
+              <div className="aspect-video bg-[#0A2540] rounded-lg overflow-hidden flex items-center justify-center">
+                <img 
+                  src={selectedCert.image} 
+                  alt={selectedCert.name} 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h3 className="font-display text-xl text-white text-center mt-6 uppercase tracking-wider">{selectedCert.name}</h3>
             </motion.div>

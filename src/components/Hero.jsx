@@ -1,12 +1,13 @@
 import React from 'react';
 import FloatingParticles from './FloatingParticles';
 import { motion } from 'framer-motion';
+import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#020818]">
       <FloatingParticles />
-      
+
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -14,9 +15,9 @@ const Hero = () => {
           transition={{ duration: 1 }}
           className="relative mb-8"
         >
-          <img 
-            src="/images/profile.jpg" 
-            alt="Shatarupa Basak" 
+          <img
+            src={profileImg}
+            alt="Shatarupa Basak"
             className="w-48 h-48 rounded-full object-cover animate-float1 hover:scale-105 transition-transform duration-500"
             style={{
               border: '1.5px solid rgba(0,212,255,0.4)',
@@ -28,15 +29,15 @@ const Hero = () => {
         <span className="font-mono text-[11px] text-[#00D4FF] tracking-[0.3em] uppercase mb-4">
           [ BIOTECHNOLOGY · CONTENT CREATION ]
         </span>
-        
+
         <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-2">
           Shatarupa Basak
         </h1>
-        
+
         <p className="font-display text-xl text-[#00D4FF] opacity-80 italic mt-2">
           "Where Science Meets Aesthetic"
         </p>
-        
+
         <p className="font-mono text-sm text-white/40 mt-3">
           // Kolkata, India → Germany (Target)
         </p>

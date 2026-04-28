@@ -29,9 +29,13 @@ const CV = () => {
                 >
                   <LuEye size={18} /> View CV
                 </button>
-                <button className="bg-[#00D4FF] text-[#020818] font-display font-bold px-6 py-4 rounded-xl hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,212,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2">
+                <a 
+                  href="/Shatarupa_CV.pdf" 
+                  download 
+                  className="bg-[#00D4FF] text-[#020818] font-display font-bold px-6 py-4 rounded-xl hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,212,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
+                >
                   <LuFileDown size={18} /> Download PDF
-                </button>
+                </a>
               </div>
             </GlassCard>
           </div>
@@ -63,9 +67,12 @@ const CV = () => {
               className="glass-biotech w-full max-w-5xl flex-1 p-2 overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="w-full h-full bg-[#0A2540] rounded-lg flex items-center justify-center">
-                {/* iframe src will be /cv.pdf */}
-                <p className="font-mono text-[#00D4FF] animate-pulse">SYSTEM_LOADING_PREVIEW...</p>
+              <div className="w-full h-full bg-[#0A2540] rounded-lg overflow-hidden">
+                <iframe 
+                  src="/Shatarupa_CV.pdf" 
+                  className="w-full h-full border-none"
+                  title="Academic CV Preview"
+                />
               </div>
             </motion.div>
           </motion.div>
