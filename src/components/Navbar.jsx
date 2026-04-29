@@ -79,22 +79,22 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-500 ${
-          isScrolled 
-            ? 'py-3 bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-white/5' 
-            : 'py-6 bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-500 ${isScrolled
+          ? 'py-3 bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-white/5'
+          : 'py-6 bg-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <motion.a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="font-display text-2xl font-bold tracking-tighter text-white group cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            SB<span className="text-[#c084fc] group-hover:text-[#f9a8d4] transition-colors duration-300">.</span>
+            <img src="/favicon.png" alt="Logo" className="w-10 h-10 object-contain rounded-full" />
+
           </motion.a>
 
           {/* Desktop Nav Items */}
@@ -106,11 +106,10 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className={`px-5 py-2 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 relative ${
-                    isActive 
-                      ? 'text-white' 
-                      : 'text-white/40 hover:text-white/70'
-                  }`}
+                  className={`px-5 py-2 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 relative ${isActive
+                    ? 'text-white'
+                    : 'text-white/40 hover:text-white/70'
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -172,11 +171,10 @@ export default function Navbar() {
                       key={item.name}
                       href={item.href}
                       onClick={(e) => scrollToSection(e, item.href)}
-                      className={`px-6 py-4 rounded-2xl text-sm font-medium tracking-widest uppercase transition-all flex items-center justify-between ${
-                        isActive 
-                          ? 'bg-white/5 text-[#f9a8d4] border border-white/10' 
-                          : 'text-white/40 border border-transparent'
-                      }`}
+                      className={`px-6 py-4 rounded-2xl text-sm font-medium tracking-widest uppercase transition-all flex items-center justify-between ${isActive
+                        ? 'bg-white/5 text-[#f9a8d4] border border-white/10'
+                        : 'text-white/40 border border-transparent'
+                        }`}
                     >
                       {item.name}
                       {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[#f9a8d4]" />}
