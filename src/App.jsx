@@ -1,29 +1,47 @@
-import React from 'react';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Certificates from './components/Certificates';
-import CV from './components/CV';
-import ContentCreator from './components/ContentCreator';
-import Contact from './components/Contact';
+import React from 'react'
+import Navbar from './components/Navbar'
+import WelcomeScreen from './components/WelcomeScreen'
+import Hero from './components/Hero'
+import About from './components/About'
+import Skills from './components/Skills'
+import Experience from './components/Experience'
+import Certificates from './components/Certificates'
+import CV from './components/CV'
+import ContentCreator from './components/ContentCreator'
+import Contact from './components/Contact'
+import './index.css'
 
-function App() {
+export default function App() {
   return (
-    <main className="bg-[#020818] selection:bg-[#00D4FF]/30 selection:text-white">
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Certificates />
-      <CV />
-      <ContentCreator />
-      <Contact />
+    <div style={{ backgroundColor: '#1a0a2e', color: '#fff', minHeight: '100vh' }}>
+      <Navbar />
+      <WelcomeScreen />
       
-      {/* Global Grain Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.02] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-    </main>
-  );
+      <div id="home">
+        <Hero />
+      </div>
+      
+      <div id="about">
+        <About />
+        <Skills />
+      </div>
+      
+      <div id="experience">
+        <Experience />
+      </div>
+      
+      <div id="certificates">
+        <Certificates />
+        <CV />
+      </div>
+      
+      <div id="content-creator">
+        <ContentCreator />
+      </div>
+      
+      <div id="contact">
+        <Contact />
+      </div>
+    </div>
+  )
 }
-
-export default App;

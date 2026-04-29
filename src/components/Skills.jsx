@@ -1,64 +1,97 @@
 import React from 'react';
-import GlassCard from './GlassCard';
 import ScrollReveal from './ScrollReveal';
-import { LuMicroscope, LuCpu, LuUsers } from 'react-icons/lu';
+
+const SkillTag = ({ name }) => (
+  <span className="bg-[rgba(192,132,252,0.12)] text-[#c084fc] border border-[rgba(192,132,252,0.2)] rounded-full px-4 py-1.5 text-xs font-body tracking-wide">
+    {name}
+  </span>
+);
 
 const Skills = () => {
-  const skillGroups = [
-    {
-      title: "Technical Skills",
-      icon: <LuMicroscope size={20} />,
-      anim: "animate-float1",
-      skills: ["Molecular Biology", "Cell Culture", "PCR", "ELISA", "Microscopy", "Gel Electrophoresis", "Bioinformatics", "Research Methodology"],
-      mt: "md:mt-4"
-    },
-    {
-      title: "Computer Skills",
-      icon: <LuCpu size={20} />,
-      anim: "animate-float2",
-      skills: ["MS Office", "ImageJ", "SPSS (Basic)", "Canva", "Literature Search Databases"],
-      mt: "md:mt-0"
-    },
-    {
-      title: "Soft Skills",
-      icon: <LuUsers size={20} />,
-      anim: "animate-float3",
-      skills: ["Scientific Writing", "Presentation", "Team Collaboration", "Time Management", "Adaptability", "Communication"],
-      mt: "md:mt-8"
-    }
+  const academicSkills = [
+    "Basic Biotechnology Concepts",
+    "Scientific Research & Reading",
+    "Lab Safety & Protocols",
+    "Academic Writing & Reporting"
+  ];
+
+  const computerSkills = [
+    "MS Word",
+    "MS Excel",
+    "PowerPoint",
+    "Canva",
+    "Basic Computer Operations"
+  ];
+
+  const creativeSkills = [
+    "Content Creation",
+    "Video Editing (Basic)",
+    "Communication",
+    "Team Collaboration",
+    "Time Management",
+    "Adaptability"
   ];
 
   return (
-    <section className="py-24 px-6 md:px-20 bg-[#020818]">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <span className="font-mono text-[#00D4FF] text-xs tracking-widest block mb-2 uppercase">// Technical Matrix</span>
-          <h2 className="font-display text-4xl font-bold text-white">Core Competencies</h2>
-        </div>
+    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
+      {/* Background blobs */}
+      <div
+        className="blob animate-blob absolute w-96 h-96 bg-[#c084fc]/10 -left-20 bottom-0 pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {skillGroups.map((group, idx) => (
-            <ScrollReveal key={idx} delay={idx * 100}>
-              <div className={group.mt}>
-                <GlassCard className="p-8 h-full" animClass={group.anim}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[#00D4FF]">{group.icon}</span>
-                    <h3 className="font-display font-semibold text-white text-lg">{group.title}</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {group.skills.map((skill, sIdx) => (
-                      <span 
-                        key={sIdx}
-                        className="bg-[rgba(0,212,255,0.1)] text-[#00D4FF] border border-[rgba(0,212,255,0.2)] rounded-full px-3 py-1 font-mono text-[10px] hover:bg-[rgba(0,212,255,0.2)] transition-colors"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
+        <ScrollReveal>
+          <span className="section-label">✦ What I Do</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">My Skills</h2>
+          <p className="font-body text-white/50 max-w-2xl mx-auto">
+            Blending academic excellence with creative digital skills to build a unique personal brand.
+          </p>
+        </ScrollReveal>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Academic Skills */}
+          <ScrollReveal delay={100}>
+            <div className="glass-lavender p-8 h-full animate-float">
+              <div className="text-4xl mb-6">🔬</div>
+              <h3 className="font-display text-2xl text-white font-bold mb-6">Academic Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {academicSkills.map((skill, index) => (
+                  <SkillTag key={index} name={skill} />
+                ))}
               </div>
-            </ScrollReveal>
-          ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Computer Skills */}
+          <ScrollReveal delay={200}>
+            <div className="glass-pink p-8 h-full animate-float2">
+              <div className="text-4xl mb-6">💻</div>
+              <h3 className="font-display text-2xl text-white font-bold mb-6">Computer Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {computerSkills.map((skill, index) => (
+                  <SkillTag key={index} name={skill} />
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Creative & Soft Skills */}
+          <ScrollReveal delay={300}>
+            <div className="glass p-8 h-full animate-float3">
+              <div className="text-4xl mb-6">🌸</div>
+              <h3 className="font-display text-2xl text-white font-bold mb-6">Creative & Soft Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {creativeSkills.map((skill, index) => (
+                  <SkillTag key={index} name={skill} />
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
         </div>
       </div>
     </section>

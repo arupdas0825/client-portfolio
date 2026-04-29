@@ -5,8 +5,18 @@ import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#020818]">
+    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#1a0a2e]">
       <FloatingParticles />
+      
+      {/* Background blobs */}
+      <div
+        className="blob animate-blob absolute w-80 h-80 bg-[#c084fc] -top-20 -left-20 pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
+      <div
+        className="blob animate-blob absolute w-64 h-64 bg-[#f9a8d4] bottom-0 right-0 pointer-events-none"
+        style={{ zIndex: 0, animationDelay: '3s' }}
+      />
 
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.div
@@ -18,35 +28,35 @@ const Hero = () => {
           <img
             src={profileImg}
             alt="Shatarupa Basak"
-            className="w-48 h-48 rounded-full object-cover animate-float1 hover:scale-105 transition-transform duration-500"
+            className="w-48 h-48 rounded-full object-cover animate-float hover:scale-105 transition-transform duration-500"
             style={{
-              border: '1.5px solid rgba(0,212,255,0.4)',
-              boxShadow: '0 0 0 12px rgba(0,212,255,0.06), 0 0 60px rgba(0,212,255,0.25)'
+              border: '1.5px solid rgba(255,255,255,0.2)',
+              boxShadow: '0 0 0 12px rgba(255,255,255,0.03), 0 0 60px rgba(192,132,252,0.2)'
             }}
           />
         </motion.div>
 
-        <span className="font-mono text-[11px] text-[#00D4FF] tracking-[0.3em] uppercase mb-4">
-          [ BIOTECHNOLOGY · CONTENT CREATION ]
+        <span className="section-label mb-4">
+          ✦ Biotechnology · Content Creation ✦
         </span>
 
         <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-2">
           Shatarupa Basak
         </h1>
 
-        <p className="font-display text-xl text-[#00D4FF] opacity-80 italic mt-2">
+        <p className="font-display text-xl text-gradient-rose italic mt-2">
           "Where Science Meets Aesthetic"
         </p>
 
-        <p className="font-mono text-sm text-white/40 mt-3">
-          // Kolkata, India → Germany (Target)
+        <p className="font-body text-sm text-white/40 mt-4 tracking-widest">
+          ✦ Kolkata, India &nbsp;·&nbsp; Brainware University ✦
         </p>
 
         <div className="flex flex-wrap justify-center gap-6 mt-10">
-          <button className="glass-biotech px-8 py-3 font-display font-medium tracking-wide transition-all duration-400 hover:-translate-y-1 hover:scale-105 text-[#00D4FF] hover:glow-cyan border-[#00D4FF]/30 animate-float2">
-            Research Portfolio
+          <button className="glass-lavender px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float">
+            About My Work
           </button>
-          <button className="glass-biotech px-8 py-3 font-display font-medium tracking-wide transition-all duration-400 hover:-translate-y-1 hover:scale-105 text-[#E040FB] border-[#E040FB]/30 hover:shadow-[0_0_20px_rgba(224,64,251,0.3)] animate-float2" style={{ animationDelay: '0.5s' }}>
+          <button className="glass-pink px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float2">
             Content Gallery
           </button>
         </div>

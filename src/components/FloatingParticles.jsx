@@ -16,7 +16,7 @@ const FloatingParticles = () => {
       {particles.map((p) => (
         <div
           key={p.id}
-          className={`absolute w-[2px] h-[2px] bg-[#00D4FF] rounded-full opacity-[0.3] ${p.animation}`}
+          className={`absolute w-[2px] h-[2px] bg-[#c084fc] rounded-full opacity-[0.2] ${p.animation}`}
           style={{
             top: p.top,
             left: p.left,

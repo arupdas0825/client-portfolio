@@ -34,8 +34,6 @@ const WorkExperience = () => {
                 <li>Coordinated with team members for social outreach initiatives.</li>
               </ul>
             </div>
-
-            {/* Add more experience entries here if provided */}
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5">
@@ -44,7 +42,7 @@ const WorkExperience = () => {
               transition={{ duration: 4, repeat: Infinity }}
               className="text-center font-mono text-xs text-biotech-cyan"
             >
-              "Currently seeking internship opportunities in Germany (2025–2026)"
+              "Academic & Creative Excellence"
             </motion.p>
           </div>
         </div>

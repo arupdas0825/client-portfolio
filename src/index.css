@@ -3,48 +3,68 @@
 @tailwind utilities;
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   html {
     scroll-behavior: smooth;
   }
-  body {
-    background-color: #020818;
+  html, body, #root {
+    background-color: #1a0a2e;
     color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
     overflow-x: hidden;
   }
 }
 
 @layer utilities {
-  .glass-biotech {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(0, 212, 255, 0.15);
-    border-radius: 16px;
+  .glass {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
   }
-  .glass-beauty {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(224, 64, 251, 0.2);
-    border-radius: 16px;
+  .glass-pink {
+    background: rgba(249, 168, 212, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(249, 168, 212, 0.25);
+    border-radius: 20px;
   }
-  .glow-cyan {
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+  .glass-lavender {
+    background: rgba(192, 132, 252, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    border-radius: 20px;
   }
-  .glow-magenta {
-    box-shadow: 0 0 30px rgba(224, 64, 251, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-  .text-gradient-cyan {
-    background: linear-gradient(135deg, #00D4FF, #00FFA3);
+  .text-gradient-rose {
+    background: linear-gradient(135deg, #f9a8d4, #c084fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .text-gradient-beauty {
-    background: linear-gradient(135deg, #E040FB, #B39DDB);
+  .text-gradient-lavender {
+    background: linear-gradient(135deg, #c084fc, #b39ddb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .blob {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    filter: blur(60px);
+    opacity: 0.25;
+  }
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c084fc;
+    margin-bottom: 12px;
   }
 }

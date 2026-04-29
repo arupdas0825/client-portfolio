@@ -1,98 +1,129 @@
-import React from 'react';
-import GlassCard from './GlassCard';
+import React, { useState } from 'react';
 import ScrollReveal from './ScrollReveal';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaInstagram, FaYoutube, FaFacebook } from 'react-icons/fa';
-import { LuSparkles } from 'react-icons/lu';
+import { MdEmail } from 'react-icons/md';
+import PlatformCard from './PlatformCard';
 
 const ContentCreator = () => {
-  const contentItems = [
-    { id: 1, img: "/images/content1.jpg" },
-    { id: 2, img: "/images/content2.jpg" },
-    { id: 3, img: "/images/content3.jpg" },
-    { id: 4, img: "/images/content4.jpg" },
-    { id: 5, img: "/images/content5.jpg" },
-    { id: 6, img: "/images/content6.jpg" },
-  ];
+  const [collabOpen, setCollabOpen] = useState(false);
 
   return (
-    <div className="relative">
-      {/* Zone Transition */}
-      <div className="w-full h-24 bg-gradient-to-b from-[#020818] via-[#0A0418] to-[#0D0618] relative">
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-[#E040FB]/40 to-transparent top-12" />
+    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
+      {/* Background blobs */}
+      <div
+        className="blob animate-blob absolute w-80 h-80 bg-[#c084fc]/10 top-20 right-0 pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
+      <div
+        className="blob animate-blob absolute w-64 h-64 bg-[#f9a8d4]/10 bottom-0 left-0 pointer-events-none"
+        style={{ zIndex: 0, animationDelay: '2s' }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
+        <ScrollReveal>
+          <span className="section-label">✦ Creative Side</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Content Creator</h2>
+          <p className="font-body text-white/50 max-w-2xl mx-auto">
+            Sharing my life, beauty tips, and academic journey with a growing community.
+          </p>
+        </ScrollReveal>
       </div>
 
-      <section className="py-24 px-6 md:px-20 bg-[#0D0618] relative overflow-hidden">
-        {/* Background Atmosphere */}
-        <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#E040FB]/10 blur-[120px] rounded-full" />
-        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-[#B39DDB]/10 blur-[120px] rounded-full" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* Platform Cards Grid */}
+        <ScrollReveal delay={200}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14 max-w-5xl mx-auto px-4">
 
-        <div className="max-w-6xl mx-auto relative z-10">
-          <ScrollReveal>
-            <div className="text-center mb-20">
-              <span className="font-mono text-[#E040FB] text-xs tracking-[0.3em] block mb-4 uppercase">// aesthetic frequency</span>
-              <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 text-gradient-beauty">
-                Content Creator
-              </h2>
-              <p className="font-body text-white/70 max-w-2xl mx-auto leading-relaxed">
-                Curating visual experiences at the intersection of beauty, lifestyle, and storytelling. My digital space is a luminous nebula of creative expression and aesthetic exploration.
-              </p>
-            </div>
-          </ScrollReveal>
+            {/* Instagram */}
+            <PlatformCard
+              href="https://www.instagram.com/shatarupa__basak/"
+              gradientColors="linear-gradient(135deg, #f9a8d4, #e040fb, #f97316, #f9a8d4)"
+              animationClass="animate-gradientIG"
+              icon={<FaInstagram className="text-[#f9a8d4]" />}
+              platform="Instagram"
+              stat="1K+"
+              statLabel="Followers"
+              statStyle="text-gradient-rose"
+            />
 
-          <div className="grid md:grid-cols-3 gap-6 mb-20">
-            <ScrollReveal delay={0}>
-              <div className="glass-beauty border-[#E040FB]/20 px-6 py-4 flex items-center justify-between animate-float1">
-                <FaInstagram size={20} className="text-[#E040FB]" />
-                <div className="text-right">
-                  <p className="font-mono text-[10px] text-white/40 uppercase">Instagram</p>
-                  <p className="font-display font-bold text-[#E040FB]">10K+</p>
-                </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div className="glass-beauty border-[#E040FB]/20 px-6 py-4 flex items-center justify-between animate-float2">
-                <FaYoutube size={20} className="text-[#E040FB]" />
-                <div className="text-right">
-                  <p className="font-mono text-[10px] text-white/40 uppercase">YouTube</p>
-                  <p className="font-display font-bold text-[#E040FB]">Growing</p>
-                </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <div className="glass-beauty border-[#E040FB]/20 px-6 py-4 flex items-center justify-between animate-float3">
-                <FaFacebook size={20} className="text-[#E040FB]" />
-                <div className="text-right">
-                  <p className="font-mono text-[10px] text-white/40 uppercase">Facebook</p>
-                  <p className="font-display font-bold text-[#E040FB]">Active</p>
-                </div>
-              </div>
-            </ScrollReveal>
+            {/* YouTube */}
+            <PlatformCard
+              href="https://www.youtube.com"
+              gradientColors="linear-gradient(135deg, #ff0000, #ff6b6b, #ff0000)"
+              animationClass="animate-gradientYT"
+              icon={<FaYoutube className="text-[#ff6b6b]" />}
+              platform="YouTube"
+              stat="Upcoming"
+              statLabel="Coming Soon"
+              statStyle="text-[#ff6b6b]"
+            />
+
+            {/* Facebook */}
+            <PlatformCard
+              href="https://www.facebook.com/Shatarupabasak.basak"
+              gradientColors="linear-gradient(135deg, #1877f2, #42a5f5, #1877f2)"
+              animationClass="animate-gradientFB"
+              icon={<FaFacebook className="text-[#42a5f5]" />}
+              platform="Facebook"
+              stat="Active"
+              statLabel="Community"
+              statStyle="text-[#42a5f5]"
+            />
+
           </div>
+        </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {contentItems.map((item, idx) => (
-              <ScrollReveal key={item.id} delay={idx * 50}>
-                <GlassCard 
-                  className="overflow-hidden p-0 aspect-square group" 
-                  glowColor="beauty"
+        {/* Collaboration Button & Dropdown */}
+        <ScrollReveal delay={300}>
+          <div className="relative flex flex-col items-center mt-16">
+            <button
+              onClick={() => setCollabOpen(!collabOpen)}
+              className="animate-collab glass-pink px-10 py-5 font-body font-semibold text-[#f9a8d4] text-base tracking-wide rounded-full hover:scale-105 transition-all duration-300 border border-[rgba(249,168,212,0.4)] relative z-20"
+            >
+              ✦ Open for Collaboration
+            </button>
+
+            <AnimatePresence>
+              {collabOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="glass-pink mt-6 p-6 w-80 flex flex-col gap-5 shadow-2xl relative z-10"
                 >
-                  <div className="w-full h-full bg-[#1A0A2E] flex items-center justify-center relative">
-                    <LuSparkles size={32} className="text-[#E040FB] opacity-20" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0618]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                </GlassCard>
-              </ScrollReveal>
-            ))}
+                  <a
+                    href="https://www.instagram.com/shatarupa__basak/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 text-[#f9a8d4] hover:text-white transition-colors font-body text-sm group"
+                  >
+                    <div className="w-10 h-10 rounded-full glass flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <FaInstagram className="text-xl" />
+                    </div>
+                    <span>@shatarupa__basak</span>
+                  </a>
+                  
+                  <div className="border-t border-white/10" />
+                  
+                  <a
+                    href="mailto:shatarupabasak872@gmail.com"
+                    className="flex items-center gap-4 text-[#c084fc] hover:text-white transition-colors font-body text-sm group"
+                  >
+                    <div className="w-10 h-10 rounded-full glass flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <MdEmail className="text-xl" />
+                    </div>
+                    <span className="truncate">shatarupabasak872@gmail.com</span>
+                  </a>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
-          <div className="mt-24 text-center">
-            <h3 className="font-display text-2xl md:text-3xl font-semibold text-gradient-beauty animate-pulse_glow">
-              Open for Collaborations ✦
-            </h3>
-          </div>
-        </div>
-      </section>
-    </div>
+        </ScrollReveal>
+      </div>
+    </section>
   );
 };
 
