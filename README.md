@@ -11,12 +11,12 @@ A modern, responsive client portfolio web application built primarily with JavaS
 ## 🚀 Live Demo
 
 <!-- Uncomment the link below and provide a demo if available -->
-<!-- [View Portfolio Live](https://your-demo-link.com) -->
+https://shatarupa-portfolio.vercel.app/
 
 ## 📸 Preview
 
-<!-- If you have a screenshot, uncomment below -->
-<!-- ![Project Preview](assets/screenshot.png) -->
+<img width="1861" height="794" alt="image" src="https://github.com/user-attachments/assets/b9e74921-6005-46b2-8504-05b103d770a1" />
+
 
 ## Table of Contents
 
