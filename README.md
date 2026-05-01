@@ -42,29 +42,7 @@ https://shatarupa-portfolio.vercel.app/
 
 - [Node.js](https://nodejs.org/) and npm (for build tools or dependency management, if used)
 
-### Installation
 
-1. **Clone the repository:**
-    ```sh
-    git clone https://github.com/arupdas0825/client-portfolio.git
-    ```
-2. **Navigate to the project directory:**
-    ```sh
-    cd client-portfolio
-    ```
-3. *(Optional)* Install dependencies if a `package.json` is present:
-    ```sh
-    npm install
-    ```
-
-### Running Locally
-
-- For a static project: open `index.html` directly in your browser.
-- For a local dev server:
-    ```sh
-    npm start
-    ```
-- Or use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VS Code for live reloading.
 
 ## Project Structure
 
