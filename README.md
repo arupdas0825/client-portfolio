@@ -1,4 +1,4 @@
-# Client Portfolio
+## Client Portfolio
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![JavaScript](https://img.shields.io/badge/JavaScript-96.1%25-yellow.svg)
