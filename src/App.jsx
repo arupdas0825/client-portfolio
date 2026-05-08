@@ -6,6 +6,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
+import Internship from './components/Internship'
 import Certificates from './components/Certificates'
 import CV from './components/CV'
 import ContentCreator from './components/ContentCreator'
@@ -45,6 +46,10 @@ export default function App() {
         
         <SectionWrapper id="experience">
           <Experience />
+        </SectionWrapper>
+        
+        <SectionWrapper id="internship">
+          <Internship />
         </SectionWrapper>
         
         <SectionWrapper id="certificates">

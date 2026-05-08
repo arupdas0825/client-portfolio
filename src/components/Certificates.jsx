@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiExternalLink, HiEye, HiX } from 'react-icons/hi'
+import { HiExternalLink, HiEye, HiX, HiBadgeCheck, HiCalendar, HiOfficeBuilding } from 'react-icons/hi'
 import ScrollReveal from './ScrollReveal'
 
 const seminarCerts = [
   { 
     id: 1, 
-    title: "Seminar Certificate 1", 
+    title: "National Seminar on Biotechnology", 
     issuer: "Brainware University", 
     year: "2024", 
-    emoji: "📜",
+    category: "Academic",
+    description: "Explored emerging trends in biotechnology and life sciences, focusing on advanced laboratory methodologies.",
     image: "/seminar1.jpg"
   },
   { 
     id: 2, 
-    title: "Seminar Certificate 2", 
+    title: "Future of Bioscience Workshop", 
     issuer: "Brainware University", 
     year: "2024", 
-    emoji: "📜",
+    category: "Technical",
+    description: "Training on sustainable biological solutions and modern industrial applications in the bioscience sector.",
     image: "/seminar2.jpg"
-  },
-  { 
-    id: 3, 
-    title: "Seminar Certificate 3", 
-    issuer: "Department of Biotechnology", 
-    year: "2024", 
-    emoji: "📜",
-    image: "/seminar1.jpg" 
   },
 ]
 
 const achievements = [
-  { id: 1, title: "Achievement Coming Soon", issuer: "", year: "", emoji: "📜", image: null },
+  { 
+    id: 1, 
+    title: "Upcoming Milestone", 
+    issuer: "Recognition Pending", 
+    year: "2025", 
+    category: "Goal",
+    description: "Working towards professional certifications in specialized molecular biology and bioinformatics.",
+    image: null 
+  },
 ]
 
 // Modal Component for Certificate Preview
 function CertificateModal({ isOpen, onClose, certificate }) {
-  // Handle ESC key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose()
@@ -47,8 +48,6 @@ function CertificateModal({ isOpen, onClose, certificate }) {
 
   if (!certificate) return null
 
-  const isPDF = certificate.image?.toLowerCase().endsWith('.pdf')
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -56,75 +55,71 @@ function CertificateModal({ isOpen, onClose, certificate }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8"
           style={{
-            backgroundColor: 'rgba(10, 5, 20, 0.9)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
+            backgroundColor: 'rgba(10, 5, 20, 0.96)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
           }}
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col glass-lavender overflow-hidden border border-white/20 shadow-2xl"
+            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col glass-lavender overflow-hidden border border-white/20 shadow-[0_0_80px_rgba(192,132,252,0.25)] rounded-[40px]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
-              <div>
-                <h3 className="font-display text-lg font-bold text-white leading-tight">
+            {/* Header */}
+            <div className="flex items-center justify-between px-10 py-8 border-b border-white/10 bg-white/5">
+              <div className="space-y-1">
+                <h3 className="font-display text-2xl font-bold text-white tracking-tight leading-none">
                   {certificate.title}
                 </h3>
-                <p className="text-xs text-white/50">{certificate.issuer} • {certificate.year}</p>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-1.5 text-[#c084fc] font-bold text-[10px] uppercase tracking-widest">
+                    <HiOfficeBuilding /> {certificate.issuer}
+                  </div>
+                  <div className="w-1 h-1 rounded-full bg-white/20" />
+                  <div className="flex items-center gap-1.5 text-white/40 text-[11px] font-medium">
+                    <HiCalendar /> {certificate.year}
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <a
-                  href={certificate.image}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full glass-pink text-xs font-semibold text-[#f9a8d4] hover:scale-105 transition-all"
-                >
-                  <HiExternalLink className="text-base" />
-                  Full View
-                </a>
-                <button
-                  onClick={onClose}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all border border-white/10"
-                >
-                  <HiX className="text-xl" />
-                </button>
-              </div>
+              <button
+                onClick={onClose}
+                className="w-14 h-14 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10"
+              >
+                <HiX size={24} />
+              </button>
             </div>
 
-            {/* Modal Body */}
-            <div className="flex-1 overflow-auto bg-black/20 p-4 md:p-8 flex items-center justify-center min-h-[300px]">
-              {isPDF ? (
-                <iframe
-                  src={`${certificate.image}#toolbar=0`}
-                  className="w-full h-full min-h-[60vh] rounded-lg shadow-inner"
-                  title={certificate.title}
-                />
-              ) : (
-                <div className="group relative overflow-hidden rounded-lg shadow-2xl">
+            {/* Content */}
+            <div className="flex-1 overflow-auto bg-black/30 p-8 md:p-12 flex items-center justify-center">
+              {certificate.image ? (
+                <div className="relative group/modal-img">
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-[#c084fc]/20 to-[#f9a8d4]/20 blur-3xl rounded-full opacity-50" />
                   <img
                     src={certificate.image}
                     alt={certificate.title}
-                    className="max-w-full max-h-[70vh] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="relative z-10 max-w-full max-h-[60vh] rounded-2xl shadow-2xl border border-white/10 object-contain"
                   />
-                  {/* Subtle zoom hint */}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <a
+                    href={certificate.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-6 right-6 z-20 flex items-center gap-2 px-6 py-3 rounded-full glass-pink text-xs font-bold text-[#f9a8d4] hover:scale-110 transition-all shadow-xl"
+                  >
+                    <HiExternalLink className="text-lg" />
+                    Full View
+                  </a>
+                </div>
+              ) : (
+                <div className="text-center p-20 glass rounded-[32px] border border-dashed border-white/10">
+                  <HiBadgeCheck size={48} className="mx-auto mb-4 text-white/10" />
+                  <p className="text-white/20 font-display text-xl uppercase tracking-widest">Verification Pending</p>
                 </div>
               )}
-            </div>
-            
-            {/* Modal Footer */}
-            <div className="px-6 py-3 border-t border-white/10 bg-white/5 text-center">
-              <p className="text-[10px] text-white/30 uppercase tracking-widest font-body font-medium">
-                Shatarupa Basak • Portfolio Recognition
-              </p>
             </div>
           </motion.div>
         </motion.div>
@@ -138,124 +133,153 @@ export default function Certificates() {
   const [previewCert, setPreviewCert] = useState(null)
 
   return (
-    <section
-      style={{ backgroundColor: '#1a0a2e', color: '#ffffff' }}
-      className="relative w-full overflow-hidden py-24 px-4 md:px-12"
-      id="certificates"
-    >
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-96 h-96 bg-[#c084fc]/10 -top-32 -right-32 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
-      <div
-        className="blob animate-blob absolute w-72 h-72 bg-[#f9a8d4]/10 bottom-0 left-0 pointer-events-none"
-        style={{ zIndex: 0, animationDelay: '4s' }}
-      />
+    <section className="relative py-32 px-6 bg-[#1a0a2e]" id="certificates">
+      {/* Background Particles/Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c084fc]/5 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f9a8d4]/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="section-label">✦ Recognition</p>
-            <h2 className="font-display text-5xl font-bold text-white">
-              Certificates & Achievements
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Premium Header */}
+        <div className="text-center mb-24">
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <HiBadgeCheck className="text-[#f9a8d4] text-lg" />
+              <span className="text-[#f9a8d4] font-bold text-[10px] tracking-[0.4em] uppercase">Recognition</span>
+            </div>
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+              Certificates & <br />
+              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent">
+                Achievements
+              </span>
             </h2>
-            <p className="font-body text-white/50 mt-4 text-base max-w-2xl mx-auto">
-              A collection of academic milestones, certifications, and specialized training in Biotechnology and professional fields.
+            <p className="font-body text-white/40 text-lg max-w-2xl mx-auto leading-relaxed">
+              Validating my expertise through rigorous academic certifications and professional development in the biotechnology sector.
             </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Tab Switcher */}
+        <ScrollReveal delay={200}>
+          <div className="flex justify-center mb-16">
+            <div className="flex items-center gap-1 p-1.5 glass-lavender rounded-full border border-white/10">
+              {['seminars', 'achievements'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-10 py-3.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-500
+                    ${activeTab === tab
+                      ? 'bg-white/10 text-white border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.05)] scale-105'
+                      : 'text-white/30 hover:text-white/60'
+                    }`}
+                >
+                  {tab === 'seminars' ? 'Certifications' : 'Achievements'}
+                </button>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
-        {/* Tab switcher */}
-        <ScrollReveal delay={100}>
-          <div className="flex justify-center gap-4 mb-14">
-            {['seminars', 'achievements'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 rounded-full font-body text-sm font-medium tracking-wide transition-all duration-300 capitalize
-                  ${activeTab === tab
-                    ? 'glass-pink text-[#f9a8d4] border border-[rgba(249,168,212,0.4)] scale-105 shadow-[0_0_20px_rgba(249,168,212,0.2)]'
-                    : 'glass text-white/40 hover:text-white/80 border border-white/5'
-                  }`}
-              >
-                {tab === 'seminars' ? '📜 Seminars' : '🏆 Achievements'}
-              </button>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        {/* Cards grid */}
+        {/* Premium Side-by-Side Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
-            {(activeTab === 'seminars' ? seminarCerts : achievements).map((item, i) => (
-              <ScrollReveal key={item.id} delay={i * 100}>
-                <div
-                  className="glass-lavender group p-8 flex flex-col items-center text-center gap-6 hover:-translate-y-2 hover:shadow-[0_24px_64px_rgba(192,132,252,0.15)] transition-all duration-500 h-full border border-white/10"
+            {(activeTab === 'seminars' ? seminarCerts : achievements).map((item, index) => (
+              <ScrollReveal key={item.id} delay={index * 100}>
+                <div 
+                  className="group relative flex flex-col h-full glass-lavender rounded-[32px] border border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_70px_rgba(192,132,252,0.15)] overflow-hidden"
                 >
-                  <div className="text-6xl transform group-hover:scale-110 transition-transform duration-500">
-                    {item.emoji}
-                  </div>
-                  
-                  <div className="flex-grow">
-                    <h4 className="font-display text-xl font-bold text-white mb-2 leading-tight">
-                      {item.title}
-                    </h4>
-                    {item.issuer && (
-                      <div className="flex flex-col gap-1">
-                        <p className="font-body text-[10px] text-[#c084fc] tracking-[0.2em] uppercase font-bold">
-                          {item.issuer}
-                        </p>
-                        {item.year && (
-                          <p className="font-body text-xs text-white/30 font-medium">{item.year}</p>
-                        )}
+                  {/* Top Preview Area */}
+                  <div 
+                    className="relative aspect-[16/11] overflow-hidden bg-black/40 cursor-pointer"
+                    onClick={() => setPreviewCert(item)}
+                  >
+                    {item.image ? (
+                      <>
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700 blur-[1px] group-hover:blur-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-80" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
+                          <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl">
+                            <HiEye size={22} />
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-4 opacity-10">
+                        <HiBadgeCheck size={64} />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Documentation Pending</span>
                       </div>
                     )}
+                    
+                    {/* Category Tag */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-3 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-widest">
+                        {item.category}
+                      </span>
+                    </div>
                   </div>
-                  
-                  {item.image ? (
-                    <div className="flex items-center gap-3 w-full mt-4">
+
+                  {/* Content Area */}
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
+                      <div className="w-1 h-1 rounded-full bg-white/10" />
+                      <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
+                    </div>
+
+                    <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-[#f9a8d4] transition-colors leading-tight">
+                      {item.title}
+                    </h3>
+
+                    <p className="font-body text-white/50 text-xs leading-relaxed mb-8 flex-grow">
+                      {item.description}
+                    </p>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-3 pt-6 border-t border-white/5 mt-auto">
                       <button
                         onClick={() => setPreviewCert(item)}
-                        className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl glass text-xs font-bold text-white hover:bg-white/10 transition-all border border-white/10 group/btn"
+                        className="flex-1 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2"
                       >
-                        <HiEye className="text-lg group-hover/btn:scale-110 transition-transform" />
+                        <HiEye size={16} />
                         Preview
                       </button>
-                      <a 
-                        href={item.image}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 rounded-xl glass-pink text-[#f9a8d4] hover:bg-[#f9a8d4]/10 transition-all border border-[#f9a8d4]/20 group/btn"
-                        title="Open in new tab"
-                      >
-                        <HiExternalLink className="text-lg group-hover/btn:scale-110 transition-transform" />
-                      </a>
+                      {item.image && (
+                        <a 
+                          href={item.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] hover:border-[#f9a8d4]/30 transition-all group/btn"
+                        >
+                          <HiExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />
+                        </a>
+                      )}
                     </div>
-                  ) : (
-                    <div className="w-full mt-4">
-                      <div className="px-6 py-3 rounded-xl bg-white/5 border border-white/5 text-[10px] font-bold text-white/20 uppercase tracking-widest">
-                        Documentation Pending
-                      </div>
-                    </div>
-                  )}
+                  </div>
+
+                  {/* Glow Layer */}
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
               </ScrollReveal>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* Empty state for achievements */}
-        {activeTab === 'achievements' && achievements.length === 1 && achievements[0].title === "Achievement Coming Soon" && (
-          <ScrollReveal delay={200}>
-            <div className="text-center mt-12 p-12 glass border border-dashed border-white/10 rounded-[30px]">
+        {/* Empty State for Achievements */}
+        {activeTab === 'achievements' && achievements.length === 1 && achievements[0].title === "Upcoming Milestone" && (
+          <ScrollReveal delay={300}>
+            <div className="mt-20 p-12 glass-lavender rounded-[32px] border border-dashed border-white/10 text-center">
               <p className="font-body text-white/30 text-sm italic">
                 "Small steps today, giant leaps tomorrow." — New achievements are currently being documented.
               </p>
@@ -264,7 +288,6 @@ export default function Certificates() {
         )}
       </div>
 
-      {/* Reusable Certificate Modal */}
       <CertificateModal 
         isOpen={!!previewCert} 
         onClose={() => setPreviewCert(null)} 
@@ -273,4 +296,3 @@ export default function Certificates() {
     </section>
   )
 }
-
