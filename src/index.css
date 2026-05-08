@@ -17,6 +17,15 @@
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    /* App-like feel */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+  }
+  
+  /* Support for bottom navbar safe area */
+  :root {
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 

@@ -143,8 +143,8 @@ export default function Navbar() {
             </motion.a>
           </div>
 
-          {/* Mobile Toggle */}
-          <div className="lg:hidden">
+          {/* Mobile Toggle - HIDDEN in favor of MobileNavbar */}
+          <div className="lg:hidden hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-10 h-10 flex items-center justify-center rounded-full glass border border-white/10 text-white"
@@ -154,37 +154,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-2xl border-b border-white/5 overflow-hidden"
-            >
-              <div className="flex flex-col p-6 gap-2">
-                {navItems.map((item) => {
-                  const isActive = activeSection === item.href.substring(1)
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      onClick={(e) => scrollToSection(e, item.href)}
-                      className={`px-6 py-4 rounded-2xl text-sm font-medium tracking-widest uppercase transition-all flex items-center justify-between ${isActive
-                        ? 'bg-white/5 text-[#f9a8d4] border border-white/10'
-                        : 'text-white/40 border border-transparent'
-                        }`}
-                    >
-                      {item.name}
-                      {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[#f9a8d4]" />}
-                    </a>
-                  )
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Mobile Menu Overlay - REMOVED */}
       </nav>
     </>
   )
