@@ -33,14 +33,7 @@ const achievements = [
     category: "Elite Certification",
     description: "Successfully completed the 12-week NPTEL course 'General Pharmacology' with Elite certification, securing a consolidated score of 61%. Achieved full marks in online assignments and demonstrated strong academic consistency throughout the course.",
     image: "/nptel result.pdf",
-    isElite: true,
-    details: [
-      { label: "Score", value: "61%", icon: <HiChartBar className="text-[#f9a8d4]" /> },
-      { label: "Online Assignments", value: "25/25", icon: <HiClipboardCheck className="text-[#c084fc]" /> },
-      { label: "Proctored Exam", value: "36/75", icon: <HiAcademicCap className="text-[#f9a8d4]" /> },
-      { label: "Credits", value: "4", icon: <HiBookOpen className="text-[#c084fc]" /> },
-      { label: "Certified", value: "1874+", icon: <HiBadgeCheck className="text-[#f9a8d4]" /> }
-    ]
+    isElite: true
   },
   { 
     id: 2, 
@@ -234,16 +227,16 @@ export default function Certificates() {
 
                   {/* Top Preview Area */}
                   <div 
-                    className="relative aspect-[16/11] overflow-hidden bg-black/40 cursor-pointer"
+                    className="relative aspect-[16/9] overflow-hidden bg-white/5 cursor-pointer rounded-t-[32px]"
                     onClick={() => setPreviewCert(item)}
                   >
                     {item.image ? (
                       <>
                         {item.image.endsWith('.pdf') ? (
-                          <div className="w-full h-full relative pointer-events-none">
+                          <div className="w-full h-full relative pointer-events-none overflow-hidden">
                             <iframe 
                               src={`${item.image}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
-                              className="w-full h-[150%] border-0 opacity-60 group-hover:opacity-90 transition-all duration-700 blur-[0.5px] group-hover:blur-0 transform scale-90 group-hover:scale-100 origin-top"
+                              className="w-full h-[160%] border-0 transition-transform duration-700 group-hover:scale-105 origin-top"
                               title={item.title}
                               scrolling="no"
                             />
@@ -252,12 +245,12 @@ export default function Certificates() {
                           <img 
                             src={item.image} 
                             alt={item.title} 
-                            className="w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700 blur-[1px] group-hover:blur-0"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-[#1a0a2e]/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100 pointer-events-none">
-                          <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                          <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl scale-90 group-hover:scale-100 transition-transform duration-500">
                             <HiEye size={22} />
                           </div>
                         </div>
@@ -283,39 +276,24 @@ export default function Certificates() {
                   </div>
 
                   {/* Content Area */}
-                  <div className="p-8 flex flex-col flex-grow relative z-10">
-                    <div className="flex items-center gap-2 mb-4">
+                  <div className="p-6 flex flex-col flex-grow relative z-10">
+                    <div className="flex items-center gap-2 mb-3">
                       <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
                       <div className="w-1 h-1 rounded-full bg-white/10" />
                       <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
                     </div>
 
-                    <h3 className={`font-display text-xl font-bold mb-4 transition-colors leading-tight ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
+                    <h3 className={`font-display text-lg md:text-xl font-bold mb-3 transition-colors leading-tight ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
                       {item.title}
                       {item.isElite && <HiSparkles className="inline-block ml-2 text-[#f9a8d4] text-lg animate-pulse" />}
                     </h3>
 
-                    <p className="font-body text-white/50 text-xs leading-relaxed mb-6">
+                    <p className="font-body text-white/50 text-xs leading-relaxed mb-6 flex-grow">
                       {item.description}
                     </p>
 
-                    {/* Extra Details for Elite/Special Cards */}
-                    {item.details && (
-                      <div className="grid grid-cols-2 gap-3 mb-8 flex-grow">
-                        {item.details.map((detail, idx) => (
-                          <div key={idx} className="flex flex-col gap-1 p-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                            <div className="flex items-center gap-1.5">
-                              {detail.icon}
-                              <span className="text-white/30 text-[9px] font-bold uppercase tracking-widest truncate">{detail.label}</span>
-                            </div>
-                            <span className="text-white/90 text-[11px] font-semibold pl-5">{detail.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
                     {/* Actions */}
-                    <div className={`flex items-center gap-3 pt-6 border-t mt-auto ${item.isElite ? 'border-[#c084fc]/20' : 'border-white/5'}`}>
+                    <div className={`flex items-center gap-3 pt-5 border-t mt-auto ${item.isElite ? 'border-[#c084fc]/20' : 'border-white/5'}`}>
                       <button
                         onClick={() => setPreviewCert(item)}
                         className="flex-1 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2"
