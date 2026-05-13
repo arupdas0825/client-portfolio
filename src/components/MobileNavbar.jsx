@@ -15,7 +15,7 @@ const navItems = [
 
 export default function MobileNavbar() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     let rafId = null;
@@ -23,8 +23,8 @@ export default function MobileNavbar() {
     const updateScroll = () => {
       const scrollY = window.scrollY;
       
-      // Visibility logic: Appear only after scrolling down
-      setIsVisible(scrollY > 100);
+      // Always visible on mobile
+      setIsVisible(true);
 
       const sections = navItems.map(item => item.href.substring(1));
       let currentSection = 'home';

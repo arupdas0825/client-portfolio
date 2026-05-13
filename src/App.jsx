@@ -39,14 +39,8 @@ export default function App() {
       
       {showPortfolio && (
         <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            <Navbar />
-            <MobileNavbar />
-          </motion.div>
+          <Navbar />
+          <MobileNavbar />
           
           <motion.div
             initial={{ opacity: 0, filter: "blur(10px)" }}

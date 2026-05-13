@@ -150,6 +150,18 @@ export default function Certificates() {
   const [activeTab, setActiveTab] = useState('seminars')
   const [previewCert, setPreviewCert] = useState(null)
 
+  // Preload all images for instant rendering
+  useEffect(() => {
+    const allImages = [...seminarCerts, ...achievements]
+      .map(item => item.image)
+      .filter(img => img && !img.endsWith('.pdf'));
+    
+    allImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <section className="relative py-32 px-6 bg-[#1a0a2e]" id="certificates">
       {/* Background Particles/Blobs */}
@@ -209,116 +221,146 @@ export default function Certificates() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
-            {(activeTab === 'seminars' ? seminarCerts : achievements).map((item, index) => (
-              <ScrollReveal key={item.id} delay={index * 100}>
-                <div 
-                  className={`group relative flex flex-col h-full glass-lavender rounded-[32px] border transition-all duration-500 overflow-hidden ${
-                    item.isElite 
-                      ? 'border-[#c084fc]/50 hover:border-[#f9a8d4]/80 shadow-[0_0_30px_rgba(192,132,252,0.1)] hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,168,212,0.2)]' 
-                      : 'border-white/10 hover:border-white/20 hover:-translate-y-3 hover:shadow-[0_30px_70px_rgba(192,132,252,0.15)]'
-                  }`}
-                >
-                  {/* Elite Particles Background */}
-                  {item.isElite && (
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-[#c084fc]/10 via-transparent to-transparent opacity-50" />
-                    </div>
-                  )}
+            {(activeTab === 'seminars' ? seminarCerts : achievements).map((item, index) => {
+              const [imageLoaded, setImageLoaded] = useState(false);
+              const isPdf = item.image?.endsWith('.pdf');
 
-                  {/* Top Preview Area */}
+              return (
+                <ScrollReveal key={item.id} delay={index * 100}>
                   <div 
-                    className="relative aspect-[16/9] overflow-hidden bg-white/5 cursor-pointer rounded-t-[32px]"
-                    onClick={() => setPreviewCert(item)}
+                    className={`group relative flex flex-col h-full glass-lavender rounded-[32px] border transition-all duration-500 overflow-hidden ${
+                      item.isElite 
+                        ? 'border-[#c084fc]/50 hover:border-[#f9a8d4]/80 shadow-[0_0_30px_rgba(192,132,252,0.1)] hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,168,212,0.2)]' 
+                        : 'border-white/10 hover:border-white/20 hover:-translate-y-3 hover:shadow-[0_30px_70px_rgba(192,132,252,0.15)]'
+                    }`}
                   >
-                    {item.image ? (
-                      <>
-                        {item.image.endsWith('.pdf') ? (
-                          <div className="w-full h-full relative pointer-events-none overflow-hidden">
-                            <iframe 
-                              src={`${item.image}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
-                              className="w-full h-[160%] border-0 transition-transform duration-700 group-hover:scale-105 origin-top"
-                              title={item.title}
-                              scrolling="no"
-                            />
-                          </div>
-                        ) : (
-                          <img 
-                            src={item.image} 
-                            alt={item.title} 
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                          <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl scale-90 group-hover:scale-100 transition-transform duration-500">
-                            <HiEye size={22} />
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center gap-4 opacity-10">
-                        <HiBadgeCheck size={64} />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Documentation Pending</span>
+                    {/* Elite Particles Background */}
+                    {item.isElite && (
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-[#c084fc]/10 via-transparent to-transparent opacity-50" />
                       </div>
                     )}
-                    
-                    {/* Category / Elite Tag */}
-                    <div className="absolute top-4 left-4 z-20 flex gap-2">
-                      <span className="px-3 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-widest">
-                        {item.category}
-                      </span>
-                      {item.isElite && (
-                        <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#c084fc]/20 to-[#f9a8d4]/20 backdrop-blur-md border border-[#f9a8d4]/50 text-white text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 shadow-[0_0_15px_rgba(249,168,212,0.4)]">
-                          <HiStar className="text-[#f9a8d4]" /> Elite
+  
+                    {/* Top Preview Area */}
+                    <div 
+                      className="relative aspect-[16/9] overflow-hidden bg-white/[0.03] cursor-pointer rounded-t-[32px] flex items-center justify-center"
+                      onClick={() => setPreviewCert(item)}
+                    >
+                      {/* Loading Skeleton / Placeholder */}
+                      {item.image && !isPdf && !imageLoaded && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/5 animate-pulse z-0">
+                           <HiSparkles className="text-white/10 text-4xl" />
+                        </div>
+                      )}
+
+                      {item.image ? (
+                        <>
+                          {isPdf ? (
+                            <div className="w-full h-full bg-gradient-to-br from-[#1a0a2e] to-[#25123d] flex flex-col items-center justify-center relative overflow-hidden group">
+                               {/* Abstract Document Background Elements */}
+                               <div className="absolute top-1/4 left-1/4 w-1/2 h-[1px] bg-white/5 rotate-12" />
+                               <div className="absolute bottom-1/4 right-1/4 w-1/2 h-[1px] bg-white/5 -rotate-12" />
+                               
+                               <div className="relative z-10 flex flex-col items-center gap-3 transition-transform duration-500 group-hover:scale-110">
+                                  <div className="w-16 h-20 bg-[#c084fc]/10 border border-[#c084fc]/30 rounded-lg flex flex-col p-3 shadow-[0_0_30px_rgba(192,132,252,0.1)]">
+                                     <div className="w-full h-1.5 bg-[#c084fc]/40 rounded mb-1.5" />
+                                     <div className="w-3/4 h-1 bg-white/10 rounded mb-1" />
+                                     <div className="w-full h-1 bg-white/10 rounded mb-1" />
+                                     <div className="w-5/6 h-1 bg-white/10 rounded mb-1" />
+                                     <div className="mt-auto flex justify-end">
+                                        <div className="w-4 h-4 rounded-full bg-[#f9a8d4]/30" />
+                                     </div>
+                                  </div>
+                                  <span className="text-[10px] font-bold text-[#c084fc] tracking-[0.2em] uppercase opacity-60">PDF Certificate</span>
+                               </div>
+  
+                               {/* Corner Glow */}
+                               <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full" />
+                            </div>
+                          ) : (
+                            <motion.img 
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: imageLoaded ? 1 : 0 }}
+                              onLoad={() => setImageLoaded(true)}
+                              src={item.image} 
+                              alt={item.title} 
+                              className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110 relative z-10"
+                              loading="eager"
+                              decoding="sync"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                            <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl scale-90 group-hover:scale-100 transition-transform duration-500">
+                              <HiEye size={22} />
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center gap-4 opacity-10">
+                          <HiBadgeCheck size={64} />
+                          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Documentation Pending</span>
+                        </div>
+                      )}
+                      
+                      {/* Category / Elite Tag */}
+                      <div className="absolute top-4 left-4 z-20 flex gap-2">
+                        <span className="px-3 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-widest">
+                          {item.category}
                         </span>
-                      )}
+                        {item.isElite && (
+                          <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#c084fc]/20 to-[#f9a8d4]/20 backdrop-blur-md border border-[#f9a8d4]/50 text-white text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 shadow-[0_0_15px_rgba(249,168,212,0.4)]">
+                            <HiStar className="text-[#f9a8d4]" /> Elite
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-6 flex flex-col flex-grow relative z-10">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
-                      <div className="w-1 h-1 rounded-full bg-white/10" />
-                      <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
-                    </div>
-
-                    <h3 className={`font-display text-lg md:text-xl font-bold mb-3 transition-colors leading-tight ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
-                      {item.title}
-                      {item.isElite && <HiSparkles className="inline-block ml-2 text-[#f9a8d4] text-lg animate-pulse" />}
-                    </h3>
-
-                    <p className="font-body text-white/50 text-xs leading-relaxed mb-6 flex-grow">
-                      {item.description}
-                    </p>
-
-                    {/* Actions */}
-                    <div className={`flex items-center gap-3 pt-5 border-t mt-auto ${item.isElite ? 'border-[#c084fc]/20' : 'border-white/5'}`}>
-                      <button
-                        onClick={() => setPreviewCert(item)}
-                        className="flex-1 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2"
-                      >
-                        <HiEye size={16} />
-                        Preview
-                      </button>
-                      {item.image && (
-                        <a 
-                          href={item.image}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] hover:border-[#f9a8d4]/30 transition-all group/btn"
+  
+                    {/* Content Area */}
+                    <div className="p-6 flex flex-col flex-grow relative z-10">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
+                        <div className="w-1 h-1 rounded-full bg-white/10" />
+                        <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
+                      </div>
+  
+                      <h3 className={`font-display text-lg md:text-xl font-bold mb-3 transition-colors leading-tight ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
+                        {item.title}
+                        {item.isElite && <HiSparkles className="inline-block ml-2 text-[#f9a8d4] text-lg animate-pulse" />}
+                      </h3>
+  
+                      <p className="font-body text-white/50 text-xs leading-relaxed mb-6 flex-grow">
+                        {item.description}
+                      </p>
+  
+                      {/* Actions */}
+                      <div className={`flex items-center gap-3 pt-5 border-t mt-auto ${item.isElite ? 'border-[#c084fc]/20' : 'border-white/5'}`}>
+                        <button
+                          onClick={() => setPreviewCert(item)}
+                          className="flex-1 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2"
                         >
-                          <HiExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />
-                        </a>
-                      )}
+                          <HiEye size={16} />
+                          Preview
+                        </button>
+                        {item.image && (
+                          <a 
+                            href={item.image}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] hover:border-[#f9a8d4]/30 transition-all group/btn"
+                          >
+                            <HiExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />
+                          </a>
+                        )}
+                      </div>
                     </div>
+  
+                    {/* Glow Layer */}
+                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>
-
-                  {/* Glow Layer */}
-                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </motion.div>
         </AnimatePresence>
 
