@@ -17,33 +17,51 @@ export default function MobileNavbar() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId = null;
+
+    const updateScroll = () => {
+      const scrollY = window.scrollY;
+      
       // Visibility logic: Appear only after scrolling down
-      if (window.scrollY > 100) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(scrollY > 100);
 
       const sections = navItems.map(item => item.href.substring(1));
-      const scrollPosition = window.scrollY + 300;
-
-      for (const section of sections) {
+      let currentSection = 'home';
+      
+      // Check from bottom to top for highest specificity
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
         const element = document.getElementById(section);
         if (element) {
-          if (
-            scrollPosition >= element.offsetTop &&
-            scrollPosition < element.offsetTop + element.offsetHeight
-          ) {
-            setActiveSection(section);
+          const rect = element.getBoundingClientRect();
+          // Detect when section enters the top 40% of viewport
+          if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= 100) {
+            currentSection = section;
             break;
           }
         }
       }
+
+      if (scrollY < 50) currentSection = 'home';
+
+      setActiveSection(prev => (prev !== currentSection ? currentSection : prev));
+    };
+
+    const handleScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        updateScroll();
+        rafId = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const scrollToSection = (e, href) => {
@@ -99,12 +117,12 @@ export default function MobileNavbar() {
                           <motion.div
                             layoutId="activeDockGlow"
                             className="absolute inset-0 bg-white/10 blur-md rounded-full z-0"
-                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                            transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                           />
                           <motion.div
                             layoutId="activeIndicatorDot"
                             className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#f9a8d4] shadow-[0_0_10px_#f9a8d4]"
-                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                            transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                           />
                         </>
                       )}

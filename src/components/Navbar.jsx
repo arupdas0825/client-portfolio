@@ -20,32 +20,65 @@ export default function Navbar() {
 
   // Handle scroll events
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId = null;
+
+    const updateScroll = () => {
+      const scrollY = window.scrollY;
+      
       // Update scrolled state for navbar background
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(scrollY > 20);
 
       // Update scroll progress bar
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const scrolled = (winScroll / height) * 100
-      setScrollProgress(scrolled)
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress(height > 0 ? (winScroll / height) * 100 : 0);
 
-      // Update active section based on scroll position
-      const sections = navItems.map(item => item.href.substring(1))
-      for (const section of sections) {
-        const element = document.getElementById(section)
+      // Fast & immediate section detection
+      const sections = navItems.map(item => item.href.substring(1));
+      let currentSection = 'home';
+      
+      // Check from bottom to top for highest specificity
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section)
-            break
+          const rect = element.getBoundingClientRect();
+          // Detect when section enters the top 40% of viewport
+          if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= 100) {
+            currentSection = section;
+            break;
           }
         }
       }
-    }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+      // Fallback for very top of page
+      if (scrollY < 50) {
+        currentSection = 'home';
+      }
+
+      // Only trigger React state update if changed (prevents re-renders)
+      setActiveSection(prev => (prev !== currentSection ? currentSection : prev));
+    };
+
+    const handleScroll = () => {
+      // requestAnimationFrame prevents scroll lag and ensures high FPS
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        updateScroll();
+        rafId = null;
+      });
+    };
+
+    // Passive listener for high performance scrolling
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    updateScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, [])
 
   const scrollToSection = (e, href) => {
@@ -116,7 +149,7 @@ export default function Navbar() {
                     <motion.div
                       layoutId="activeTab"
                       className="absolute inset-0 bg-white/10 rounded-full z-[-1] border border-white/20"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                     />
                   )}
                   {item.name}
@@ -124,6 +157,7 @@ export default function Navbar() {
                     <motion.div
                       className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#f9a8d4] shadow-[0_0_8px_#f9a8d4]"
                       layoutId="activeDot"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                     />
                   )}
                 </a>
