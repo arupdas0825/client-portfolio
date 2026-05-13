@@ -34,90 +34,85 @@ export default function CV() {
         </ScrollReveal>
 
         <ScrollReveal delay={150}>
-          <div
-            className="glass-lavender p-10 flex flex-col items-center gap-8 animate-float2"
-            style={{ borderRadius: '20px' }}
-          >
-            {/* Document preview icon */}
-            <div
-              className="w-24 h-28 flex items-center justify-center rounded-2xl text-5xl animate-float3"
-              style={{
-                background: 'rgba(192,132,252,0.1)',
-                border: '1px solid rgba(192,132,252,0.2)',
-              }}
-            >
-              📄
+          <div className="relative p-[1px] overflow-hidden group max-w-4xl mx-auto w-full" style={{ borderRadius: '24px' }}>
+            {/* Animated Gradient Border */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#f9a8d4]/30 via-transparent to-[#c084fc]/30 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <div className="relative w-full bg-[#1a0a2e]/80 backdrop-blur-2xl p-8 sm:p-10 md:p-12 flex flex-col items-center text-center gap-6" style={{ borderRadius: '23px' }}>
+               
+               {/* Ambient Glow */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-[#c084fc] to-[#f9a8d4] blur-[120px] opacity-[0.04] pointer-events-none" />
+
+               {/* Top: Small Badge */}
+               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f9a8d4]/30 bg-[#f9a8d4]/10 text-[#f9a8d4] text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(249,168,212,0.2)]">
+                 <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#f9a8d4] animate-pulse" />
+                 Professional Resume
+               </div>
+
+               {/* Tiny floating document icon in background */}
+               <div className="absolute top-8 right-12 opacity-20 hidden md:block">
+                  <div className="w-16 h-20 border border-[#c084fc]/30 rounded-lg bg-[#c084fc]/5 shadow-[0_0_30px_rgba(192,132,252,0.2)] animate-float2">
+                     <div className="w-1/2 h-1 bg-[#c084fc]/40 mt-4 ml-3 rounded" />
+                     <div className="w-3/4 h-1 bg-white/20 mt-2 ml-3 rounded" />
+                     <div className="w-2/3 h-1 bg-white/20 mt-2 ml-3 rounded" />
+                  </div>
+               </div>
+               <div className="absolute bottom-10 left-12 opacity-20 hidden md:block">
+                  <div className="w-12 h-12 border border-[#f9a8d4]/30 rounded-full bg-[#f9a8d4]/5 shadow-[0_0_30px_rgba(249,168,212,0.2)] animate-float3 flex items-center justify-center">
+                     <div className="w-4 h-4 rounded-full border border-[#f9a8d4]/40" />
+                  </div>
+               </div>
+
+               {/* Middle: Title & Subtitle */}
+               <div className="flex flex-col items-center max-w-2xl relative z-10">
+                 <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight break-words w-full">
+                   Shatarupa Basak
+                 </h3>
+                 
+                 <p className="font-body text-white/60 text-sm md:text-base mb-6 leading-relaxed">
+                   A comprehensive overview of my academic achievements, technical skills, certifications, and professional journey.
+                 </p>
+                 
+                 {/* Chips */}
+                 <div className="flex flex-wrap gap-2 justify-center mb-8 w-full">
+                   <span className="px-3 py-1.5 text-xs font-medium rounded-lg bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20 transition-colors">Biotechnology</span>
+                   <span className="px-3 py-1.5 text-xs font-medium rounded-lg bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20 transition-colors">Content Creator</span>
+                   <span className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#c084fc]/10 border border-[#c084fc]/20 text-[#c084fc] hover:bg-[#c084fc]/20 transition-colors">Academic Portfolio</span>
+                 </div>
+               </div>
+
+               {/* Bottom: Buttons */}
+               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-10">
+                 <button 
+                   onClick={() => setModalOpen(true)} 
+                   className="group relative flex items-center justify-center gap-2 font-body font-bold text-sm tracking-wide w-full sm:w-auto px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03]" 
+                   style={{ background: 'rgba(249,168,212,0.1)', border: '1px solid rgba(249,168,212,0.4)', color: '#f9a8d4', boxShadow: '0 0 20px rgba(249,168,212,0.1)' }}
+                 >
+                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#f9a8d4]/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
+                   <HiEye className="text-xl" />
+                   View Document
+                 </button>
+                 
+                 <a 
+                   href={CV_PATH} 
+                   download="Shatarupa_Basak_CV.pdf" 
+                   className="group relative flex items-center justify-center gap-2 font-body font-bold text-sm tracking-wide w-full sm:w-auto px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03]" 
+                   style={{ background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.4)', color: '#c084fc', boxShadow: '0 0 20px rgba(192,132,252,0.1)' }}
+                 >
+                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c084fc]/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
+                   <HiDownload className="text-xl" />
+                   Download PDF
+                 </a>
+               </div>
+               
+               <p className="font-body text-xs text-white/30 mt-4 flex items-center justify-center gap-2 text-center w-full relative z-10">
+                 Having trouble viewing? 
+                 <a href={CV_PATH} target="_blank" rel="noopener noreferrer" className="underline hover:text-white/80 transition-colors text-[#c084fc] hover:text-[#f9a8d4] whitespace-nowrap">
+                   Open in new tab ↗
+                 </a>
+               </p>
+
             </div>
-
-            <div className="text-center">
-              <h3 className="font-display text-2xl font-bold text-white mb-1">
-                Shatarupa Basak
-              </h3>
-              <p
-                className="font-body text-sm tracking-widest uppercase"
-                style={{ color: '#c084fc' }}
-              >
-                B.Tech Biotechnology · Content Creator
-              </p>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full">
-              {/* View CV button - now opens modal */}
-              <button
-                onClick={() => setModalOpen(true)}
-                className="flex-1 flex items-center justify-center gap-2 font-body font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 px-6 py-4 rounded-full cursor-pointer"
-                style={{
-                  background: 'rgba(249,168,212,0.08)',
-                  border: '1px solid rgba(249,168,212,0.3)',
-                  color: '#f9a8d4',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 8px 32px rgba(249,168,212,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                <HiEye className="text-lg" />
-                View CV
-              </button>
-
-              {/* Download CV button */}
-              <a
-                href={CV_PATH}
-                download="Shatarupa_Basak_CV.pdf"
-                className="flex-1 flex items-center justify-center gap-2 font-body font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 px-6 py-4 rounded-full"
-                style={{
-                  background: 'rgba(192,132,252,0.08)',
-                  border: '1px solid rgba(192,132,252,0.3)',
-                  color: '#c084fc',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 8px 32px rgba(192,132,252,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                <HiDownload className="text-lg" />
-                Download CV
-              </a>
-            </div>
-
-            {/* Fallback direct link — always visible */}
-            <p className="font-body text-xs text-white/30">
-              Can't see the preview?{' '}
-              <a
-                href={CV_PATH}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-white/60 transition-colors"
-                style={{ color: '#c084fc' }}
-              >
-                Open PDF in new tab ↗
-              </a>
-            </p>
           </div>
         </ScrollReveal>
       </div>

@@ -38,47 +38,58 @@ export default function App() {
       <WelcomeScreen onComplete={() => setShowPortfolio(true)} />
       
       {showPortfolio && (
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="relative z-10"
-        >
-          <Navbar />
-          <MobileNavbar />
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            <Navbar />
+            <MobileNavbar />
+          </motion.div>
           
-          <main className="pb-[calc(80px+var(--safe-area-bottom))]">
-            <SectionWrapper id="home">
-              <Hero />
-            </SectionWrapper>
-            
-            <SectionWrapper id="about">
-              <About />
-              <Skills />
-            </SectionWrapper>
-            
-            <SectionWrapper id="experience">
-              <Experience />
-            </SectionWrapper>
-            
-            <SectionWrapper id="internship">
-              <Internship />
-            </SectionWrapper>
-            
-            <SectionWrapper id="certificates">
-              <Certificates />
-              <CV />
-            </SectionWrapper>
-            
-            <SectionWrapper id="content-creator">
-              <ContentCreator />
-            </SectionWrapper>
-            
-            <SectionWrapper id="contact">
-              <Contact />
-            </SectionWrapper>
-          </main>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="relative z-10"
+          >
+            <main className="pb-[calc(80px+var(--safe-area-bottom))]">
+              <SectionWrapper id="home">
+                <Hero />
+              </SectionWrapper>
+              
+              <SectionWrapper id="about">
+                <About />
+                <Skills />
+              </SectionWrapper>
+              
+              <SectionWrapper id="experience">
+                <Experience />
+              </SectionWrapper>
+              
+              <SectionWrapper id="internship">
+                <Internship />
+              </SectionWrapper>
+              
+              <SectionWrapper id="certificates">
+                <Certificates />
+              </SectionWrapper>
+              
+              <SectionWrapper id="cv">
+                <CV />
+              </SectionWrapper>
+              
+              <SectionWrapper id="content-creator">
+                <ContentCreator />
+              </SectionWrapper>
+              
+              <SectionWrapper id="contact">
+                <Contact />
+              </SectionWrapper>
+            </main>
+          </motion.div>
+        </>
       )}
       
       {/* Background Noise/Stars Overlay */}
