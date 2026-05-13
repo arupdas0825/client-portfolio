@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const WelcomeScreen = () => {
-  const [isVisible, setIsVisible] = useState(true);
+const WelcomeScreen = ({ onComplete }) => {
+  const [isVisible, setIsVisible] = useState(() => {
+    return !sessionStorage.getItem('welcomeShown');
+  });
 
   useEffect(() => {
-    // Check if session storage has 'welcomeShown'
-    const welcomeShown = sessionStorage.getItem('welcomeShown');
-    
-    if (welcomeShown) {
-      setIsVisible(false);
+    if (!isVisible) {
+      if (onComplete) onComplete();
       return;
     }
 
     const timer = setTimeout(() => {
+      if (onComplete) onComplete();
       setIsVisible(false);
       sessionStorage.setItem('welcomeShown', 'true');
     }, 4000); // 4 seconds total experience
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isVisible, onComplete]);
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-[#1a0a2e]"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-[#1a0a2e]"
         >
           {/* Subtle background glow */}
           <div className="absolute inset-0 overflow-hidden">

@@ -12,6 +12,7 @@ import CV from './components/CV'
 import ContentCreator from './components/ContentCreator'
 import Contact from './components/Contact'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import './index.css'
 
 const SectionWrapper = ({ children, id }) => (
@@ -28,43 +29,57 @@ const SectionWrapper = ({ children, id }) => (
 )
 
 export default function App() {
+  const [showPortfolio, setShowPortfolio] = useState(() => {
+    return !!sessionStorage.getItem('welcomeShown');
+  });
+
   return (
-    <div className="bg-[#1a0a2e] text-white min-h-screen selection:bg-[#f9a8d4]/30">
-      <Navbar />
-      <MobileNavbar />
-      <WelcomeScreen />
+    <div className={`bg-[#1a0a2e] text-white min-h-screen selection:bg-[#f9a8d4]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}>
+      <WelcomeScreen onComplete={() => setShowPortfolio(true)} />
       
-      <main className="pb-[calc(80px+var(--safe-area-bottom))]">
-        <SectionWrapper id="home">
-          <Hero />
-        </SectionWrapper>
-        
-        <SectionWrapper id="about">
-          <About />
-          <Skills />
-        </SectionWrapper>
-        
-        <SectionWrapper id="experience">
-          <Experience />
-        </SectionWrapper>
-        
-        <SectionWrapper id="internship">
-          <Internship />
-        </SectionWrapper>
-        
-        <SectionWrapper id="certificates">
-          <Certificates />
-          <CV />
-        </SectionWrapper>
-        
-        <SectionWrapper id="content-creator">
-          <ContentCreator />
-        </SectionWrapper>
-        
-        <SectionWrapper id="contact">
-          <Contact />
-        </SectionWrapper>
-      </main>
+      {showPortfolio && (
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="relative z-10"
+        >
+          <Navbar />
+          <MobileNavbar />
+          
+          <main className="pb-[calc(80px+var(--safe-area-bottom))]">
+            <SectionWrapper id="home">
+              <Hero />
+            </SectionWrapper>
+            
+            <SectionWrapper id="about">
+              <About />
+              <Skills />
+            </SectionWrapper>
+            
+            <SectionWrapper id="experience">
+              <Experience />
+            </SectionWrapper>
+            
+            <SectionWrapper id="internship">
+              <Internship />
+            </SectionWrapper>
+            
+            <SectionWrapper id="certificates">
+              <Certificates />
+              <CV />
+            </SectionWrapper>
+            
+            <SectionWrapper id="content-creator">
+              <ContentCreator />
+            </SectionWrapper>
+            
+            <SectionWrapper id="contact">
+              <Contact />
+            </SectionWrapper>
+          </main>
+        </motion.div>
+      )}
       
       {/* Background Noise/Stars Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay">
