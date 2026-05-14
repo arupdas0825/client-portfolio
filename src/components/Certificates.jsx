@@ -234,38 +234,38 @@ function CertificateModal({ isOpen, onClose, certificate }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-6xl h-full max-h-[85vh] flex flex-col glass-lavender overflow-hidden border border-white/20 shadow-[0_0_80px_rgba(192,132,252,0.2)] rounded-[32px] md:rounded-[40px]"
+            className="relative w-full max-w-[95vw] md:max-w-7xl h-full max-h-[92vh] flex flex-col glass-lavender overflow-hidden border border-white/20 shadow-[0_0_120px_rgba(192,132,252,0.25)] rounded-[32px] md:rounded-[48px]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header - Fixed Height */}
-            <div className="flex items-center justify-between px-6 py-5 md:px-10 md:py-7 border-b border-white/10 bg-white/5 relative z-20 shrink-0">
+            <div className="flex items-center justify-between px-6 py-6 md:px-12 md:py-8 border-b border-white/10 bg-white/5 relative z-20 shrink-0">
               <div className="space-y-0.5 pr-12">
-                <h3 className="font-display text-lg md:text-xl font-bold text-white tracking-tight leading-tight truncate max-w-[250px] md:max-w-md">
+                <h3 className="font-display text-lg md:text-2xl font-bold text-white tracking-tight leading-tight truncate max-w-[200px] md:max-w-2xl">
                   {certificate.title}
                 </h3>
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-[#c084fc] font-bold text-[9px] uppercase tracking-widest">
+                  <div className="flex items-center gap-1.5 text-[#c084fc] font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
                     <HiOfficeBuilding /> {certificate.issuer}
                   </div>
                   <div className="w-1 h-1 rounded-full bg-white/20" />
-                  <div className="text-white/40 text-[10px] font-medium tracking-wider">
+                  <div className="text-white/40 text-[10px] md:text-[11px] font-medium tracking-widest">
                     {certificate.year}
                   </div>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="absolute top-1/2 -translate-y-1/2 right-6 md:right-8 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10 active:scale-90"
+                className="absolute top-1/2 -translate-y-1/2 right-6 md:right-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10 active:scale-90 shadow-lg"
               >
-                <HiX size={20} />
+                <HiX size={24} />
               </button>
             </div>
 
             {/* Preview Content - Auto Centering, No Scroll */}
-            <div className="flex-1 relative flex items-center justify-center p-4 md:p-10 bg-black/20 overflow-hidden">
+            <div className="flex-1 relative flex items-center justify-center p-2 md:p-12 bg-black/40 overflow-hidden">
               {isLoading && (
-                <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#0a0514]/40 backdrop-blur-md">
-                  <div className="w-10 h-10 border-3 border-[#c084fc]/20 border-t-[#f9a8d4] rounded-full animate-spin" />
+                <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#0a0514]/60 backdrop-blur-xl">
+                  <div className="w-12 h-12 border-4 border-[#c084fc]/20 border-t-[#f9a8d4] rounded-full animate-spin" />
                 </div>
               )}
 
@@ -274,35 +274,35 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="relative max-w-full max-h-full flex items-center justify-center"
+                    className="relative w-full h-full flex items-center justify-center"
                   >
-                     <div className="absolute -inset-10 bg-[#c084fc]/10 blur-[100px] rounded-full opacity-30 pointer-events-none" />
+                     <div className="absolute -inset-20 bg-[#c084fc]/15 blur-[120px] rounded-full opacity-40 pointer-events-none" />
                      <img
                        src={certificate.image}
                        alt={certificate.title}
-                       className="relative z-10 max-w-full max-h-full w-auto h-auto rounded-xl md:rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 object-contain"
+                       className="relative z-10 max-w-full max-h-full w-auto h-auto rounded-xl md:rounded-[32px] shadow-[0_30px_100px_rgba(0,0,0,0.6)] border border-white/10 object-contain transition-all duration-700"
                        onLoad={() => setIsLoading(false)}
                      />
                   </motion.div>
                 ) : (
                   <div className="text-center p-12 glass rounded-[32px] border border-dashed border-white/10 max-w-sm">
-                    <HiBadgeCheck size={40} className="mx-auto mb-4 text-white/10" />
-                    <p className="text-white/30 font-display text-sm uppercase tracking-[0.2em]">Milestone Recorded</p>
+                    <HiBadgeCheck size={48} className="mx-auto mb-4 text-white/10" />
+                    <p className="text-white/30 font-display text-sm uppercase tracking-[0.2em]">Documentation Pending</p>
                   </div>
                 )}
               </div>
 
               {/* Floating Action Bar */}
               {certificate.image && (
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
                   <a
                     href={certificate.image}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-full glass-pink text-[9px] font-bold text-[#f9a8d4] hover:scale-105 active:scale-95 transition-all shadow-[0_10px_30px_rgba(249,168,212,0.2)] border border-[#f9a8d4]/30"
+                    className="flex items-center gap-3 px-8 py-4 rounded-full glass-pink text-[10px] font-bold text-[#f9a8d4] hover:scale-110 active:scale-95 transition-all shadow-[0_15px_40px_rgba(249,168,212,0.3)] border border-[#f9a8d4]/40"
                   >
-                    <HiExternalLink className="text-base" />
-                    Full View
+                    <HiExternalLink className="text-xl" />
+                    Open Source
                   </a>
                 </div>
               )}
