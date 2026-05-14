@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiExternalLink, HiEye, HiX, HiBadgeCheck, HiCalendar, HiOfficeBuilding, HiStar, HiSparkles, HiAcademicCap, HiDownload } from 'react-icons/hi'
+import { HiExternalLink, HiEye, HiX, HiBadgeCheck, HiCalendar, HiOfficeBuilding, HiStar, HiSparkles, HiAcademicCap, HiDownload, HiArrowRight } from 'react-icons/hi'
 import ScrollReveal from './ScrollReveal'
 
 const certificateData = [
-  // SEMINARS
+  // SEMINAR CATEGORY
   { 
     id: 1, 
     title: "National Seminar on Biotechnology", 
@@ -13,7 +13,8 @@ const certificateData = [
     category: "Seminar",
     description: "Explored emerging trends in biotechnology and life sciences, focusing on advanced laboratory methodologies.",
     image: "/seminar1.jpg",
-    type: "Seminar"
+    type: "Seminar",
+    tags: ["Biotech", "Research"]
   },
   { 
     id: 2, 
@@ -23,33 +24,166 @@ const certificateData = [
     category: "Seminar",
     description: "Training on sustainable biological solutions and modern industrial applications in the bioscience sector.",
     image: "/seminar2.jpg",
-    type: "Seminar"
+    type: "Seminar",
+    tags: ["Bioscience", "Workshop"]
   },
-  // EXAMS
+  // EXAM CATEGORY
   { 
     id: 3, 
     title: "Elite NPTEL Certification – General Pharmacology", 
-    issuer: "NPTEL • IIT (BHU) Varanasi • SWAYAM", 
-    year: "Jan – Apr 2026", 
-    category: "Elite Certification",
-    description: "Successfully completed the 12-week NPTEL course 'General Pharmacology' with Elite certification, securing a consolidated score of 61%.",
+    issuer: "NPTEL • IIT (BHU) Varanasi", 
+    year: "2026", 
+    category: "EXAM",
+    description: "Successfully completed the 12-week NPTEL course with Elite certification.",
     image: "/nptel result.jpeg",
-    pdfUrl: "/nptel result.pdf",
+    type: "Exam",
     isElite: true,
-    type: "Exam"
+    tags: ["Pharmacology", "NPTEL", "Elite"]
   },
-  // INTERNSHIPS (Placeholder for now as per user request for category)
+  // INTERNSHIP CATEGORY (Upcoming State)
   {
     id: 4,
-    title: "Upcoming Internship Milestone",
-    issuer: "Laboratory / Corporate",
+    title: "Upcoming Professional Experience",
+    issuer: "Research Institutions",
     year: "2025",
-    category: "Internship",
-    description: "Future placement focused on applying molecular biology techniques in professional environments.",
-    image: null,
-    type: "Internship"
+    category: "INTERNSHIP",
+    description: "Currently preparing for future internship opportunities in biotechnology, bioinformatics, and research-oriented domains.",
+    image: null, 
+    type: "Internship",
+    isUpcoming: true,
+    tags: ["Future", "Growth"]
   }
 ]
+
+// Separate component to handle per-card state and avoid Hook violations
+const CertificateCard = ({ item, index, onPreview }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <ScrollReveal delay={index * 100}>
+      <div 
+        className={`group relative flex flex-col h-full glass-lavender rounded-[32px] border transition-all duration-500 overflow-hidden ${
+          item.isElite 
+            ? 'border-[#c084fc]/50 hover:border-[#f9a8d4]/80 shadow-[0_0_30px_rgba(192,132,252,0.1)] hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(192,132,252,0.25)]' 
+            : 'border-white/10 hover:border-white/20 hover:-translate-y-3 hover:shadow-[0_30px_70px_rgba(192,132,252,0.15)]'
+        } ${item.isUpcoming ? 'opacity-80 hover:opacity-100' : ''}`}
+      >
+        {/* Visual Area */}
+        <div 
+          className="relative aspect-[16/10] overflow-hidden bg-white/[0.03] cursor-pointer"
+          onClick={() => !item.isUpcoming && onPreview(item)}
+        >
+          {item.image ? (
+            <>
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/5 animate-pulse">
+                  <HiSparkles className="text-[#c084fc]/20 text-4xl" />
+                </div>
+              )}
+              <motion.img 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: imageLoaded ? 1 : 0 }}
+                onLoad={() => setImageLoaded(true)}
+                src={item.image} 
+                alt={item.title} 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl scale-75 group-hover:scale-100 transition-all border border-white/20">
+                  <HiEye size={22} />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden bg-gradient-to-br from-white/[0.03] to-transparent">
+               <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+               {item.isUpcoming ? (
+                 <>
+                   <div className="relative">
+                      <div className="absolute -inset-4 bg-[#c084fc]/20 blur-2xl rounded-full animate-pulse" />
+                      <HiAcademicCap size={64} className="relative z-10 text-[#c084fc]/40" />
+                   </div>
+                   <div className="px-3 py-1 rounded-full bg-[#f9a8d4]/10 border border-[#f9a8d4]/20 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-[0.3em] animate-pulse">Coming Soon</div>
+                 </>
+               ) : (
+                 <HiAcademicCap size={64} className="text-white/10" />
+               )}
+            </div>
+          )}
+
+          {/* Top Label */}
+          <div className="absolute top-4 left-4 z-20 flex gap-2">
+            <span className="px-3 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-widest">
+              {item.category}
+            </span>
+            {item.isElite && (
+              <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#c084fc]/20 to-[#f9a8d4]/20 backdrop-blur-md border border-[#f9a8d4]/50 text-white text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 shadow-[0_0_15px_rgba(249,168,212,0.4)]">
+                <HiStar className="text-[#f9a8d4] animate-pulse" /> Elite
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="p-7 flex flex-col flex-grow relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
+            <div className="w-1 h-1 rounded-full bg-[#c084fc]/30" />
+            <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
+          </div>
+
+          <h3 className={`font-display text-lg md:text-xl font-bold mb-3 leading-tight transition-colors ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
+            {item.title}
+          </h3>
+
+          <p className="font-body text-white/50 text-xs leading-relaxed mb-6 flex-grow">
+            {item.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {item.tags?.map(tag => (
+              <span key={tag} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-white/30 text-[8px] font-bold uppercase tracking-wider">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3 pt-6 border-t border-white/5 mt-auto">
+            {item.isUpcoming ? (
+              <button className="flex-1 px-6 py-3.5 rounded-xl bg-white/5 text-white/20 text-[10px] font-bold uppercase tracking-widest border border-white/5 flex items-center justify-center gap-2 cursor-not-allowed">
+                Preparing...
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={() => onPreview(item)}
+                  className="flex-1 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <HiEye size={16} />
+                  Preview
+                </button>
+                <a 
+                  href={item.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] transition-all active:scale-95"
+                >
+                  <HiExternalLink size={18} />
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+        
+        {/* Premium Ambience */}
+        <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      </div>
+    </ScrollReveal>
+  );
+};
 
 function CertificateModal({ isOpen, onClose, certificate }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -122,20 +256,13 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                 </div>
               )}
 
-              {certificate.pdfUrl ? (
-                <iframe
-                  src={`${certificate.pdfUrl}#toolbar=0&navpanes=0`}
-                  title={certificate.title}
-                  className="relative z-10 w-full max-w-4xl min-h-[65vh] md:min-h-[70vh] rounded-2xl shadow-2xl border border-white/10"
-                  onLoad={() => setIsLoading(false)}
-                />
-              ) : certificate.image ? (
+              {certificate.image ? (
                 <div className="relative group/modal-img w-full flex justify-center">
                    <div className="absolute -inset-4 bg-gradient-to-tr from-[#c084fc]/20 to-[#f9a8d4]/20 blur-3xl rounded-full opacity-50" />
                    <img
                      src={certificate.image}
                      alt={certificate.title}
-                     className="relative z-10 max-w-full max-h-[70vh] rounded-2xl shadow-2xl border border-white/10 object-contain"
+                     className="relative z-10 max-w-full max-h-[75vh] rounded-2xl shadow-2xl border border-white/10 object-contain"
                      onLoad={() => setIsLoading(false)}
                    />
                 </div>
@@ -147,26 +274,17 @@ function CertificateModal({ isOpen, onClose, certificate }) {
               )}
 
               {/* Floating Action Bar */}
-              {(certificate.image || certificate.pdfUrl) && (
+              {certificate.image && (
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
                   <a
-                    href={certificate.pdfUrl || certificate.image}
+                    href={certificate.image}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 py-3 rounded-full glass-pink text-[10px] font-bold text-[#f9a8d4] hover:scale-110 transition-all shadow-xl border border-[#f9a8d4]/30"
                   >
                     <HiExternalLink className="text-lg" />
-                    Full View
+                    Open Original
                   </a>
-                  {certificate.pdfUrl && (
-                    <a
-                      href={certificate.pdfUrl}
-                      download
-                      className="flex items-center justify-center w-12 h-12 rounded-full glass-lavender text-white hover:scale-110 transition-all shadow-xl border border-white/10"
-                    >
-                      <HiDownload size={20} />
-                    </a>
-                  )}
                 </div>
               )}
             </div>
@@ -186,7 +304,7 @@ export default function Certificates() {
 
   return (
     <section className="relative py-32 px-6 bg-[#1a0a2e]" id="certificates">
-      {/* Background Ambience */}
+      {/* Background Decor */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c084fc]/5 blur-[120px] rounded-full animate-pulse" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f9a8d4]/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
@@ -206,12 +324,12 @@ export default function Certificates() {
               </span>
             </h2>
             <p className="font-body text-white/40 text-lg max-w-2xl mx-auto leading-relaxed">
-              A comprehensive showcase of my academic certifications, competitive exams, and professional training.
+              Validating academic excellence and professional growth through specialized certifications and training.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Category Tabs */}
+        {/* Tab System */}
         <ScrollReveal delay={200}>
           <div className="flex justify-center mb-16">
             <div className="flex items-center gap-1 p-1.5 glass-lavender rounded-full border border-white/10">
@@ -219,7 +337,7 @@ export default function Certificates() {
                 <button
                   key={cat}
                   onClick={() => setActiveTab(cat)}
-                  className={`px-8 md:px-10 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-500
+                  className={`px-8 md:px-10 py-3 rounded-full text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-500
                     ${activeTab === cat
                       ? 'bg-white/10 text-white border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.05)] scale-105'
                       : 'text-white/30 hover:text-white/60'
@@ -232,130 +350,37 @@ export default function Certificates() {
           </div>
         </ScrollReveal>
 
-        {/* Certificate Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
-          >
-            {filteredCerts.map((item, index) => {
-              const [imageLoaded, setImageLoaded] = useState(false);
-
-              return (
-                <ScrollReveal key={item.id} delay={index * 100}>
-                  <div 
-                    className={`group relative flex flex-col h-full glass-lavender rounded-[32px] border transition-all duration-500 overflow-hidden ${
-                      item.isElite 
-                        ? 'border-[#c084fc]/50 hover:border-[#f9a8d4]/80 shadow-[0_0_30px_rgba(192,132,252,0.1)] hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,168,212,0.2)]' 
-                        : 'border-white/10 hover:border-white/20 hover:-translate-y-3 hover:shadow-[0_30px_70px_rgba(192,132,252,0.15)]'
-                    }`}
-                  >
-                    {/* Preview Image Area */}
-                    <div 
-                      className="relative aspect-[16/10] overflow-hidden bg-white/[0.03] cursor-pointer"
-                      onClick={() => setPreviewCert(item)}
-                    >
-                      {item.image ? (
-                        <>
-                          {!imageLoaded && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-white/5 animate-pulse">
-                              <HiSparkles className="text-[#c084fc]/20 text-4xl" />
-                            </div>
-                          )}
-                          <motion.img 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: imageLoaded ? 1 : 0 }}
-                            onLoad={() => setImageLoaded(true)}
-                            src={item.image} 
-                            alt={item.title} 
-                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                            loading="eager"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-transparent to-transparent opacity-80" />
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                            <div className="w-14 h-14 rounded-full glass-pink flex items-center justify-center text-white shadow-2xl scale-75 group-hover:scale-100 transition-all border border-white/20">
-                              <HiEye size={22} />
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center gap-4 opacity-20 bg-white/5">
-                           <HiAcademicCap size={64} />
-                           <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Pending</span>
-                        </div>
-                      )}
-
-                      {/* Tag */}
-                      <div className="absolute top-4 left-4 z-20 flex gap-2">
-                        <span className="px-3 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[#f9a8d4] text-[9px] font-bold uppercase tracking-widest">
-                          {item.category}
-                        </span>
-                        {item.isElite && (
-                          <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#c084fc]/20 to-[#f9a8d4]/20 backdrop-blur-md border border-[#f9a8d4]/50 text-white text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 shadow-[0_0_15px_rgba(249,168,212,0.4)]">
-                            <HiStar className="text-[#f9a8d4] animate-pulse" /> Elite
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-7 flex flex-col flex-grow relative z-10">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-white/30 text-[11px] font-bold tracking-widest">{item.year}</span>
-                        <div className="w-1 h-1 rounded-full bg-[#c084fc]/30" />
-                        <span className="text-[#c084fc] text-[9px] font-bold uppercase tracking-widest truncate">{item.issuer}</span>
-                      </div>
-
-                      <h3 className={`font-display text-lg md:text-xl font-bold mb-3 leading-tight transition-colors ${item.isElite ? 'text-white group-hover:text-[#c084fc]' : 'text-white group-hover:text-[#f9a8d4]'}`}>
-                        {item.title}
-                      </h3>
-
-                      <p className="font-body text-white/50 text-xs leading-relaxed mb-6 flex-grow">
-                        {item.description}
-                      </p>
-
-                      <div className="flex items-center gap-3 pt-6 border-t border-white/5 mt-auto">
-                        <button
-                          onClick={() => setPreviewCert(item)}
-                          className="flex-1 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all border border-white/10 flex items-center justify-center gap-2 active:scale-95"
-                        >
-                          <HiEye size={16} />
-                          Preview
-                        </button>
-                        {item.pdfUrl && (
-                           <a 
-                             href={item.pdfUrl}
-                             download
-                             className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] transition-all active:scale-95"
-                           >
-                             <HiDownload size={18} />
-                           </a>
-                        )}
-                        { (item.image || item.pdfUrl) && (
-                           <a 
-                             href={item.pdfUrl || item.image}
-                             target="_blank"
-                             rel="noopener noreferrer"
-                             className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-white/30 hover:text-[#f9a8d4] transition-all active:scale-95"
-                           >
-                             <HiExternalLink size={18} />
-                           </a>
-                        )}
-                      </div>
-                    </div>
-                    
-                    {/* Background Glow */}
-                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#c084fc]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        {/* Grid Content */}
+        <div className="relative min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+            >
+              {filteredCerts.length > 0 ? (
+                filteredCerts.map((item, index) => (
+                  <CertificateCard 
+                    key={item.id} 
+                    item={item} 
+                    index={index} 
+                    onPreview={setPreviewCert} 
+                  />
+                ))
+              ) : (
+                <div className="col-span-full py-20 text-center">
+                  <div className="inline-flex flex-col items-center gap-4 opacity-20">
+                    <HiAcademicCap size={64} />
+                    <p className="text-xl font-display uppercase tracking-widest">Coming Soon</p>
                   </div>
-                </ScrollReveal>
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       <CertificateModal 
