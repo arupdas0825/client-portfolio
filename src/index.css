@@ -31,25 +31,31 @@
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
+    will-change: backdrop-filter;
+    transform: translateZ(0);
   }
   .glass-pink {
-    background: rgba(249, 168, 212, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(249, 168, 212, 0.25);
+    background: rgba(249, 168, 212, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(249, 168, 212, 0.2);
     border-radius: 20px;
+    will-change: backdrop-filter;
+    transform: translateZ(0);
   }
   .glass-lavender {
-    background: rgba(192, 132, 252, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(192, 132, 252, 0.25);
+    background: rgba(192, 132, 252, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(192, 132, 252, 0.2);
     border-radius: 20px;
+    will-change: backdrop-filter;
+    transform: translateZ(0);
   }
   .text-gradient-rose {
     background: linear-gradient(135deg, #f9a8d4, #c084fc);
@@ -65,8 +71,9 @@
   }
   .blob {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    filter: blur(60px);
-    opacity: 0.25;
+    filter: blur(40px);
+    opacity: 0.2;
+    will-change: transform, opacity;
   }
   .section-label {
     font-family: 'DM Sans', sans-serif;
