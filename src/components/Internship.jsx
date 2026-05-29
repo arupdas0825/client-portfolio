@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
-import { Dna, FlaskConical, Calendar, MapPin, Award, User, FileText, Sparkles, X, Heart } from 'lucide-react';
+import { Dna, FlaskConical, Calendar, MapPin, Award, User, FileText, Sparkles, X } from 'lucide-react';
 import { HiExternalLink } from 'react-icons/hi';
 
 // ==========================================
-// INTERNSHIP DATA ARRAY (GRID COMPATIBLE)
+// INTERNSHIP DATA CONFIGURATION (FUTURE-PROOF)
 // ==========================================
 const internshipData = [
   {
@@ -31,50 +31,6 @@ const internshipData = [
     projectWork: "",         // e.g., "Docking study of natural compounds against therapeutic cancer receptors."
     certificateUrl: "",      // e.g., "/assets/internship_certificate.pdf"
     reportUrl: "",           // e.g., "/assets/internship_report.pdf"
-  },
-  {
-    id: 2,
-    institution: "IIT / IISER / Industry",
-    campus: "Research Collaboration Slot",
-    department: "Computational Biology",
-    title: "Bioinformatics & Genomics",
-    module: "Advanced Genome Annotation, Structural Alignment & Transcriptomic Sequencing Analysis",
-    duration: "Prospective",
-    startDate: "Winter 2026",
-    endDate: "Summer 2027",
-    location: "Target Institutions",
-    status: "Exploring",
-    year: "2026-27",
-    summary: "Actively exploring research placements focusing on structural genomics, sequence alignment, evolutionary conservation, and biological pathway annotations utilizing machine learning models.",
-    badges: ["Bioinformatics", "Genomics", "Machine Learning", "Structural Alignment"],
-    supervisorName: "",
-    researchOutcome: "",
-    skillsAcquired: [],
-    projectWork: "",
-    certificateUrl: "",
-    reportUrl: "",
-  },
-  {
-    id: 3,
-    institution: "Global Institutes",
-    campus: "Clinical Collaboration",
-    department: "Immunology",
-    title: "Next-Gen Immunotherapy",
-    module: "Modeling Antibody-Antigen Interactions & Dynamic Docking for Therapeutic Design",
-    duration: "Collaborative",
-    startDate: "TBD",
-    endDate: "TBD",
-    location: "Remote / Hybrid",
-    status: "Exploring",
-    year: "Future",
-    summary: "Seeking opportunities to apply high-performance molecular dynamics simulations to vaccine development, structural antigen modeling, and immunotherapeutic target identification.",
-    badges: ["Immunology", "Therapeutics", "MD Simulations", "Vaccine Design"],
-    supervisorName: "",
-    researchOutcome: "",
-    skillsAcquired: [],
-    projectWork: "",
-    certificateUrl: "",
-    reportUrl: "",
   }
 ];
 
@@ -87,79 +43,74 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
   return (
     <ScrollReveal delay={index * 100}>
       <motion.div
-        whileHover={{ y: -8 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1a0b3c]/80 to-[#0d051a]/90 backdrop-blur-3xl rounded-[28px] border border-white/5 hover:border-[#c084fc]/45 transition-all duration-700 overflow-hidden shadow-xl min-h-[460px]"
+        whileHover={{ y: -6 }}
+        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1a0b3c]/80 to-[#0d051a]/90 backdrop-blur-3xl rounded-[24px] border border-white/5 hover:border-[#c084fc]/45 transition-all duration-700 overflow-hidden shadow-xl"
       >
         {/* Glow Hover Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#c084fc]/10 via-transparent to-[#f9a8d4]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-        {/* TOP: Header Area - Compact visual preview */}
-        <div className="relative h-40 overflow-hidden bg-white/[0.01] border-b border-white/5">
+        {/* TOP: Header Area - Refined height for compact layout */}
+        <div className="relative h-32 overflow-hidden bg-white/[0.01] border-b border-white/5">
           {/* Neon gradients and grid decor */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d051a] via-transparent to-black/20 z-10" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:16px_16px] opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#c084fc]/10 via-transparent to-[#f9a8d4]/5 opacity-60" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:16px_16px] opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#c084fc]/10 via-transparent to-[#f9a8d4]/5 opacity-50" />
           
           <div className="w-full h-full flex items-center justify-center bg-white/[0.01]">
-            <FlaskConical size={48} className="text-white/5 group-hover:scale-110 transition-transform duration-700 animate-pulse" />
+            <FlaskConical size={40} className="text-white/5 group-hover:scale-110 transition-transform duration-700 animate-pulse" />
           </div>
 
           {/* Status Badge */}
           <div className="absolute top-4 left-4 z-20">
-            <div className={`px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border text-[8px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5 shadow-md ${
-              item.status === 'Upcoming' 
-                ? 'border-[#c084fc]/40 text-[#c084fc]' 
-                : 'border-[#f9a8d4]/40 text-[#f9a8d4]'
-            }`}>
-              <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
-                item.status === 'Upcoming' ? 'bg-[#c084fc]' : 'bg-[#f9a8d4]'
-              }`} />
-              {item.status}
+            <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#c084fc]/40 text-[8px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5 shadow-md text-[#c084fc]">
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#c084fc]" />
+              {item.status} Internship
             </div>
           </div>
 
           {/* University Emblem Overlay */}
           <div className="absolute bottom-4 right-4 z-20">
-            <div className="w-11 h-11 rounded-full bg-[#1a0b3c]/90 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#f9a8d4] shadow-lg group-hover:border-[#c084fc]/45 transition-colors">
-              <Dna size={18} className="text-[#f9a8d4] group-hover:rotate-45 transition-transform duration-700" />
+            <div className="w-10 h-10 rounded-full bg-[#1a0b3c]/90 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#f9a8d4] shadow-lg group-hover:border-[#c084fc]/45 transition-colors">
+              <Dna size={16} className="text-[#f9a8d4] group-hover:rotate-45 transition-transform duration-700" />
             </div>
           </div>
         </div>
 
-        {/* MIDDLE: Title, Institution, and Metadata */}
-        <div className="p-6 flex-1 flex flex-col">
-          <div className="flex items-center gap-2 mb-2 font-mono">
-            <span className="text-[#c084fc] font-bold text-[9px] tracking-[0.25em] uppercase truncate max-w-[140px]">{item.institution}</span>
+        {/* MIDDLE & BOTTOM: Internship metadata with high info-density */}
+        <div className="p-5 md:p-6 flex-1 flex flex-col">
+          <div className="flex items-center gap-2 mb-1.5 font-mono">
+            <span className="text-[#c084fc] font-bold text-[9px] tracking-[0.25em] uppercase truncate max-w-[150px]">{item.institution}</span>
             <div className="w-1 h-1 rounded-full bg-white/10" />
             <span className="px-2 py-0.5 rounded bg-white/5 border border-white/5 text-[9px] font-semibold text-white/40">{item.year}</span>
           </div>
 
-          {/* Module Title - Fixed size and clamping */}
-          <h3 className="font-display text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#f9a8d4] transition-colors line-clamp-1">
+          {/* Module Title */}
+          <h3 className="font-display text-lg font-bold text-white mb-1.5 leading-snug group-hover:text-[#f9a8d4] transition-colors line-clamp-1">
             {item.title}
           </h3>
 
-          <span className="text-[10px] text-white/30 font-mono tracking-widest uppercase block mb-3">
+          <span className="text-[9px] text-white/30 font-mono tracking-widest uppercase block mb-2.5">
             DEPT: {item.department}
           </span>
 
-          {/* COMPACT TIMELINE BADGE */}
-          <div className="mb-4 bg-white/[0.02] border border-white/5 rounded-xl p-2.5 flex flex-col gap-1 text-[10px] font-mono text-white/50">
-            <div className="flex items-center gap-1.5">
+          {/* COMPACT SINGLE-ROW TIMELINE BADGE (High horizontal space efficiency) */}
+          <div className="mb-3 bg-white/[0.02] border border-white/5 rounded-xl px-3 py-2 flex items-center justify-between text-[10px] font-mono text-white/50 gap-2">
+            <div className="flex items-center gap-1.5 truncate">
               <Calendar size={11} className="text-[#c084fc]" />
               <span className="truncate">{item.startDate} – {item.endDate}</span>
             </div>
-            <div className="flex justify-between items-center text-[9px] text-white/30 pt-1 border-t border-white/5 mt-0.5">
-              <span>Duration:</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            <div className="flex items-center gap-1 flex-shrink-0">
+              <span className="text-white/30">Dur:</span>
               <span className="text-[#f9a8d4] font-semibold">{item.duration}</span>
             </div>
           </div>
 
-          {/* DESCRIPTION: Collapsible with Framer Motion height transition */}
-          <div className="relative font-body text-xs text-white/55 mb-4 flex-1">
+          {/* DESCRIPTION: Collapsible and responsive height */}
+          <div className="relative font-body text-xs text-white/55 mb-3 flex-1">
             <motion.div
               initial={false}
-              animate={{ height: expanded ? "auto" : "55px" }}
+              animate={{ height: expanded ? "auto" : "36px" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="overflow-hidden relative"
             >
@@ -167,7 +118,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
                 {item.summary}
               </p>
               {!expanded && (
-                <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-[#0d051a] to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-3 bg-gradient-to-t from-[#0d051a] to-transparent pointer-events-none" />
               )}
             </motion.div>
             
@@ -176,16 +127,16 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
                 e.stopPropagation();
                 setExpanded(!expanded);
               }}
-              className="mt-1 text-[#f9a8d4] hover:text-[#c084fc] font-bold font-mono text-[9px] tracking-wider uppercase transition-colors"
+              className="mt-0.5 text-[#f9a8d4] hover:text-[#c084fc] font-bold font-mono text-[9px] tracking-wider uppercase transition-colors"
             >
               {expanded ? "Show Less" : "Show More"}
             </button>
           </div>
 
-          {/* SKILLS: Sliced to max 3-4 visible tags */}
-          <div className="mb-5">
+          {/* SKILLS: Compact flex badges */}
+          <div className="mb-4">
             <div className="flex flex-wrap gap-1.5">
-              {item.badges.slice(0, 4).map((badge, idx) => (
+              {item.badges.slice(0, 5).map((badge, idx) => (
                 <span key={idx} className="px-2 py-0.5 rounded-md bg-[#c084fc]/5 border border-[#c084fc]/10 text-[#c084fc]/90 text-[9px] font-semibold tracking-wide">
                   {badge}
                 </span>
@@ -193,7 +144,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
             </div>
           </div>
 
-          {/* ACTIONS: Standardized buttons matching Certificates section */}
+          {/* ACTIONS: Clean, equal-height aligned buttons */}
           <div className="mt-auto pt-4 border-t border-white/5 flex items-center gap-3">
             <button 
               onClick={() => onViewDetails(item)}
@@ -241,7 +192,7 @@ const InternshipDetailsModal = ({ item, onClose }) => {
         initial={{ scale: 0.95, y: 15 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 15 }}
-        className="relative bg-gradient-to-br from-[#1a0b3c] to-[#0d051a] border border-[#c084fc]/30 rounded-[32px] max-w-lg w-full overflow-hidden shadow-2xl p-6 md:p-8"
+        className="relative bg-gradient-to-br from-[#1a0b3c] to-[#0d051a] border border-[#c084fc]/30 rounded-[28px] max-w-lg w-full overflow-hidden shadow-2xl p-6 md:p-8"
       >
         {/* Background Grid Accent */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] opacity-25 pointer-events-none" />
@@ -338,8 +289,8 @@ const InternshipDetailsModal = ({ item, onClose }) => {
                   <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 flex items-start gap-2.5">
                     <Award size={14} className="text-[#f9a8d4] mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block mb-0.5">Key Outcome</span>
-                      <span className="text-white/70 text-[11px] leading-relaxed">{item.researchOutcome}</span>
+                      <span className="text-[#c084fc] text-[8px] font-mono tracking-wider uppercase block mb-0.5">Key Outcome</span>
+                      <span className="text-[#c084fc] text-[11px] leading-relaxed">{item.researchOutcome}</span>
                     </div>
                   </div>
                 )}
@@ -410,14 +361,14 @@ const Internship = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Title */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <ScrollReveal>
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
               <FlaskConical size={14} className="text-[#f9a8d4]" />
               <span className="text-[#f9a8d4] font-bold text-[10px] tracking-[0.4em] uppercase">Professional growth</span>
             </div>
             <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Internships & <br/>
+              Internship & <br/>
               <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent">Research Log</span>
             </h2>
             <p className="font-body text-white/40 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -426,16 +377,18 @@ const Internship = () => {
           </ScrollReveal>
         </div>
 
-        {/* COMPACT CARD GRID: 4 cols on large desktops, Laptop: 3 cols, Tablet: 2 cols, Mobile: 1 col */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {internshipData.map((item, index) => (
-            <InternshipCard 
-              key={item.id} 
-              item={item} 
-              index={index} 
-              onViewDetails={(selected) => setSelectedInternship(selected)}
-            />
-          ))}
+        {/* COMPACT CARD GRID: Centered single medium-width premium showcase card */}
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-[620px]">
+            {internshipData.map((item, index) => (
+              <InternshipCard 
+                key={item.id} 
+                item={item} 
+                index={index} 
+                onViewDetails={(selected) => setSelectedInternship(selected)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Dynamic expansion modal popup */}
