@@ -31,7 +31,7 @@
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -41,7 +41,7 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .glass-pink {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 126, 179, 0.15);
@@ -51,7 +51,7 @@
     box-shadow: 0 8px 32px 0 rgba(255, 126, 179, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .glass-teal {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(20, 184, 166, 0.15);

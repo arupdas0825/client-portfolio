@@ -13,10 +13,18 @@ const Hero = () => {
           transition={{ duration: 1 }}
           className="relative z-10 mb-8"
         >
+          {/* Glowing Halo Background */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-[#7C3AED]/20 via-[#ff7eb3]/15 to-[#FAF6F0]/10 rounded-full blur-xl z-[-1] animate-pulse" style={{ animationDuration: '6s' }} />
+          
+          {/* Floating Micro-particles */}
+          <div className="absolute top-0 -left-6 w-2.5 h-2.5 bg-[#ff7eb3]/40 rounded-full blur-[1px] animate-float pointer-events-none" />
+          <div className="absolute -bottom-2 right-4 w-3.5 h-3.5 bg-[#7C3AED]/35 rounded-full blur-[1px] animate-float2 pointer-events-none" />
+          <div className="absolute top-1/2 -right-8 w-2 h-2 bg-[#FAF6F0]/50 rounded-full blur-[0.5px] animate-float3 pointer-events-none" style={{ animationDelay: '1.5s' }} />
+
           <img
             src={profileImg}
             alt="Shatarupa Basak"
-            className="w-48 h-48 rounded-full object-cover object-center"
+            className="w-48 h-48 rounded-full object-cover object-center relative z-10"
             style={{
               border: '1.5px solid rgba(253,251,247,0.2)',
               boxShadow: '0 0 0 12px rgba(253,251,247,0.03), 0 0 60px rgba(124, 58, 237, 0.25), 0 0 100px rgba(255, 126, 179, 0.15)'

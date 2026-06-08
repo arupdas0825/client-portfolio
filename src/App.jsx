@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import './index.css'
 
-const SectionWrapper = ({ children, id }) => (
+const SectionWrapper = ({ children, id, glowColor = 'purple' }) => (
   <motion.div
     id={id}
     initial={{ opacity: 0, y: 15 }}
@@ -25,7 +25,16 @@ const SectionWrapper = ({ children, id }) => (
     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     className="relative"
   >
-    {children}
+    {/* Dynamic Section Glow */}
+    <div className={`absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 w-[600px] h-[600px] blur-[140px] rounded-full pointer-events-none z-0 opacity-20 bg-gradient-to-r ${
+      glowColor === 'purple' ? 'from-[#7C3AED]/20 to-[#2A1350]/10' :
+      glowColor === 'pink' ? 'from-[#ff7eb3]/15 to-[#FAF6F0]/5' :
+      'from-[#14b8a6]/15 to-[#7C3AED]/10'
+    }`} />
+    
+    <div className="relative z-10">
+      {children}
+    </div>
   </motion.div>
 )
 
@@ -62,36 +71,36 @@ export default function App() {
           <MobileNavbar />
           
           <main className="pb-[calc(80px+var(--safe-area-bottom))]">
-            <SectionWrapper id="home">
+            <SectionWrapper id="home" glowColor="pink">
               <Hero />
             </SectionWrapper>
             
-            <SectionWrapper id="about">
+            <SectionWrapper id="about" glowColor="purple">
               <About />
               <Skills />
             </SectionWrapper>
             
-            <SectionWrapper id="academic-journey">
+            <SectionWrapper id="academic-journey" glowColor="teal">
               <AcademicJourney />
             </SectionWrapper>
             
-            <SectionWrapper id="experience">
+            <SectionWrapper id="experience" glowColor="purple">
               <Experience />
             </SectionWrapper>
             
-            <SectionWrapper id="internship">
+            <SectionWrapper id="internship" glowColor="teal">
               <Internship />
             </SectionWrapper>
             
-            <SectionWrapper id="certificates">
+            <SectionWrapper id="certificates" glowColor="pink">
               <Certificates />
             </SectionWrapper>
             
-            <SectionWrapper id="cv">
+            <SectionWrapper id="cv" glowColor="purple">
               <CV />
             </SectionWrapper>
             
-            <SectionWrapper id="contact">
+            <SectionWrapper id="contact" glowColor="teal">
               <Contact />
             </SectionWrapper>
           </main>

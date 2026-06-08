@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { motion, useSpring, useTransform, useMotionValue, useScroll } from 'framer-motion';
 
 const FloatingParticles = () => {
   const mouseX = useMotionValue(0);
@@ -7,6 +7,13 @@ const FloatingParticles = () => {
 
   const smoothX = useSpring(mouseX, { stiffness: 40, damping: 22 });
   const smoothY = useSpring(mouseY, { stiffness: 40, damping: 22 });
+
+  const { scrollY } = useScroll();
+
+  // Scroll Parallax Transforms (different speeds and directions for 3D depth)
+  const starsY = useTransform(scrollY, [0, 4000], [0, 180]);
+  const dustY = useTransform(scrollY, [0, 4000], [0, 320]);
+  const nodesY = useTransform(scrollY, [0, 4000], [0, -180]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -70,8 +77,11 @@ const FloatingParticles = () => {
         }}
       />
 
-      {/* Background Starfield Layer (Twinkling) */}
-      <div className="absolute inset-0">
+      {/* Layer 4: Twinkling Background Stars (Scroll-linked Parallax) */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y: starsY }}
+      >
         {stars.map((s) => (
           <div
             key={s.id}
@@ -87,54 +97,64 @@ const FloatingParticles = () => {
             }}
           />
         ))}
-      </div>
-
-      {/* Floating Dust Layer: Moves slightly opposite to mouse for depth */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ 
-          x: useTransform(smoothX, v => v * -20), 
-          y: useTransform(smoothY, v => v * -20) 
-        }}
-      >
-        {dust.map((p) => (
-          <div
-            key={p.id}
-            className={`absolute bg-[#FAF6F0] rounded-full opacity-[0.12] ${p.animation}`}
-            style={{
-              width: p.size,
-              height: p.size,
-              top: p.top,
-              left: p.left,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
       </motion.div>
 
-      {/* Foreground Glowing Nodes: Moves with mouse, creating 3D parallax depth */}
+      {/* Layer 3: Floating Dust (Scroll-linked Parallax + Mouse-linked Parallax) */}
       <motion.div 
         className="absolute inset-0"
-        style={{ 
-          x: useTransform(smoothX, v => v * 35), 
-          y: useTransform(smoothY, v => v * 35) 
-        }}
+        style={{ y: dustY }}
       >
-        {molecularNodes.map((p) => (
-          <div
-            key={p.id}
-            className={`absolute rounded-full opacity-[0.25] ${p.blur} ${p.animation}`}
-            style={{
-              width: p.size,
-              height: p.size,
-              backgroundColor: p.color,
-              top: p.top,
-              left: p.left,
-              animationDelay: p.delay,
-              boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
-            }}
-          />
-        ))}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ 
+            x: useTransform(smoothX, v => v * -20), 
+            y: useTransform(smoothY, v => v * -20) 
+          }}
+        >
+          {dust.map((p) => (
+            <div
+              key={p.id}
+              className={`absolute bg-[#FAF6F0] rounded-full opacity-[0.12] ${p.animation}`}
+              style={{
+                width: p.size,
+                height: p.size,
+                top: p.top,
+                left: p.left,
+                animationDelay: p.delay,
+              }}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Layer 5: Foreground Molecular Nodes (Scroll-linked Parallax + Mouse-linked Parallax) */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y: nodesY }}
+      >
+        <motion.div 
+          className="absolute inset-0"
+          style={{ 
+            x: useTransform(smoothX, v => v * 35), 
+            y: useTransform(smoothY, v => v * 35) 
+          }}
+        >
+          {molecularNodes.map((p) => (
+            <div
+              key={p.id}
+              className={`absolute rounded-full opacity-[0.25] ${p.blur} ${p.animation}`}
+              style={{
+                width: p.size,
+                height: p.size,
+                backgroundColor: p.color,
+                top: p.top,
+                left: p.left,
+                animationDelay: p.delay,
+                boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
+              }}
+            />
+          ))}
+        </motion.div>
       </motion.div>
       
     </div>
