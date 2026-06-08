@@ -46,7 +46,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
+        className="group relative h-full flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
@@ -151,7 +151,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="mt-auto flex flex-col sm:flex-row items-center gap-3">
             <button 
               onClick={() => onViewDetails(item)}
-              className="w-full flex-1 px-6 py-4 rounded-2xl bg-[#14b8a6]/10 text-[#14b8a6] font-bold text-[10px] tracking-[0.2em] uppercase border border-[#14b8a6]/20 hover:bg-[#14b8a6] hover:text-[#060913] transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.3)] text-center"
+              className="w-full flex-1 px-6 py-4 rounded-2xl bg-[#14b8a6]/10 text-[#14b8a6] font-bold text-[10px] tracking-[0.2em] uppercase border border-[#14b8a6]/20 hover:bg-[#14b8a6] hover:text-[#0A0F1F] transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.3)] text-center"
             >
               View Details
             </button>
@@ -179,7 +179,7 @@ const InternshipDetailsModal = ({ item, onClose }) => {
         initial={{ scale: 0.95, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 20 }}
-        className="relative bg-gradient-to-br from-[#060913] to-[#02040a] border border-[#14b8a6]/30 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(20, 184, 166,0.2)] p-8 max-h-[90vh] overflow-y-auto"
+        className="relative bg-gradient-to-br from-[#0A0F1F] to-[#02040a] border border-[#14b8a6]/30 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(20, 184, 166,0.2)] p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Background Grid Accent */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(253, 251, 247,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(253, 251, 247,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />
@@ -354,18 +354,14 @@ const Internship = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Title */}
-        <div className="text-center mb-24">
+        <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(253, 251, 247,0.05)]">
-              <FlaskConical size={16} className="text-[#ff7eb3] animate-pulse" />
-              <span className="text-[#ff7eb3] font-bold text-[11px] tracking-[0.4em] uppercase">Academic Highlight</span>
-            </div>
-            <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
-              <span className="bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] bg-clip-text text-transparent animate-gradient-x">
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
                 Internship
               </span>
             </h2>
-            <p className="font-body text-[#fdfbf7]/50 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
               Applying molecular dynamics and computational drug design in university research laboratories.
             </p>
           </ScrollReveal>

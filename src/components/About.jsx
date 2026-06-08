@@ -5,6 +5,22 @@ const About = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* Standardized Section Header */}
+        <div className="text-center mb-24 md:mb-32">
+          <ScrollReveal>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+              About My <br className="md:hidden"/>
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
+                Journey
+              </span>
+            </h2>
+            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
+              A deeper look into my academic path, scientific curiosity, and the passion driving my research in biotechnology.
+            </p>
+          </ScrollReveal>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
           {/* LEFT COLUMN — Identity Cards */}

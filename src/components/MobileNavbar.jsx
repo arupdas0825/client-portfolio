@@ -87,7 +87,7 @@ export default function MobileNavbar() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="pointer-events-auto w-full max-w-[440px]"
           >
-            <div className="relative flex items-center justify-between px-3 h-16 bg-[#060913]/70 backdrop-blur-2xl border border-[#fdfbf7]/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(20, 184, 166,0.15)] overflow-hidden">
+            <div className="relative flex items-center justify-between px-3 h-16 bg-[#0A0F1F]/70 backdrop-blur-2xl border border-[#fdfbf7]/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(20, 184, 166,0.15)] overflow-hidden">
               {/* Subtle inner glow */}
               <div className="absolute inset-0 rounded-full border border-[#fdfbf7]/5 pointer-events-none" />
               

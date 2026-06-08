@@ -29,7 +29,7 @@ const WelcomeScreen = ({ onComplete }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-[#060913]"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-[#0A0F1F]"
         >
           {/* Subtle background glow */}
           <div className="absolute inset-0 overflow-hidden">

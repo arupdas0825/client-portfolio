@@ -29,19 +29,15 @@ export default function CV() {
     >
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 mb-6">
-              <HiBadgeCheck className="text-[#ff7eb3] text-lg" />
-              <span className="text-[#ff7eb3] font-bold text-[10px] tracking-[0.4em] uppercase">Professional</span>
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-[#fdfbf7] tracking-tight mb-6">
-              Curriculum <br />
-              <span className="bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] bg-clip-text text-transparent">
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+              Curriculum <br className="md:hidden"/>
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
                 Vitae
               </span>
             </h2>
-            <p className="font-body text-[#fdfbf7]/40 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
               A comprehensive overview of my academic achievements, technical skills, and research journey.
             </p>
           </ScrollReveal>

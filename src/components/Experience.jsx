@@ -5,10 +5,16 @@ const Experience = () => {
   return (
     <section className="py-24 relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-24 md:mb-32">
         <ScrollReveal>
-          <span className="section-label">✦ My Journey</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent">Experience</h2>
+          <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
+              Experience
+            </span>
+          </h2>
+          <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
+            Hands-on laboratory work, academic projects, and continuous learning in the life sciences.
+          </p>
         </ScrollReveal>
       </div>
 

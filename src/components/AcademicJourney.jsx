@@ -80,7 +80,7 @@ const TimelineCard = ({ item, index }) => {
     <div className={`relative flex items-center justify-between md:justify-normal w-full mb-16 ${isEven ? 'md:flex-row-reverse' : ''}`}>
       
       {/* Center Timeline Node */}
-      <div className="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-[#060913] shadow-[0_0_20px_rgba(20,184,166,0.3)] z-20 flex items-center justify-center transform -translate-x-1/2 bg-[#02040a]"
+      <div className="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-[#0A0F1F] shadow-[0_0_20px_rgba(20,184,166,0.3)] z-20 flex items-center justify-center transform -translate-x-1/2 bg-[#02040a]"
            style={{ borderColor: item.color === '#ff7eb3' ? 'rgba(255, 126, 179, 0.4)' : 'rgba(20, 184, 166, 0.4)' }}>
         <Icon size={16} color={item.color} className="animate-pulse" />
       </div>
@@ -94,7 +94,7 @@ const TimelineCard = ({ item, index }) => {
           <motion.div
             ref={tiltRef}
             whileHover={{ scale: 1.02 }}
-            className={`group relative flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[${item.color}]/40 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu`}
+            className={`group relative flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[${item.color}]/40 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu`}
             style={{ transformStyle: 'preserve-3d' }}
           >
             {/* Hover Glow Gradient */}
@@ -189,19 +189,15 @@ export default function AcademicJourney() {
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-32">
+        <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 mb-6">
-              <GraduationCap className="text-[#ff7eb3]" size={16} />
-              <span className="text-[#ff7eb3] font-bold text-[10px] tracking-[0.4em] uppercase">Education & Growth</span>
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-[#fdfbf7] mb-6 leading-tight">
-              Academic <br/>
-              <span className="bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] bg-clip-text text-transparent animate-gradient-x">
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+              Academic <br className="md:hidden"/>
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
                 Journey
               </span>
             </h2>
-            <p className="font-body text-[#fdfbf7]/40 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
               A timeline of academic growth, scientific curiosity, and research-driven development.
             </p>
           </ScrollReveal>

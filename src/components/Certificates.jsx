@@ -59,7 +59,7 @@ const CertificateCard = ({ item, index }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-300 overflow-hidden transform-gpu ${
+        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-300 overflow-hidden transform-gpu ${
           item.isElite 
             ? 'border-[#14b8a6]/30 hover:border-[#ff7eb3]/60 shadow-[0_0_40px_rgba(20, 184, 166,0.15)] hover:shadow-[0_40px_80px_rgba(255, 126, 179,0.25)]' 
             : 'border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 shadow-2xl'
@@ -153,14 +153,17 @@ export default function Certificates() {
 
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 mb-6">
-              <HiBadgeCheck className="text-[#ff7eb3]" />
-              <span className="text-[#ff7eb3] font-bold text-[10px] tracking-[0.4em] uppercase">Recognition</span>
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-[#fdfbf7] mb-6 leading-tight">Certificates & <br/><span className="bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] bg-clip-text text-transparent">Milestones</span></h2>
-            <p className="font-body text-[#fdfbf7]/40 text-lg max-w-2xl mx-auto leading-relaxed">Validating academic excellence and professional growth through specialized certifications and training.</p>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
+              Certificates & <br className="md:hidden"/>
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
+                Milestones
+              </span>
+            </h2>
+            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
+              Validating academic excellence and professional growth through specialized certifications and training.
+            </p>
           </ScrollReveal>
         </div>
 

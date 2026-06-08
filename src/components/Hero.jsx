@@ -28,15 +28,15 @@ const Hero = () => {
           ✦ Biotechnology · Research · Innovation ✦
         </span>
 
-        <h1 className="font-display text-5xl md:text-7xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent mb-2">
+        <h1 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent mb-2">
           Shatarupa Basak
         </h1>
 
-        <p className="font-display text-xl bg-gradient-to-r from-[#ff7eb3] to-[#14b8a6] bg-clip-text text-transparent italic mt-2 font-semibold">
-          "Future Scientist & Research Enthusiast"
+        <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto text-center mt-4">
+          Future Scientist & Research Enthusiast
         </p>
 
-        <p className="font-body text-sm text-[#fdfbf7]/40 mt-4 tracking-widest">
+        <p className="font-body text-sm text-[#fdfbf7]/40 mt-4 tracking-widest uppercase">
           ✦ Kolkata, India &nbsp;·&nbsp; Brainware University ✦
         </p>
 

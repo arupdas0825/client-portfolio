@@ -35,7 +35,7 @@ const FloatingParticles = () => {
       animation: `animate-float${(i % 3) + 1}`,
       delay: `${Math.random() * 5}s`,
       size: Math.random() * 3 + 2, // 2 to 5px
-      color: i % 2 === 0 ? '#ff7eb3' : '#14b8a6', // Pink or Teal
+      color: i % 2 === 0 ? '#A78BFA' : '#14b8a6', // Violet or Teal
       blur: Math.random() > 0.5 ? 'blur-[1px]' : 'blur-[2px]'
     }));
 
