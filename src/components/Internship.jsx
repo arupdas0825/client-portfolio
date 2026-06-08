@@ -46,14 +46,14 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative h-full flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[480px] mx-auto transform-gpu"
+        className="group relative w-full min-h-[520px] max-w-[480px] mx-auto flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Visual Header Area */}
-        <div className="relative h-44 overflow-hidden bg-[#fdfbf7]/[0.02]">
+        <div className="relative h-36 overflow-hidden bg-[#fdfbf7]/[0.02]">
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
@@ -110,7 +110,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="relative font-body text-[#fdfbf7]/40 text-sm mb-4 leading-relaxed">
             <motion.div
               initial={false}
-              animate={{ height: expanded ? "auto" : "48px" }}
+              animate={{ height: expanded ? "auto" : "40px" }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden relative"
             >
