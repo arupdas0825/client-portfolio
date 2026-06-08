@@ -46,14 +46,14 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative h-full flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[440px] mx-auto transform-gpu"
+        className="group relative h-full flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[480px] mx-auto transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Visual Header Area */}
-        <div className="relative h-48 overflow-hidden bg-[#fdfbf7]/[0.02]">
+        <div className="relative h-44 overflow-hidden bg-[#fdfbf7]/[0.02]">
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
@@ -75,10 +75,10 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
         </div>
 
         {/* Content Body */}
-        <div className="p-7 flex-1 flex flex-col relative z-20">
+        <div className="p-6 flex-1 flex flex-col relative z-20">
           
           {/* Metadata Row */}
-          <div className="flex items-center gap-3 mb-3">
+          <div className="flex items-center gap-3 mb-4">
             <span className="text-[#14b8a6] font-bold text-[10px] tracking-[0.3em] uppercase flex items-center gap-1.5">
               <FlaskConical size={12} /> {item.institution}
             </span>
@@ -110,7 +110,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="relative font-body text-[#fdfbf7]/40 text-sm mb-4 leading-relaxed">
             <motion.div
               initial={false}
-              animate={{ height: expanded ? "auto" : "60px" }}
+              animate={{ height: expanded ? "auto" : "48px" }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden relative"
             >
@@ -134,7 +134,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-5">
             {item.badges.slice(0, 3).map((badge, idx) => (
               <span key={idx} className="px-3 py-1 rounded-md bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 text-[#fdfbf7]/60 text-[9px] tracking-wider uppercase font-medium">
                 {badge}
