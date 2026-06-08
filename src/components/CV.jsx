@@ -50,7 +50,7 @@ export default function CV() {
             {/* Animated Glow Border */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff7eb3] via-[#7C3AED] to-[#ff7eb3] rounded-[40px] blur-sm opacity-20 group-hover:opacity-40 transition duration-1000 animate-gradient-x" />
             
-            <div className="relative w-full bg-gradient-to-br from-[#1C0D38]/50 to-[#0B0618]/90 backdrop-blur-3xl p-12 md:p-20 rounded-[39px] border border-[#2A1350]/50 flex flex-col items-center text-center gap-10">
+            <div className="relative w-full bg-white/[0.04] backdrop-blur-[20px] p-12 md:p-20 rounded-[39px] border border-white/[0.08] flex flex-col items-center text-center gap-10">
                {/* Center Badge */}
                <div className="w-24 h-24 rounded-3xl glass-teal flex items-center justify-center text-[#14b8a6] shadow-2xl border border-[#fdfbf7]/10 mb-2">
                   <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">

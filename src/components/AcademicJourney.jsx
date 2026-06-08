@@ -94,7 +94,7 @@ const TimelineCard = ({ item, index }) => {
           <motion.div
             ref={tiltRef}
             whileHover={{ scale: 1.02 }}
-            className="group relative flex flex-col bg-gradient-to-br from-[#1C0D38]/55 to-[#0B0618]/90 backdrop-blur-3xl rounded-[32px] border border-[#2A1350]/50 hover:border-[#7C3AED]/40 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu"
+            className="group relative flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/50 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu"
             style={{ transformStyle: 'preserve-3d' }}
           >
             {/* Hover Glow Gradient */}

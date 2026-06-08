@@ -46,7 +46,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1C0D38]/55 to-[#0B0618]/90 backdrop-blur-3xl rounded-[32px] border border-[#2A1350]/50 hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
+        className="group relative h-full flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
@@ -179,7 +179,7 @@ const InternshipDetailsModal = ({ item, onClose }) => {
         initial={{ scale: 0.95, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 20 }}
-        className="relative bg-gradient-to-br from-[#1C0D38] to-[#0B0618] border border-[#2A1350]/50 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(124,58,237,0.2)] p-8 max-h-[90vh] overflow-y-auto"
+        className="relative bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/[0.08] backdrop-blur-[30px] rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(124,58,237,0.2)] p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Background Grid Accent */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(253, 251, 247,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(253, 251, 247,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />

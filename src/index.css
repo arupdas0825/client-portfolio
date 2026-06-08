@@ -31,34 +31,34 @@
 
 @layer utilities {
   .glass {
-    background: rgba(28, 13, 56, 0.35);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(124, 58, 237, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     will-change: backdrop-filter;
     transform: translateZ(0);
-    box-shadow: 0 8px 32px 0 rgba(11, 6, 24, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .glass-pink {
-    background: rgba(251, 207, 232, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(251, 207, 232, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 126, 179, 0.15);
     border-radius: 24px;
     will-change: backdrop-filter;
     transform: translateZ(0);
-    box-shadow: 0 8px 32px 0 rgba(251, 207, 232, 0.02);
+    box-shadow: 0 8px 32px 0 rgba(255, 126, 179, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .glass-teal {
-    background: rgba(20, 184, 166, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(20, 184, 166, 0.15);
     border-radius: 24px;
     will-change: backdrop-filter;
     transform: translateZ(0);
-    box-shadow: 0 8px 32px 0 rgba(20, 184, 166, 0.02);
+    box-shadow: 0 8px 32px 0 rgba(20, 184, 166, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .blob {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;

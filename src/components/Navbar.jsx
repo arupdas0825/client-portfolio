@@ -114,9 +114,9 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-500 ${isScrolled
-          ? 'py-3 bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-[#fdfbf7]/5'
-          : 'py-6 bg-transparent'
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-[999] transition-all duration-500 rounded-full border backdrop-blur-[20px] shadow-2xl ${isScrolled
+          ? 'py-3 bg-white/[0.03] border-white/[0.08] shadow-[0_8px_32px_rgba(124,58,237,0.15)]'
+          : 'py-4 bg-white/[0.01] border-white/[0.04]'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
