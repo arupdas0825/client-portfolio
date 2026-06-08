@@ -46,14 +46,14 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative w-full min-h-[520px] max-w-[480px] mx-auto flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl transform-gpu"
+        className="group relative w-full min-h-[480px] max-w-[480px] mx-auto flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Visual Header Area */}
-        <div className="relative h-36 overflow-hidden bg-[#fdfbf7]/[0.02]">
+        <div className="relative h-32 overflow-hidden bg-[#fdfbf7]/[0.02]">
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
@@ -75,10 +75,10 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
         </div>
 
         {/* Content Body */}
-        <div className="p-6 flex-1 flex flex-col relative z-20">
+        <div className="p-5 flex-1 flex flex-col relative z-20">
           
           {/* Metadata Row */}
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
             <span className="text-[#14b8a6] font-bold text-[10px] tracking-[0.3em] uppercase flex items-center gap-1.5">
               <FlaskConical size={12} /> {item.institution}
             </span>
@@ -89,12 +89,12 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
             {item.module}
           </h3>
 
-          <p className="text-[#fdfbf7]/50 text-[11px] font-medium tracking-widest uppercase mb-3">
+          <p className="text-[#fdfbf7]/50 text-[11px] font-medium tracking-widest uppercase mb-2">
             {item.department}
           </p>
 
           {/* Compact Timeline Block */}
-          <div className="flex flex-col gap-2 mb-3 p-3 rounded-xl bg-[#fdfbf7]/[0.02] border border-[#fdfbf7]/5">
+          <div className="flex flex-col gap-2 mb-2 p-2.5 rounded-xl bg-[#fdfbf7]/[0.02] border border-[#fdfbf7]/5">
             <div className="flex items-center gap-2">
               <Calendar size={14} className="text-[#14b8a6]" />
               <span className="text-[#fdfbf7]/80 font-mono text-[11px]">{item.startDate} → {item.endDate}</span>
@@ -107,10 +107,10 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           </div>
 
           {/* Expandable Description */}
-          <div className="relative font-body text-[#fdfbf7]/40 text-sm mb-4 leading-relaxed">
+          <div className="relative font-body text-[#fdfbf7]/40 text-sm mb-3 leading-relaxed">
             <motion.div
               initial={false}
-              animate={{ height: expanded ? "auto" : "40px" }}
+              animate={{ height: expanded ? "auto" : "32px" }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden relative"
             >
@@ -134,7 +134,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-5">
+          <div className="flex flex-wrap gap-2 mb-3">
             {item.badges.slice(0, 3).map((badge, idx) => (
               <span key={idx} className="px-3 py-1 rounded-md bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 text-[#fdfbf7]/60 text-[9px] tracking-wider uppercase font-medium">
                 {badge}
