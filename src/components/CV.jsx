@@ -23,15 +23,10 @@ export default function CV() {
 
   return (
     <section
-      style={{ backgroundColor: '#1a0a2e', color: '#ffffff' }}
+      style={{ color: '#ffffff' }}
       className="relative w-full overflow-hidden py-32 px-6"
       id="cv"
     >
-      {/* Background Decor */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#c084fc]/5 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f9a8d4]/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">

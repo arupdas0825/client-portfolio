@@ -3,12 +3,7 @@ import ScrollReveal from './ScrollReveal';
 
 const Experience = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-80 h-80 bg-[#f9a8d4]/10 -right-20 top-0 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
+    <section className="py-24 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
         <ScrollReveal>

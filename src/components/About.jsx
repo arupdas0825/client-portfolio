@@ -3,17 +3,7 @@ import ScrollReveal from './ScrollReveal';
 
 const About = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-80 h-80 bg-[#c084fc] top-40 -right-20 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
-      <div
-        className="blob animate-blob absolute w-64 h-64 bg-[#f9a8d4] -bottom-20 left-10 pointer-events-none"
-        style={{ zIndex: 0, animationDelay: '4s' }}
-      />
-
+    <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 

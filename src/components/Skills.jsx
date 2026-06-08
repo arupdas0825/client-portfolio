@@ -33,12 +33,8 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-96 h-96 bg-[#c084fc]/10 -left-20 bottom-0 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
+    <section className="py-24 relative overflow-hidden">
+
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
         <ScrollReveal>

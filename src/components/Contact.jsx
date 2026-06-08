@@ -22,16 +22,7 @@ const ContactLink = ({ icon: Icon, label, value, href, colorClass }) => (
 
 const Contact = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]">
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-96 h-96 bg-[#c084fc]/5 -left-40 top-0 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
-      <div
-        className="blob animate-blob absolute w-80 h-80 bg-[#f9a8d4]/5 -right-20 bottom-0 pointer-events-none"
-        style={{ zIndex: 0, animationDelay: '3s' }}
-      />
+    <section className="py-24 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">

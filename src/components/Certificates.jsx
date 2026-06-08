@@ -144,11 +144,8 @@ export default function Certificates() {
   const filtered = certificateData.filter(c => c.type === activeTab);
 
   return (
-    <section className="relative py-32 px-6 bg-[#1a0a2e]" id="certificates">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c084fc]/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f9a8d4]/5 blur-[120px] rounded-full" />
-      </div>
+    <section className="relative py-32 px-6" id="certificates">
+
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">

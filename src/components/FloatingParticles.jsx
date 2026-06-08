@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 const FloatingParticles = () => {
   const particles = useMemo(() => {
-    return Array.from({ length: 60 }).map((_, i) => ({
+    return Array.from({ length: 80 }).map((_, i) => ({
       id: i,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,

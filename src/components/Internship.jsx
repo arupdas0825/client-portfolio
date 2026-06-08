@@ -350,12 +350,7 @@ const Internship = () => {
   const [selectedInternship, setSelectedInternship] = useState(null);
 
   return (
-    <section className="py-32 relative overflow-hidden bg-[#0a0413]" id="internship">
-      {/* Background blobs matching standard portfolio decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#c084fc]/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#f9a8d4]/5 blur-[150px] rounded-full" />
-      </div>
+    <section className="py-32 relative overflow-hidden" id="internship">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -366,9 +361,10 @@ const Internship = () => {
               <FlaskConical size={16} className="text-[#f9a8d4] animate-pulse" />
               <span className="text-[#f9a8d4] font-bold text-[11px] tracking-[0.4em] uppercase">Academic Highlight</span>
             </div>
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-              Research & <br/>
-              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent animate-gradient-x">Internship</span>
+            <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
+              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent animate-gradient-x">
+                Internship
+              </span>
             </h2>
             <p className="font-body text-white/50 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Applying molecular dynamics and computational drug design in university research laboratories.

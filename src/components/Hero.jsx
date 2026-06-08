@@ -1,22 +1,10 @@
 import React from 'react';
-import FloatingParticles from './FloatingParticles';
 import { motion } from 'framer-motion';
 import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#1a0a2e]">
-      <FloatingParticles />
-      
-      {/* Background blobs */}
-      <div
-        className="blob animate-blob absolute w-80 h-80 bg-[#c084fc] -top-20 -left-20 pointer-events-none"
-        style={{ zIndex: 0 }}
-      />
-      <div
-        className="blob animate-blob absolute w-64 h-64 bg-[#f9a8d4] bottom-0 right-0 pointer-events-none"
-        style={{ zIndex: 0, animationDelay: '3s' }}
-      />
+    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
 
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.div

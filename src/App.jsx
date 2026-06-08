@@ -10,6 +10,7 @@ import Internship from './components/Internship'
 import Certificates from './components/Certificates'
 import CV from './components/CV'
 import Contact from './components/Contact'
+import FloatingParticles from './components/FloatingParticles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import './index.css'
@@ -84,6 +85,14 @@ export default function App() {
         </motion.div>
       )}
       
+      {/* Global Background Layer */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <FloatingParticles />
+        <div className="absolute w-[800px] h-[800px] bg-[#c084fc]/5 blur-[150px] rounded-full -top-40 -left-40 animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute w-[800px] h-[800px] bg-[#f9a8d4]/5 blur-[150px] rounded-full top-[30%] -right-40 animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <div className="absolute w-[1000px] h-[1000px] bg-[#c084fc]/5 blur-[180px] rounded-full bottom-[-20%] left-[20%] animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
+      </div>
+
       {/* Background Noise/Stars Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
