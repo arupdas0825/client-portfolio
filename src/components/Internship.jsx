@@ -53,7 +53,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Visual Header Area */}
-        <div className="relative h-32 overflow-hidden bg-[#fdfbf7]/[0.02]">
+        <div className="relative h-40 overflow-hidden bg-[#fdfbf7]/[0.02]">
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
