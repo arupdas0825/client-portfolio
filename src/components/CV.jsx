@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Download, Award, Microscope, FlaskConical } from 'lucide-react';
+import { Eye, Download, Award } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import useTilt from '../hooks/useTilt';
 
 export default function CV() {
-  const tiltRef = useTilt();
   const CV_PATH = '/cv.pdf';
 
   return (
@@ -19,10 +17,10 @@ export default function CV() {
       <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-[#ff7eb3]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-between">
           
-          {/* Left Column: CV Details & Information */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          {/* Left Column: 55% Width */}
+          <div className="w-full lg:w-[55%] flex flex-col items-start text-left">
             <ScrollReveal>
               {/* Small Label Badge */}
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#ff7eb3]/30 bg-[#ff7eb3]/5 text-[#ff7eb3] text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
@@ -45,12 +43,12 @@ export default function CV() {
                   <span className="text-sm font-medium text-white/90">Biotechnology Student</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff7eb3] animate-pulse" />
-                  <span className="text-sm font-medium text-white/90">CGPA 8.1</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-md">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
                   <span className="text-sm font-medium text-white/90">Research Internship</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff7eb3] animate-pulse" />
+                  <span className="text-sm font-medium text-white/90">2028 Graduate</span>
                 </div>
               </div>
 
@@ -85,68 +83,64 @@ export default function CV() {
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Premium CV Preview Card */}
-          <div className="lg:col-span-5 flex justify-center items-center">
+          {/* Right Column: 45% Width */}
+          <div className="w-full lg:w-[45%] flex justify-center items-center">
             <ScrollReveal delay={200}>
-              <div className="relative w-full max-w-[380px] group">
-                {/* Layered Ambient Glows behind Card */}
-                <div className="absolute -inset-4 bg-[#7C3AED]/10 rounded-[40px] blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
-                <div className="absolute -inset-4 bg-[#ff7eb3]/5 rounded-[40px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
+              <div className="w-full flex justify-center">
+                <div className="relative w-full max-w-[420px] max-h-[550px] group">
+                  {/* Layered Ambient Glows behind Card */}
+                  <div className="absolute -inset-4 bg-[#7C3AED]/10 rounded-[40px] blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute -inset-4 bg-[#ff7eb3]/5 rounded-[40px] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Tiltable Premium Glass Card */}
-                <motion.div
-                  ref={tiltRef}
-                  whileHover={{ scale: 1.02 }}
-                  className="relative w-full bg-white/[0.02] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-white/[0.15] shadow-2xl p-5 transition-all duration-500 overflow-hidden transform-gpu"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  {/* Subtle Inner Glow Highlight */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#7C3AED]/5 via-transparent to-[#ff7eb3]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  {/* Premium Glass Card (Static, No Tilt, translateY on Hover) */}
+                  <div
+                    className="relative w-full bg-[#1a0a2e]/40 backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-white/[0.15] shadow-2xl p-5 transition-all duration-300 hover:translate-y-[-5px]"
+                  >
+                    {/* Subtle Inner Glow Highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#7C3AED]/5 via-transparent to-[#ff7eb3]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  {/* CV Image Preview */}
-                  <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] mb-5 aspect-[1/1.414] bg-black/40 shadow-inner">
-                    <img 
-                      src="/cv-image.png" 
-                      alt="CV Preview" 
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    />
-                    {/* Shadow overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e0716]/80 via-[#0e0716]/10 to-transparent opacity-80 pointer-events-none" />
-                    
-                    {/* Holographic light sweep */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" />
-                  </div>
-
-                  {/* Card Info Content */}
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-display text-lg font-bold text-[#fdfbf7] tracking-tight">
-                          Shatarupa Basak
-                        </h4>
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#14b8a6] px-2 py-0.5 rounded bg-[#14b8a6]/10 border border-[#14b8a6]/20">
-                          Academic
-                        </span>
-                      </div>
-                      <p className="font-body text-[#FAF6F0]/70 text-[10px] tracking-wider uppercase">
-                        B.Tech Biotechnology • 2028 Graduate
-                      </p>
+                    {/* CV Image Preview - object-fit: contain, no cropping, no image stretching */}
+                    <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] mb-5 h-[320px] bg-black/40 flex items-center justify-center p-2 shadow-inner">
+                      <img 
+                        src="/cv-image.png" 
+                        alt="CV Preview" 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                      {/* Shadow overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0e0716]/30 via-transparent to-transparent opacity-80 pointer-events-none" />
                     </div>
 
-                    <div className="h-px bg-white/[0.08]" />
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-1">
-                        <span className="font-body text-[9px] text-white/40 uppercase tracking-widest block">Institution</span>
-                        <span className="font-display text-[13px] font-semibold text-white/90 leading-tight block">Brainware University</span>
+                    {/* Card Info Content (Footer) */}
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <h4 className="font-display text-lg font-bold text-[#fdfbf7] tracking-tight">
+                            Shatarupa Basak
+                          </h4>
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#14b8a6] px-2.5 py-0.5 rounded bg-[#14b8a6]/10 border border-[#14b8a6]/20">
+                            Research Aspirant
+                          </span>
+                        </div>
+                        <p className="font-body text-[#FAF6F0]/70 text-[11px] tracking-wider uppercase">
+                          B.Tech Biotechnology • 2028 Graduate
+                        </p>
                       </div>
-                      <div className="space-y-1 text-right">
-                        <span className="font-body text-[9px] text-white/40 uppercase tracking-widest block">Academic Score</span>
-                        <span className="font-display text-[13px] font-bold text-[#14b8a6] block">CGPA 8.1</span>
+
+                      <div className="h-px bg-white/[0.08]" />
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <span className="font-body text-[9px] text-white/40 uppercase tracking-widest block font-medium">Institution</span>
+                          <span className="font-display text-[13px] font-semibold text-white/95 leading-tight block">Brainware University</span>
+                        </div>
+                        <div className="space-y-1 text-right">
+                          <span className="font-body text-[9px] text-white/40 uppercase tracking-widest block font-medium">Graduation Year</span>
+                          <span className="font-display text-[13px] font-bold text-[#ff7eb3] block">2028</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </ScrollReveal>
           </div>

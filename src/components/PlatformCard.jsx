@@ -15,27 +15,8 @@ export default function PlatformCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative overflow-hidden block group cursor-pointer"
+      className="relative overflow-hidden block group cursor-pointer transition-transform duration-300 hover:translate-y-[-6px] hover:scale-[1.02]"
       style={{ borderRadius: '20px' }}
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect()
-        const x = e.clientX - rect.left
-        const y = e.clientY - rect.top
-        const centerX = rect.width / 2
-        const centerY = rect.height / 2
-        const rotateX = ((y - centerY) / centerY) * -8
-        const rotateY = ((x - centerX) / centerX) * 8
-        e.currentTarget.style.transform =
-          `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform =
-          'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)'
-        e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1)'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transition = 'transform 0.1s ease'
-      }}
     >
       {/* Animated gradient border/glow layer */}
       <div
