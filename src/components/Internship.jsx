@@ -1,41 +1,40 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
-import { Dna, FlaskConical, Calendar, MapPin, Award, User, FileText, Sparkles, X } from 'lucide-react';
+import { FlaskConical, Calendar, MapPin, X, FileText, Award, User } from 'lucide-react';
 import { HiExternalLink } from 'react-icons/hi';
 
 // ==========================================
-// INTERNSHIP DATA CONFIGURATION (FUTURE-PROOF)
+// INTERNSHIP DATA CONFIGURATION
 // ==========================================
 const internshipData = [
   {
     id: 1,
-    institution: "Jadavpur University",
-    campus: "Kolkata (Main Campus)",
+    institution: "Jadavpur University (Main Campus)",
     department: "Biotechnology",
     title: "In Silico Drug Design",
-    module: "Integrating Molecular Dynamics & Computational Chemistry for Novel Therapeutic Innovation",
-    duration: "1 Month",
+    module: "In Silico Drug Design: Integrating Molecular Dynamics & Computational Chemistry for Novel Therapeutic Innovation",
+    duration: "1 Month+",
     startDate: "3 June 2026",
-    endDate: "30 June 2026",
+    endDate: "6 July 2026",
     location: "Kolkata, India",
-    status: "Upcoming", // "Upcoming" | "Confirmed" | "Completed"
+    status: "Completed",
     year: "2026",
-    summary: "Completed a specialized biotechnology internship focused on computational drug discovery approaches. Gained exposure to molecular dynamics simulations, computational chemistry methodologies, virtual screening concepts, and modern in-silico techniques used in therapeutic innovation and pharmaceutical research.",
-    badges: ["Biotechnology", "Drug Design", "Computational Chem", "Molecular Dynamics", "Research Training"],
+    summary: "Completed a biotechnology internship at Jadavpur University focused on computational drug discovery methodologies. The program explored molecular dynamics simulations, computational chemistry workflows, and modern in-silico approaches used in therapeutic innovation and pharmaceutical research.",
+    badges: ["Biotechnology", "Drug Design", "Computational Chemistry", "Molecular Dynamics", "Research Training"],
     
-    // Future-proofing placeholders (will show in detailed view once values are supplied)
-    supervisorName: "",      // e.g., "Dr. Anirban Roy, Professor of Computational Biology"
-    researchOutcome: "",     // e.g., "Identified 3 high-affinity ligand candidates targeting SARS-CoV-2 main protease."
-    skillsAcquired: [],      // e.g., ["AutoDock Vina", "GROMACS", "PyMOL", "AmberTools", "Virtual Screening"]
-    projectWork: "",         // e.g., "Docking study of natural compounds against therapeutic cancer receptors."
-    certificateUrl: "",      // e.g., "/assets/internship_certificate.pdf"
-    reportUrl: "",           // e.g., "/assets/internship_report.pdf"
+    // Future-proofing placeholders
+    supervisorName: "",
+    researchOutcome: "",
+    skillsAcquired: [],
+    projectWork: "",
+    certificateUrl: "",
+    reportUrl: "",
   }
 ];
 
 // ==========================================
-// COMPACT INTERNSHIP CARD COMPONENT
+// PREMIUM INTERNSHIP CARD COMPONENT
 // ==========================================
 const InternshipCard = ({ item, index, onViewDetails }) => {
   const [expanded, setExpanded] = useState(false);
@@ -44,82 +43,76 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
     <ScrollReveal delay={index * 100}>
       <motion.div
         whileHover={{ y: -6 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1a0b3c]/80 to-[#0d051a]/90 backdrop-blur-3xl rounded-[24px] border border-white/5 hover:border-[#c084fc]/45 transition-all duration-700 overflow-hidden shadow-xl"
+        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1a0b3c]/80 to-[#0d051a]/90 backdrop-blur-3xl rounded-3xl border border-white/10 hover:border-[#c084fc]/40 transition-all duration-700 overflow-hidden shadow-2xl"
       >
-        {/* Glow Hover Effects */}
+        {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#c084fc]/10 via-transparent to-[#f9a8d4]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-        {/* TOP: Header Area - Refined height for compact layout */}
-        <div className="relative h-32 overflow-hidden bg-white/[0.01] border-b border-white/5">
-          {/* Neon gradients and grid decor */}
+        {/* Visual Header Area */}
+        <div className="relative h-28 md:h-32 w-full overflow-hidden bg-white/[0.02]">
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d051a] via-transparent to-black/20 z-10" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:16px_16px] opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#c084fc]/10 via-transparent to-[#f9a8d4]/5 opacity-50" />
           
-          <div className="w-full h-full flex items-center justify-center bg-white/[0.01]">
-            <FlaskConical size={40} className="text-white/5 group-hover:scale-110 transition-transform duration-700 animate-pulse" />
-          </div>
-
-          {/* Status Badge */}
-          <div className="absolute top-4 left-4 z-20">
-            <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#c084fc]/40 text-[8px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5 shadow-md text-[#c084fc]">
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#c084fc]" />
-              {item.status} Internship
+          <img 
+            src="/Internship 1.jpg" 
+            alt="Internship at Jadavpur University" 
+            className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter brightness-90 group-hover:brightness-100"
+          />
+          
+          {/* Category Badges */}
+          <div className="absolute top-3 left-4 z-20 flex gap-1.5">
+            <div className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#c084fc]/30 text-[8px] font-bold text-[#c084fc] tracking-[0.2em] uppercase flex items-center gap-1 shadow-[0_0_10px_rgba(192,132,252,0.2)]">
+              <span className="w-1 h-1 rounded-full animate-pulse bg-[#c084fc]" />
+              {item.status}
             </div>
-          </div>
-
-          {/* University Emblem Overlay */}
-          <div className="absolute bottom-4 right-4 z-20">
-            <div className="w-10 h-10 rounded-full bg-[#1a0b3c]/90 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#f9a8d4] shadow-lg group-hover:border-[#c084fc]/45 transition-colors">
-              <Dna size={16} className="text-[#f9a8d4] group-hover:rotate-45 transition-transform duration-700" />
+            <div className="px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[8px] font-bold text-white tracking-[0.2em] uppercase">
+              {item.year}
             </div>
           </div>
         </div>
 
-        {/* MIDDLE & BOTTOM: Internship metadata with high info-density */}
-        <div className="p-5 md:p-6 flex-1 flex flex-col">
-          <div className="flex items-center gap-2 mb-1.5 font-mono">
-            <span className="text-[#c084fc] font-bold text-[9px] tracking-[0.25em] uppercase truncate max-w-[150px]">{item.institution}</span>
-            <div className="w-1 h-1 rounded-full bg-white/10" />
-            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/5 text-[9px] font-semibold text-white/40">{item.year}</span>
+        {/* Content Body */}
+        <div className="p-5 flex-1 flex flex-col relative z-20">
+          
+          {/* Metadata Row */}
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-[#c084fc] font-bold text-[9px] tracking-[0.2em] uppercase flex items-center gap-1">
+              <FlaskConical size={10} /> {item.institution}
+            </span>
+            <div className="w-[3px] h-[3px] rounded-full bg-white/20" />
+            <span className="text-white/30 text-[9px] font-medium tracking-widest uppercase">
+              {item.department}
+            </span>
           </div>
 
-          {/* Module Title */}
-          <h3 className="font-display text-lg font-bold text-white mb-1.5 leading-snug group-hover:text-[#f9a8d4] transition-colors line-clamp-1">
-            {item.title}
+          {/* Title */}
+          <h3 className="font-display text-lg font-bold text-white mb-3 leading-tight tracking-tight group-hover:text-[#f9a8d4] transition-colors">
+            {item.module}
           </h3>
 
-          <span className="text-[9px] text-white/30 font-mono tracking-widest uppercase block mb-2.5">
-            DEPT: {item.department}
-          </span>
-
-          {/* COMPACT SINGLE-ROW TIMELINE BADGE (High horizontal space efficiency) */}
-          <div className="mb-3 bg-white/[0.02] border border-white/5 rounded-xl px-3 py-2 flex items-center justify-between text-[10px] font-mono text-white/50 gap-2">
-            <div className="flex items-center gap-1.5 truncate">
-              <Calendar size={11} className="text-[#c084fc]" />
-              <span className="truncate">{item.startDate} – {item.endDate}</span>
+          {/* Compact Timeline Block */}
+          <div className="flex flex-col gap-1.5 mb-3 p-2 rounded-xl bg-white/[0.02] border border-white/5">
+            <div className="flex items-center gap-2">
+              <Calendar size={12} className="text-[#c084fc]" />
+              <span className="text-white/80 font-mono text-[10px]">{item.startDate} → {item.endDate}</span>
             </div>
-            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-            <div className="flex items-center gap-1 flex-shrink-0">
-              <span className="text-white/30">Dur:</span>
-              <span className="text-[#f9a8d4] font-semibold">{item.duration}</span>
+            <div className="h-[1px] w-full bg-white/5 my-0.5" />
+            <div className="flex items-center gap-2">
+              <MapPin size={12} className="text-[#f9a8d4]" />
+              <span className="text-white/60 text-[10px] tracking-wide">{item.duration} • {item.location}</span>
             </div>
           </div>
 
-          {/* DESCRIPTION: Collapsible and responsive height */}
-          <div className="relative font-body text-xs text-white/55 mb-3 flex-1">
+          {/* Expandable Description */}
+          <div className="relative font-body text-white/40 text-xs mb-4 leading-relaxed">
             <motion.div
               initial={false}
               animate={{ height: expanded ? "auto" : "36px" }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden relative"
             >
-              <p className="leading-relaxed">
+              <p className={!expanded ? "line-clamp-2" : ""}>
                 {item.summary}
               </p>
-              {!expanded && (
-                <div className="absolute bottom-0 left-0 right-0 h-3 bg-gradient-to-t from-[#0d051a] to-transparent pointer-events-none" />
-              )}
             </motion.div>
             
             <button 
@@ -127,56 +120,51 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
                 e.stopPropagation();
                 setExpanded(!expanded);
               }}
-              className="mt-0.5 text-[#f9a8d4] hover:text-[#c084fc] font-bold font-mono text-[9px] tracking-wider uppercase transition-colors"
+              className="mt-1.5 text-[#f9a8d4] hover:text-[#c084fc] font-bold font-mono text-[8px] tracking-widest uppercase transition-colors flex items-center gap-1 group/btn"
             >
               {expanded ? "Show Less" : "Show More"}
+              <span className="transform group-hover/btn:translate-y-0.5 transition-transform">
+                {expanded ? '↑' : '↓'}
+              </span>
             </button>
           </div>
 
-          {/* SKILLS: Compact flex badges */}
-          <div className="mb-4">
-            <div className="flex flex-wrap gap-1.5">
-              {item.badges.slice(0, 5).map((badge, idx) => (
-                <span key={idx} className="px-2 py-0.5 rounded-md bg-[#c084fc]/5 border border-[#c084fc]/10 text-[#c084fc]/90 text-[9px] font-semibold tracking-wide">
-                  {badge}
-                </span>
-              ))}
-            </div>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {item.badges.slice(0, 3).map((badge, idx) => (
+              <span key={idx} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/10 text-white/60 text-[8px] tracking-wider uppercase font-medium">
+                {badge}
+              </span>
+            ))}
+            {item.badges.length > 3 && (
+              <span className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/10 text-white/40 text-[8px] tracking-wider uppercase font-medium">
+                +{item.badges.length - 3}
+              </span>
+            )}
           </div>
 
-          {/* ACTIONS: Clean, equal-height aligned buttons */}
-          <div className="mt-auto pt-4 border-t border-white/5 flex items-center gap-3">
+          {/* Action Area (Bottom Pinned) */}
+          <div className="mt-auto flex flex-col sm:flex-row items-center gap-2.5">
             <button 
               onClick={() => onViewDetails(item)}
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/40 hover:text-white hover:border-[#f9a8d4]/50 hover:bg-white/10 text-[10px] font-bold tracking-wider uppercase font-mono transition-all duration-300 active:scale-95"
+              className="w-full flex-1 px-4 py-2.5 rounded-xl bg-[#c084fc]/10 text-[#c084fc] font-bold text-[9px] tracking-[0.2em] uppercase border border-[#c084fc]/20 hover:bg-[#c084fc] hover:text-white transition-all duration-300 shadow-[0_0_10px_rgba(192,132,252,0.1)] hover:shadow-[0_0_15px_rgba(192,132,252,0.3)] text-center"
             >
               View Details
             </button>
-            
-            {item.certificateUrl ? (
-              <a 
-                href={item.certificateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-xl bg-[#c084fc]/10 border border-[#c084fc]/20 text-[#c084fc] hover:bg-[#c084fc]/20 hover:text-white text-[10px] font-bold tracking-wider uppercase font-mono transition-all duration-300"
-              >
-                Certificate
-              </a>
-            ) : (
-              <div className="px-4 py-2.5 rounded-xl bg-white/5 text-white/20 text-[10px] font-bold uppercase tracking-wider font-mono border border-white/5 cursor-not-allowed">
-                Certificate
-              </div>
-            )}
+            <button 
+              className="w-full flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/40 font-bold text-[9px] tracking-[0.2em] uppercase hover:bg-white/10 hover:text-white transition-all duration-300 text-center"
+            >
+              Certificate
+            </button>
           </div>
         </div>
-
       </motion.div>
     </ScrollReveal>
   );
 };
 
 // ==========================================
-// DETAILS OVERLAY MODAL COMPONENT (FUTURE-PROOF)
+// DETAILS OVERLAY MODAL COMPONENT
 // ==========================================
 const InternshipDetailsModal = ({ item, onClose }) => {
   if (!item) return null;
@@ -186,41 +174,41 @@ const InternshipDetailsModal = ({ item, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl"
     >
       <motion.div 
-        initial={{ scale: 0.95, y: 15 }}
+        initial={{ scale: 0.95, y: 20 }}
         animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.95, y: 15 }}
-        className="relative bg-gradient-to-br from-[#1a0b3c] to-[#0d051a] border border-[#c084fc]/30 rounded-[28px] max-w-lg w-full overflow-hidden shadow-2xl p-6 md:p-8"
+        exit={{ scale: 0.95, y: 20 }}
+        className="relative bg-gradient-to-br from-[#1a0b3c] to-[#0d051a] border border-[#c084fc]/30 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(192,132,252,0.2)] p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Background Grid Accent */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] opacity-25 pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />
 
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 w-8 h-8 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors z-20"
+          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/20 hover:scale-110 flex items-center justify-center transition-all z-20"
         >
-          <X size={16} />
+          <X size={20} />
         </button>
 
-        <div className="relative z-10 flex flex-col gap-6">
+        <div className="relative z-10 flex flex-col gap-8">
           {/* Header */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="px-2.5 py-1 rounded bg-[#c084fc]/10 text-[#c084fc] text-[9px] font-bold uppercase tracking-widest border border-[#c084fc]/20">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="px-3 py-1.5 rounded-full bg-[#c084fc]/20 text-[#c084fc] text-[10px] font-bold uppercase tracking-[0.2em] border border-[#c084fc]/30 shadow-[0_0_15px_rgba(192,132,252,0.2)]">
                 {item.status} Internship
               </span>
-              <span className="px-2 py-1 rounded bg-white/5 text-white/40 text-[9px] font-bold font-mono">
+              <span className="px-3 py-1.5 rounded-full bg-white/10 text-white/60 text-[10px] font-bold font-mono border border-white/10">
                 {item.year}
               </span>
             </div>
 
-            <h3 className="font-display text-xl md:text-2xl font-bold text-white leading-snug">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
               {item.title}
             </h3>
-            <p className="text-white/40 text-xs mt-1 italic font-body">
+            <p className="text-[#f9a8d4] text-sm italic font-body">
               {item.module}
             </p>
           </div>
@@ -228,79 +216,86 @@ const InternshipDetailsModal = ({ item, onClose }) => {
           <div className="w-full h-[1px] bg-white/10" />
 
           {/* Details list */}
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div className="flex items-start gap-3">
-              <FlaskConical size={16} className="text-[#c084fc] mt-0.5 flex-shrink-0" />
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#c084fc] border border-white/10 flex-shrink-0">
+                <FlaskConical size={18} />
+              </div>
               <div>
-                <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block">Institution</span>
+                <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Institution</span>
                 <span className="text-white/90 text-sm font-semibold">{item.institution}</span>
-                {item.campus && <span className="text-white/50 text-xs block font-body">{item.campus}</span>}
+                <span className="text-white/50 text-xs block font-body mt-0.5">{item.department}</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <Calendar size={16} className="text-[#f9a8d4] mt-0.5 flex-shrink-0" />
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#f9a8d4] border border-white/10 flex-shrink-0">
+                <Calendar size={18} />
+              </div>
               <div>
-                <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block">Duration & Period</span>
-                <span className="text-white/90 text-xs font-mono">{item.startDate} – {item.endDate} ({item.duration})</span>
+                <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Duration & Period</span>
+                <span className="text-white/90 text-xs font-mono block">{item.startDate} – {item.endDate}</span>
+                <span className="text-white/50 text-xs block mt-0.5">{item.duration}</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <MapPin size={16} className="text-[#c084fc] mt-0.5 flex-shrink-0" />
+            <div className="flex items-start gap-4 md:col-span-2">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#c084fc] border border-white/10 flex-shrink-0">
+                <MapPin size={18} />
+              </div>
               <div>
-                <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block">Location</span>
-                <span className="text-white/90 text-xs">{item.location}</span>
+                <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Location</span>
+                <span className="text-white/90 text-sm">{item.location}</span>
               </div>
             </div>
 
             {/* RESEARCH SUMMARY */}
-            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 mt-2">
-              <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block mb-1.5">Overview Summary</span>
-              <p className="text-white/70 text-xs leading-relaxed font-body">
+            <div className="md:col-span-2 bg-white/[0.03] border border-white/10 rounded-2xl p-6 mt-2 shadow-inner">
+              <span className="text-[#f9a8d4] text-[10px] font-mono tracking-widest uppercase block mb-3 font-bold">Overview Summary</span>
+              <p className="text-white/70 text-sm leading-relaxed font-body">
                 {item.summary}
               </p>
             </div>
 
-            {/* DYNAMIC FUTURE-PROOF DETAILS - Automatically display when populated in state config */}
+            {/* DYNAMIC FUTURE-PROOF DETAILS */}
             {(item.supervisorName || item.projectWork || item.researchOutcome || (item.skillsAcquired && item.skillsAcquired.length > 0)) && (
-              <div className="space-y-3 pt-3 border-t border-white/5">
-                <span className="text-[#c084fc] text-[9px] font-mono uppercase tracking-widest block mb-2">// Research Addendum</span>
+              <div className="md:col-span-2 space-y-4 pt-4 border-t border-white/10">
+                <span className="text-[#c084fc] text-[10px] font-mono uppercase tracking-widest block mb-2 font-bold">// Research Addendum</span>
                 
                 {item.supervisorName && (
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 flex items-start gap-2.5">
-                    <User size={14} className="text-[#c084fc] mt-0.5 flex-shrink-0" />
+                  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 flex items-start gap-4">
+                    <User size={18} className="text-[#c084fc] mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block mb-0.5">Supervisor</span>
-                      <span className="text-white/80 text-[11px] font-semibold">{item.supervisorName}</span>
+                      <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Supervisor</span>
+                      <span className="text-white/90 text-sm font-semibold">{item.supervisorName}</span>
                     </div>
                   </div>
                 )}
 
                 {item.projectWork && (
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3">
-                    <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block mb-1">Project Details</span>
-                    <p className="text-white/70 text-xs leading-relaxed font-body">{item.projectWork}</p>
+                  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
+                    <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-2">Project Details</span>
+                    <p className="text-white/70 text-sm leading-relaxed font-body">{item.projectWork}</p>
                   </div>
                 )}
 
                 {item.researchOutcome && (
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 flex items-start gap-2.5">
-                    <Award size={14} className="text-[#f9a8d4] mt-0.5 flex-shrink-0" />
+                  <div className="bg-white/[0.03] border border-[#c084fc]/20 rounded-2xl p-5 flex items-start gap-4 shadow-[0_0_20px_rgba(192,132,252,0.05)]">
+                    <Award size={20} className="text-[#f9a8d4] mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="text-[#c084fc] text-[8px] font-mono tracking-wider uppercase block mb-0.5">Key Outcome</span>
-                      <span className="text-[#c084fc] text-[11px] leading-relaxed">{item.researchOutcome}</span>
+                      <span className="text-[#f9a8d4] text-[9px] font-mono tracking-widest uppercase block mb-1 font-bold">Key Outcome</span>
+                      <span className="text-white/90 text-sm leading-relaxed">{item.researchOutcome}</span>
                     </div>
                   </div>
                 )}
 
                 {item.skillsAcquired && item.skillsAcquired.length > 0 && (
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3">
-                    <span className="text-white/30 text-[8px] font-mono tracking-wider uppercase block mb-1.5">Extended Skills Acquired</span>
-                    <div className="flex flex-wrap gap-1.5">
+                  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
+                    <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-3">Extended Skills Acquired</span>
+                    <div className="flex flex-wrap gap-2">
                       {item.skillsAcquired.map((skill, sIdx) => (
-                        <span key={sIdx} className="px-2 py-0.5 rounded bg-[#c084fc]/5 text-[#c084fc] text-[9px] font-mono border border-[#c084fc]/10">
+                        <span key={sIdx} className="px-3 py-1.5 rounded-lg bg-[#c084fc]/10 text-[#c084fc] text-[10px] font-mono border border-[#c084fc]/20 font-bold">
                           {skill}
                         </span>
                       ))}
@@ -314,16 +309,20 @@ const InternshipDetailsModal = ({ item, onClose }) => {
           <div className="w-full h-[1px] bg-white/10 mt-2" />
 
           {/* Action Links */}
-          <div className="flex flex-wrap gap-3 mt-1">
-            {item.certificateUrl && (
+          <div className="flex flex-wrap gap-4 mt-2">
+            {item.certificateUrl ? (
               <a 
                 href={item.certificateUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#c084fc]/10 border border-[#c084fc]/20 text-[#c084fc] hover:bg-[#c084fc]/20 hover:text-white font-bold text-xs tracking-wider uppercase hover:shadow-lg transition-all"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#c084fc]/20 border border-[#c084fc]/40 text-white hover:bg-[#c084fc] font-bold text-xs tracking-widest uppercase hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] transition-all"
               >
-                <HiExternalLink className="text-sm" /> Certificate
+                <HiExternalLink className="text-lg" /> View Certificate
               </a>
+            ) : (
+              <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white/30 font-bold text-xs tracking-widest uppercase cursor-not-allowed">
+                <HiExternalLink className="text-lg" /> Certificate (Pending)
+              </div>
             )}
             
             {item.reportUrl && (
@@ -331,9 +330,9 @@ const InternshipDetailsModal = ({ item, onClose }) => {
                 href={item.reportUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#f9a8d4]/10 border border-[#f9a8d4]/20 text-[#f9a8d4] hover:bg-[#f9a8d4]/20 hover:text-white font-bold text-xs tracking-wider uppercase hover:shadow-lg transition-all"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f9a8d4]/10 border border-[#f9a8d4]/30 text-[#f9a8d4] hover:bg-[#f9a8d4]/20 hover:text-white font-bold text-xs tracking-widest uppercase hover:shadow-[0_0_20px_rgba(249,168,212,0.3)] transition-all"
               >
-                <FileText size={13} /> Research Report
+                <FileText size={16} /> Research Report
               </a>
             )}
           </div>
@@ -345,50 +344,48 @@ const InternshipDetailsModal = ({ item, onClose }) => {
 };
 
 // ==========================================
-// MAIN INTERNSHIP COMPONENT (GRID REDESIGN)
+// MAIN INTERNSHIP COMPONENT
 // ==========================================
 const Internship = () => {
   const [selectedInternship, setSelectedInternship] = useState(null);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#1a0a2e]" id="internship">
+    <section className="py-32 relative overflow-hidden bg-[#0a0413]" id="internship">
       {/* Background blobs matching standard portfolio decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#c084fc]/5 blur-[130px] rounded-full" />
-        <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-[#f9a8d4]/5 blur-[130px] rounded-full" />
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#c084fc]/5 blur-[150px] rounded-full" />
+        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#f9a8d4]/5 blur-[150px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-24">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <FlaskConical size={14} className="text-[#f9a8d4]" />
-              <span className="text-[#f9a8d4] font-bold text-[10px] tracking-[0.4em] uppercase">Professional growth</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+              <FlaskConical size={16} className="text-[#f9a8d4] animate-pulse" />
+              <span className="text-[#f9a8d4] font-bold text-[11px] tracking-[0.4em] uppercase">Academic Highlight</span>
             </div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Internship & <br/>
-              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent">Research Log</span>
+            <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+              Research & <br/>
+              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent animate-gradient-x">Internship</span>
             </h2>
-            <p className="font-body text-white/40 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-white/50 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Applying molecular dynamics and computational drug design in university research laboratories.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* COMPACT CARD GRID: Centered single medium-width premium showcase card */}
-        <div className="flex justify-center w-full">
-          <div className="w-full max-w-[620px]">
-            {internshipData.map((item, index) => (
-              <InternshipCard 
-                key={item.id} 
-                item={item} 
-                index={index} 
-                onViewDetails={(selected) => setSelectedInternship(selected)}
-              />
-            ))}
-          </div>
+        {/* FLAGSHIP CARD SHOWCASE */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {internshipData.map((item, index) => (
+            <InternshipCard 
+              key={item.id} 
+              item={item} 
+              index={index} 
+              onViewDetails={(selected) => setSelectedInternship(selected)}
+            />
+          ))}
         </div>
 
         {/* Dynamic expansion modal popup */}
