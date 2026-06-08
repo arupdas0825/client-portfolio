@@ -9,7 +9,6 @@ import Experience from './components/Experience'
 import Internship from './components/Internship'
 import Certificates from './components/Certificates'
 import CV from './components/CV'
-import ContentCreator from './components/ContentCreator'
 import Contact from './components/Contact'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
@@ -76,10 +75,6 @@ export default function App() {
             
             <SectionWrapper id="cv">
               <CV />
-            </SectionWrapper>
-            
-            <SectionWrapper id="content-creator">
-              <ContentCreator />
             </SectionWrapper>
             
             <SectionWrapper id="contact">

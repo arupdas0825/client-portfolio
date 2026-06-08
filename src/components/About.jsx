@@ -31,10 +31,10 @@ const About = () => {
 
             <ScrollReveal delay={200}>
               <div className="glass-lavender animate-float2 p-6 flex items-start gap-5 ml-4 md:ml-12">
-                <span className="text-4xl">✨</span>
+                <span className="text-4xl">🔬</span>
                 <div>
-                  <h3 className="font-display text-xl text-white font-semibold mb-1">Content Creator</h3>
-                  <p className="text-sm text-white/60 font-body">Lifestyle · Beauty · Student Life</p>
+                  <h3 className="font-display text-xl text-white font-semibold mb-1">Research Enthusiast</h3>
+                  <p className="text-sm text-white/60 font-body">Life Sciences · Innovation · Lab Work</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -62,13 +62,13 @@ const About = () => {
             <ScrollReveal delay={100}>
               <div className="space-y-6">
                 <p className="font-body text-white/70 text-lg leading-relaxed">
-                  I'm a B.Tech Biotechnology student at Brainware University, Kolkata — navigating the beautiful intersection of science and creativity. By day, I'm exploring the fascinating world of molecular biology and biotech research.
+                  I'm a B.Tech Biotechnology student at Brainware University, Kolkata. I am deeply passionate about exploring the fascinating world of molecular biology and biotech research, aiming to contribute meaningfully to the life sciences field.
                 </p>
                 <p className="font-body text-white/70 text-lg leading-relaxed">
-                  By night (and honestly, most of the day), I'm a content creator sharing my journey through lifestyle, beauty, and student life. I believe science and aesthetics aren't opposites — they're complementary.
+                  My academic journey is fueled by a profound curiosity for scientific innovation. I believe that rigorous research, continuous learning, and hands-on laboratory experience are the keys to unlocking tomorrow's biological breakthroughs.
                 </p>
                 <p className="font-body text-white/70 text-lg leading-relaxed">
-                  Whether it's breaking down complex biology concepts or curating my next Instagram post, I bring the same attention to detail and genuine passion to everything I do.
+                  Whether it's breaking down complex biology concepts or analyzing experimental data, I bring the same attention to detail and genuine dedication to everything I do.
                 </p>
               </div>
             </ScrollReveal>

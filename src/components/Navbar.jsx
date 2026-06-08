@@ -9,7 +9,6 @@ const navItems = [
   { name: 'Internship', href: '#internship' },
   { name: 'Certificates', href: '#certificates' },
   { name: 'CV', href: '#cv' },
-  { name: 'Content Creator', href: '#content-creator' },
   { name: 'Contact', href: '#contact' },
 ]
 

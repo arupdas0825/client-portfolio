@@ -37,7 +37,7 @@ const Hero = () => {
         </motion.div>
 
         <span className="section-label mb-4">
-          ✦ Biotechnology · Content Creation ✦
+          ✦ Biotechnology · Research · Innovation ✦
         </span>
 
         <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-2">
@@ -45,7 +45,7 @@ const Hero = () => {
         </h1>
 
         <p className="font-display text-xl text-gradient-rose italic mt-2">
-          "Where Science Meets Aesthetic"
+          "Future Scientist & Research Enthusiast"
         </p>
 
         <p className="font-body text-sm text-white/40 mt-4 tracking-widest">
@@ -53,11 +53,11 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-6 mt-10">
-          <button className="glass-lavender px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float">
+          <button onClick={() => document.getElementById('about')?.scrollIntoView({behavior: 'smooth'})} className="glass-lavender px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float">
             About My Work
           </button>
-          <button className="glass-pink px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float2">
-            Content Gallery
+          <button onClick={() => document.getElementById('cv')?.scrollIntoView({behavior: 'smooth'})} className="glass-pink px-10 py-4 font-body font-medium tracking-wide transition-all duration-300 hover:-translate-y-1 hover:scale-105 text-white border-white/10 animate-float2">
+            View CV
           </button>
         </div>
       </div>
