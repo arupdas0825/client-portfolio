@@ -105,7 +105,7 @@ export default function Navbar() {
       {/* Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 w-full h-[3px] z-[1000] pointer-events-none">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4]"
+          className="h-full bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3]"
           style={{ width: `${scrollProgress}%` }}
           initial={{ width: 0 }}
           transition={{ duration: 0.1 }}
@@ -114,7 +114,7 @@ export default function Navbar() {
 
       <nav
         className={`fixed top-0 left-0 w-full z-[999] transition-all duration-500 ${isScrolled
-          ? 'py-3 bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-white/5'
+          ? 'py-3 bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-[#fdfbf7]/5'
           : 'py-6 bg-transparent'
           }`}
       >
@@ -132,7 +132,7 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1 glass-lavender p-1.5 border border-white/10 rounded-full">
+          <div className="hidden lg:flex items-center gap-1 glass-teal p-1.5 border border-[#fdfbf7]/10 rounded-full">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1)
               return (
@@ -141,21 +141,21 @@ export default function Navbar() {
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
                   className={`px-5 py-2 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 relative ${isActive
-                    ? 'text-white'
-                    : 'text-white/40 hover:text-white/70'
+                    ? 'text-[#fdfbf7]'
+                    : 'text-[#fdfbf7]/40 hover:text-[#fdfbf7]/70'
                     }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-white/10 rounded-full z-[-1] border border-white/20"
+                      className="absolute inset-0 bg-[#fdfbf7]/10 rounded-full z-[-1] border border-[#fdfbf7]/20"
                       transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                     />
                   )}
                   {item.name}
                   {isActive && (
                     <motion.div
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#f9a8d4] shadow-[0_0_8px_#f9a8d4]"
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#ff7eb3] shadow-[0_0_8px_#ff7eb3]"
                       layoutId="activeDot"
                       transition={{ type: 'spring', stiffness: 350, damping: 30, mass: 0.8 }}
                     />
@@ -172,7 +172,7 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, '#contact')}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="glass-pink px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#f9a8d4] hover:scale-105 transition-all border border-[#f9a8d4]/20 shadow-[0_0_20px_rgba(249,168,212,0.1)]"
+              className="glass-pink px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#ff7eb3] hover:scale-105 transition-all border border-[#ff7eb3]/20 shadow-[0_0_20px_rgba(255, 126, 179,0.1)]"
             >
               Let's Connect
             </motion.a>
@@ -182,7 +182,7 @@ export default function Navbar() {
           <div className="lg:hidden hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-full glass border border-white/10 text-white"
+              className="w-10 h-10 flex items-center justify-center rounded-full glass border border-[#fdfbf7]/10 text-[#fdfbf7]"
             >
               {mobileMenuOpen ? <HiX size={20} /> : <HiMenuAlt3 size={20} />}
             </button>

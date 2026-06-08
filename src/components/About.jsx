@@ -13,18 +13,18 @@ const About = () => {
               <div className="glass-pink animate-float p-6 flex items-start gap-5">
                 <span className="text-4xl">🌿</span>
                 <div>
-                  <h3 className="font-display text-xl text-white font-semibold mb-1">Biotech Student</h3>
-                  <p className="text-sm text-white/60 font-body">Brainware University · 2024–Present</p>
+                  <h3 className="font-display text-xl text-[#fdfbf7] font-semibold mb-1">Biotech Student</h3>
+                  <p className="text-sm text-[#fdfbf7]/60 font-body">Brainware University · 2024–Present</p>
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="glass-lavender animate-float2 p-6 flex items-start gap-5 ml-4 md:ml-12">
+              <div className="glass-teal animate-float2 p-6 flex items-start gap-5 ml-4 md:ml-12">
                 <span className="text-4xl">🔬</span>
                 <div>
-                  <h3 className="font-display text-xl text-white font-semibold mb-1">Research Enthusiast</h3>
-                  <p className="text-sm text-white/60 font-body">Life Sciences · Innovation · Lab Work</p>
+                  <h3 className="font-display text-xl text-[#fdfbf7] font-semibold mb-1">Research Enthusiast</h3>
+                  <p className="text-sm text-[#fdfbf7]/60 font-body">Life Sciences · Innovation · Lab Work</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -33,8 +33,8 @@ const About = () => {
               <div className="glass animate-float3 p-6 flex items-start gap-5">
                 <span className="text-4xl">🎯</span>
                 <div>
-                  <h3 className="font-display text-xl text-white font-semibold mb-1">Kolkata Based</h3>
-                  <p className="text-sm text-white/60 font-body">Academic & Creative Excellence</p>
+                  <h3 className="font-display text-xl text-[#fdfbf7] font-semibold mb-1">Kolkata Based</h3>
+                  <p className="text-sm text-[#fdfbf7]/60 font-body">Academic & Creative Excellence</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -44,20 +44,20 @@ const About = () => {
           <div className="flex flex-col">
             <ScrollReveal>
               <span className="section-label">✦ My Story</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+              <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent leading-tight mb-8">
                 Hi, I'm Shatarupa
               </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
               <div className="space-y-6">
-                <p className="font-body text-white/70 text-lg leading-relaxed">
+                <p className="font-body text-[#fdfbf7]/70 text-lg leading-relaxed">
                   I'm a B.Tech Biotechnology student at Brainware University, Kolkata. I am deeply passionate about exploring the fascinating world of molecular biology and biotech research, aiming to contribute meaningfully to the life sciences field.
                 </p>
-                <p className="font-body text-white/70 text-lg leading-relaxed">
+                <p className="font-body text-[#fdfbf7]/70 text-lg leading-relaxed">
                   My academic journey is fueled by a profound curiosity for scientific innovation. I believe that rigorous research, continuous learning, and hands-on laboratory experience are the keys to unlocking tomorrow's biological breakthroughs.
                 </p>
-                <p className="font-body text-white/70 text-lg leading-relaxed">
+                <p className="font-body text-[#fdfbf7]/70 text-lg leading-relaxed">
                   Whether it's breaking down complex biology concepts or analyzing experimental data, I bring the same attention to detail and genuine dedication to everything I do.
                 </p>
               </div>
@@ -65,10 +65,10 @@ const About = () => {
 
             <ScrollReveal delay={200}>
               <div className="flex flex-wrap gap-4 mt-10">
-                <span className="glass-pink px-5 py-2.5 text-sm font-body text-[#f9a8d4] border border-[#f9a8d4]/20 rounded-full">
+                <span className="glass-pink px-5 py-2.5 text-sm font-body text-[#ff7eb3] border border-[#ff7eb3]/20 rounded-full">
                   🌸 Kolkata, India
                 </span>
-                <span className="glass-lavender px-5 py-2.5 text-sm font-body text-[#c084fc] border border-[#c084fc]/20 rounded-full">
+                <span className="glass-teal px-5 py-2.5 text-sm font-body text-[#14b8a6] border border-[#14b8a6]/20 rounded-full">
                   🎓 B.Tech Biotechnology
                 </span>
               </div>

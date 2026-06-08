@@ -34,7 +34,7 @@ export default function App() {
   });
 
   return (
-    <div className={`bg-[#1a0a2e] text-white min-h-screen selection:bg-[#f9a8d4]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}>
+    <div className={`bg-[#060913] text-[#fdfbf7] min-h-screen selection:bg-[#14b8a6]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}>
       <AnimatePresence mode="wait">
         {!showPortfolio && (
           <WelcomeScreen key="welcome" onComplete={() => setShowPortfolio(true)} />
@@ -88,9 +88,9 @@ export default function App() {
       {/* Global Background Layer */}
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <FloatingParticles />
-        <div className="absolute w-[800px] h-[800px] bg-[#c084fc]/5 blur-[150px] rounded-full -top-40 -left-40 animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute w-[800px] h-[800px] bg-[#f9a8d4]/5 blur-[150px] rounded-full top-[30%] -right-40 animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
-        <div className="absolute w-[1000px] h-[1000px] bg-[#c084fc]/5 blur-[180px] rounded-full bottom-[-20%] left-[20%] animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
+        <div className="absolute w-[800px] h-[800px] bg-[#14b8a6]/10 blur-[150px] rounded-full -top-40 -left-40 animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute w-[800px] h-[800px] bg-[#ff7eb3]/10 blur-[150px] rounded-full top-[30%] -right-40 animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <div className="absolute w-[1000px] h-[1000px] bg-[#14b8a6]/10 blur-[180px] rounded-full bottom-[-20%] left-[20%] animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
       </div>
 
       {/* Background Noise/Stars Overlay */}

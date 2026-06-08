@@ -2,7 +2,7 @@ import React from 'react';
 import ScrollReveal from './ScrollReveal';
 
 const SkillTag = ({ name }) => (
-  <span className="bg-[rgba(192,132,252,0.12)] text-[#c084fc] border border-[rgba(192,132,252,0.2)] rounded-full px-4 py-1.5 text-xs font-body tracking-wide">
+  <span className="bg-[rgba(20,184,166,0.12)] text-[#14b8a6] border border-[rgba(20,184,166,0.2)] rounded-full px-4 py-1.5 text-xs font-body tracking-wide">
     {name}
   </span>
 );
@@ -39,8 +39,8 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
         <ScrollReveal>
           <span className="section-label">✦ What I Do</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">My Skills</h2>
-          <p className="font-body text-white/50 max-w-2xl mx-auto">
+          <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent mb-4">My Skills</h2>
+          <p className="font-body text-[#fdfbf7]/50 max-w-2xl mx-auto">
             Blending academic excellence with creative digital skills to build a unique personal brand.
           </p>
         </ScrollReveal>
@@ -51,9 +51,9 @@ const Skills = () => {
           
           {/* Academic Skills */}
           <ScrollReveal delay={100}>
-            <div className="glass-lavender p-8 h-full animate-float">
+            <div className="glass-teal p-8 h-full animate-float">
               <div className="text-4xl mb-6">🔬</div>
-              <h3 className="font-display text-2xl text-white font-bold mb-6">Academic Skills</h3>
+              <h3 className="font-display text-2xl text-[#fdfbf7] font-bold mb-6">Academic Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {academicSkills.map((skill, index) => (
                   <SkillTag key={index} name={skill} />
@@ -66,7 +66,7 @@ const Skills = () => {
           <ScrollReveal delay={200}>
             <div className="glass-pink p-8 h-full animate-float2">
               <div className="text-4xl mb-6">💻</div>
-              <h3 className="font-display text-2xl text-white font-bold mb-6">Computer Skills</h3>
+              <h3 className="font-display text-2xl text-[#fdfbf7] font-bold mb-6">Computer Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {computerSkills.map((skill, index) => (
                   <SkillTag key={index} name={skill} />
@@ -79,7 +79,7 @@ const Skills = () => {
           <ScrollReveal delay={300}>
             <div className="glass p-8 h-full animate-float3">
               <div className="text-4xl mb-6">🌸</div>
-              <h3 className="font-display text-2xl text-white font-bold mb-6">Creative & Soft Skills</h3>
+              <h3 className="font-display text-2xl text-[#fdfbf7] font-bold mb-6">Creative & Soft Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {creativeSkills.map((skill, index) => (
                   <SkillTag key={index} name={skill} />

@@ -31,17 +31,17 @@ export default function CV() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <HiBadgeCheck className="text-[#f9a8d4] text-lg" />
-              <span className="text-[#f9a8d4] font-bold text-[10px] tracking-[0.4em] uppercase">Professional</span>
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 mb-6">
+              <HiBadgeCheck className="text-[#ff7eb3] text-lg" />
+              <span className="text-[#ff7eb3] font-bold text-[10px] tracking-[0.4em] uppercase">Professional</span>
             </div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-[#fdfbf7] tracking-tight mb-6">
               Curriculum <br />
-              <span className="bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] bg-clip-text text-transparent">
                 Vitae
               </span>
             </h2>
-            <p className="font-body text-white/40 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-[#fdfbf7]/40 text-lg max-w-2xl mx-auto leading-relaxed">
               A comprehensive overview of my academic achievements, technical skills, and research journey.
             </p>
           </ScrollReveal>
@@ -50,24 +50,24 @@ export default function CV() {
         <ScrollReveal delay={200}>
           <div className="relative group max-w-4xl mx-auto w-full">
             {/* Animated Glow Border */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#f9a8d4] via-[#c084fc] to-[#f9a8d4] rounded-[40px] blur-sm opacity-20 group-hover:opacity-40 transition duration-1000 animate-gradient-x" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] rounded-[40px] blur-sm opacity-20 group-hover:opacity-40 transition duration-1000 animate-gradient-x" />
             
-            <div className="relative w-full bg-[#0a0514]/60 backdrop-blur-3xl p-12 md:p-20 rounded-[39px] border border-white/10 flex flex-col items-center text-center gap-10">
+            <div className="relative w-full bg-[#02040a]/60 backdrop-blur-3xl p-12 md:p-20 rounded-[39px] border border-[#fdfbf7]/10 flex flex-col items-center text-center gap-10">
                {/* Center Badge */}
-               <div className="w-24 h-24 rounded-3xl glass-lavender flex items-center justify-center text-[#c084fc] shadow-2xl border border-white/10 mb-2">
+               <div className="w-24 h-24 rounded-3xl glass-teal flex items-center justify-center text-[#14b8a6] shadow-2xl border border-[#fdfbf7]/10 mb-2">
                   <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                </div>
 
                <div className="flex flex-col items-center max-w-2xl">
-                 <h3 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                 <h3 className="font-display text-4xl md:text-6xl font-bold text-[#fdfbf7] mb-6 tracking-tight">
                    Shatarupa Basak
                  </h3>
                  
                  <div className="flex flex-wrap gap-4 justify-center mb-10">
-                   <span className="px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl bg-white/5 border border-white/10 text-white/60">Biotechnology</span>
-                   <span className="px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl bg-white/5 border border-white/10 text-white/60">Research Scholar</span>
+                   <span className="px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 text-[#fdfbf7]/60">Biotechnology</span>
+                   <span className="px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 text-[#fdfbf7]/60">Research Scholar</span>
                  </div>
                </div>
 
@@ -77,7 +77,7 @@ export default function CV() {
                    href={CV_PATH} 
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="group relative flex items-center justify-center gap-3 font-display font-bold text-[11px] uppercase tracking-[0.3em] w-full sm:w-auto px-12 py-6 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 bg-[#f9a8d4] text-black shadow-[0_20px_50px_rgba(249,168,212,0.3)]"
+                   className="group relative flex items-center justify-center gap-3 font-display font-bold text-[11px] uppercase tracking-[0.3em] w-full sm:w-auto px-12 py-6 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 bg-[#ff7eb3] text-black shadow-[0_20px_50px_rgba(255, 126, 179,0.3)]"
                  >
                    <HiExternalLink className="text-xl" />
                    Original Source
@@ -86,14 +86,14 @@ export default function CV() {
                  <a 
                    href={CV_PATH} 
                    download="Shatarupa_Basak_CV.pdf" 
-                   className="group relative flex items-center justify-center gap-3 font-display font-bold text-[11px] uppercase tracking-[0.3em] w-full sm:w-auto px-12 py-6 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 glass-lavender text-white border border-white/20 hover:bg-white/10 shadow-xl"
+                   className="group relative flex items-center justify-center gap-3 font-display font-bold text-[11px] uppercase tracking-[0.3em] w-full sm:w-auto px-12 py-6 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 glass-teal text-[#fdfbf7] border border-[#fdfbf7]/20 hover:bg-[#fdfbf7]/10 shadow-xl"
                  >
                    <HiDownload className="text-xl" />
                    Download CV
                  </a>
                </div>
                
-               <p className="font-body text-[10px] text-white/20 mt-4 tracking-[0.4em] uppercase">
+               <p className="font-body text-[10px] text-[#fdfbf7]/20 mt-4 tracking-[0.4em] uppercase">
                  Latest Update: May 2024 • PDF format
                </p>
             </div>

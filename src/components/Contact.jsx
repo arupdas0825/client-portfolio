@@ -14,8 +14,8 @@ const ContactLink = ({ icon: Icon, label, value, href, colorClass }) => (
       <Icon className="text-2xl" />
     </div>
     <div>
-      <div className="font-body text-[10px] text-white/40 uppercase tracking-widest mb-1">{label}</div>
-      <div className="font-body text-base text-white/80 group-hover:text-white transition-colors">{value}</div>
+      <div className="font-body text-[10px] text-[#fdfbf7]/40 uppercase tracking-widest mb-1">{label}</div>
+      <div className="font-body text-base text-[#fdfbf7]/80 group-hover:text-[#fdfbf7] transition-colors">{value}</div>
     </div>
   </a>
 );
@@ -28,8 +28,8 @@ const Contact = () => {
         <div className="text-center mb-16">
           <ScrollReveal>
             <span className="section-label">✦ Let's Connect</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Get in Touch</h2>
-            <p className="font-body text-white/60 max-w-2xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#fdfbf7] mb-4">Get in Touch</h2>
+            <p className="font-body text-[#fdfbf7]/60 max-w-2xl mx-auto">
               Whether it's a collaboration, a question, or just saying hi — my inbox is always open.
             </p>
           </ScrollReveal>
@@ -39,38 +39,38 @@ const Contact = () => {
           
           {/* LEFT — Contact Form */}
           <ScrollReveal delay={100}>
-            <div className="glass-lavender p-8 md:p-10 shadow-2xl">
+            <div className="glass-teal p-8 md:p-10 shadow-2xl">
               <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-body text-[10px] text-white/50 tracking-widest uppercase ml-1">Your Name</label>
+                  <label className="font-body text-[10px] text-[#fdfbf7]/50 tracking-widest uppercase ml-1">Your Name</label>
                   <input
                     type="text"
                     placeholder="Shatarupa Basak"
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white font-body text-sm outline-none focus:border-[#c084fc]/50 transition-colors placeholder:text-white/20"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20"
                   />
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <label className="font-body text-[10px] text-white/50 tracking-widest uppercase ml-1">Email Address</label>
+                  <label className="font-body text-[10px] text-[#fdfbf7]/50 tracking-widest uppercase ml-1">Email Address</label>
                   <input
                     type="email"
                     placeholder="hello@example.com"
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white font-body text-sm outline-none focus:border-[#c084fc]/50 transition-colors placeholder:text-white/20"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="font-body text-[10px] text-white/50 tracking-widest uppercase ml-1">Message</label>
+                  <label className="font-body text-[10px] text-[#fdfbf7]/50 tracking-widest uppercase ml-1">Message</label>
                   <textarea
                     rows="5"
                     placeholder="Tell me about your project or just say hi..."
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white font-body text-sm outline-none focus:border-[#c084fc]/50 transition-colors placeholder:text-white/20 resize-none"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20 resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="glass-pink px-8 py-5 font-body font-bold text-[#f9a8d4] text-sm uppercase tracking-widest rounded-full hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(249,168,212,0.3)] transition-all duration-300 border border-[rgba(249,168,212,0.3)] mt-2"
+                  className="glass-pink px-8 py-5 font-body font-bold text-[#ff7eb3] text-sm uppercase tracking-widest rounded-full hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(255, 126, 179,0.3)] transition-all duration-300 border border-[rgba(255, 126, 179,0.3)] mt-2"
                 >
                   Send Message ✦
                 </button>
@@ -86,32 +86,32 @@ const Contact = () => {
                 label="Instagram" 
                 value="shatarupa__basak" 
                 href="https://www.instagram.com/shatarupa__basak/"
-                colorClass="text-[#f9a8d4]"
+                colorClass="text-[#ff7eb3]"
               />
               <ContactLink 
                 icon={FaLinkedin} 
                 label="LinkedIn" 
                 value="Shatarupa Basak" 
                 href="https://www.linkedin.com/in/shatarupa-basak-7a17463b2/"
-                colorClass="text-[#c084fc]"
+                colorClass="text-[#14b8a6]"
               />
               <ContactLink 
                 icon={FaFacebook} 
                 label="Facebook" 
                 value="Shatarupa Basak" 
                 href="https://www.facebook.com/Shatarupabasak.basak"
-                colorClass="text-[#c084fc]"
+                colorClass="text-[#14b8a6]"
               />
               <ContactLink 
                 icon={MdEmail} 
                 label="Email" 
                 value="shatarupabasak872@gmail.com" 
                 href="mailto:shatarupabasak872@gmail.com"
-                colorClass="text-white/60"
+                colorClass="text-[#fdfbf7]/60"
               />
               
-              <div className="mt-auto pt-8 border-t border-white/5 text-center lg:text-left">
-                <p className="font-body text-white/30 text-xs leading-relaxed uppercase tracking-widest">
+              <div className="mt-auto pt-8 border-t border-[#fdfbf7]/5 text-center lg:text-left">
+                <p className="font-body text-[#fdfbf7]/30 text-xs leading-relaxed uppercase tracking-widest">
                   © 2024 Shatarupa Basak. All rights reserved.
                 </p>
               </div>

@@ -57,17 +57,17 @@ export default function PlatformCard({
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
           borderRadius: '18px',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid rgba(253, 251, 247,0.08)',
           // Layered shadow for depth
-          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 48px rgba(0,0,0,0.4)',
+          boxShadow: 'inset 0 1px 0 rgba(253, 251, 247,0.06), 0 24px 48px rgba(0,0,0,0.4)',
         }}
       >
         {/* Icon with 3D lift */}
         <div
           className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 text-5xl"
           style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(253, 251, 247,0.05)',
+            border: '1px solid rgba(253, 251, 247,0.1)',
             boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
           }}
         >
@@ -75,7 +75,7 @@ export default function PlatformCard({
         </div>
 
         {/* Platform name */}
-        <p className="font-body text-xs text-white/40 tracking-[0.3em] uppercase">
+        <p className="font-body text-xs text-[#fdfbf7]/40 tracking-[0.3em] uppercase">
           {platform}
         </p>
 
@@ -85,7 +85,7 @@ export default function PlatformCard({
         </p>
 
         {/* Stat label */}
-        <p className="font-body text-xs text-white/30 tracking-wide">
+        <p className="font-body text-xs text-[#fdfbf7]/30 tracking-wide">
           {statLabel}
         </p>
       </div>

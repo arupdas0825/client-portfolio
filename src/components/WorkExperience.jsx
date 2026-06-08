@@ -25,10 +25,10 @@ const WorkExperience = () => {
               <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-biotech-cyan shadow-[0_0_10px_rgba(0,212,255,0.5)]" />
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
                 <h3 className="text-xl font-bold">Volunteer Work</h3>
-                <span className="text-sm font-mono text-white/40">2023 - Present</span>
+                <span className="text-sm font-mono text-[#fdfbf7]/40">2023 - Present</span>
               </div>
               <p className="text-biotech-cyan/80 text-sm mb-4 italic">Kolkata, India</p>
-              <ul className="space-y-2 text-white/60 text-sm leading-relaxed list-disc list-inside">
+              <ul className="space-y-2 text-[#fdfbf7]/60 text-sm leading-relaxed list-disc list-inside">
                 <li>Assisted in community health awareness programs.</li>
                 <li>Managed logistics for local science exhibitions and seminars.</li>
                 <li>Coordinated with team members for social outreach initiatives.</li>
@@ -36,7 +36,7 @@ const WorkExperience = () => {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/5">
+          <div className="mt-12 pt-8 border-t border-[#fdfbf7]/5">
             <motion.p 
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 4, repeat: Infinity }}
