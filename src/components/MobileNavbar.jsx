@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, Briefcase, FlaskConical, Award, Mail, FileText } from 'lucide-react';
+import { Home, User, GraduationCap, Briefcase, FlaskConical, Award, Mail, FileText } from 'lucide-react';
 
 const navItems = [
   { name: 'home', href: '#home', icon: Home },
   { name: 'about', href: '#about', icon: User },
+  { name: 'academic', href: '#academic-journey', icon: GraduationCap },
   { name: 'experience', href: '#experience', icon: Briefcase },
   { name: 'internship', href: '#internship', icon: FlaskConical },
   { name: 'certificates', href: '#certificates', icon: Award },
@@ -87,9 +88,9 @@ export default function MobileNavbar() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="pointer-events-auto w-full max-w-[440px]"
           >
-            <div className="relative flex items-center justify-between px-3 h-16 bg-[#0A0F1F]/70 backdrop-blur-2xl border border-[#fdfbf7]/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(20, 184, 166,0.15)] overflow-hidden">
+            <div className="relative flex items-center justify-between px-3 h-16 bg-[#0B0618]/70 backdrop-blur-2xl border border-[#7C3AED]/20 rounded-full shadow-[0_20px_50px_rgba(11,6,24,0.6),0_0_30px_rgba(124,58,237,0.2)] overflow-hidden">
               {/* Subtle inner glow */}
-              <div className="absolute inset-0 rounded-full border border-[#fdfbf7]/5 pointer-events-none" />
+              <div className="absolute inset-0 rounded-full border border-[#7C3AED]/10 pointer-events-none" />
               
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);

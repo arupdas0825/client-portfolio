@@ -5,8 +5,8 @@ const FloatingParticles = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const smoothX = useSpring(mouseX, { stiffness: 40, damping: 22 });
+  const smoothY = useSpring(mouseY, { stiffness: 40, damping: 22 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -17,43 +17,90 @@ const FloatingParticles = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
-  // Generate different particle layers
-  const { dust, molecularNodes } = useMemo(() => {
-    const dustParticles = Array.from({ length: 60 }).map((_, i) => ({
+  // Generate particle, star, and node configurations
+  const { dust, molecularNodes, stars } = useMemo(() => {
+    const dustParticles = Array.from({ length: 50 }).map((_, i) => ({
       id: `dust-${i}`,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      animation: `animate-float${(i % 3) + 1}`,
+      animation: i % 3 === 0 ? 'animate-float' : i % 3 === 1 ? 'animate-float2' : 'animate-float3',
       delay: `${Math.random() * 5}s`,
       size: Math.random() * 2 + 1, // 1 to 3px
     }));
 
-    const nodes = Array.from({ length: 30 }).map((_, i) => ({
-      id: `node-${i}`,
+    const nodes = Array.from({ length: 25 }).map((_, i) => {
+      const colors = ['#7C3AED', '#FBCFE8', '#FAF6F0']; // Violet, Soft Pink, Cream
+      const color = colors[i % colors.length];
+      return {
+        id: `node-${i}`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animation: i % 3 === 0 ? 'animate-float' : i % 3 === 1 ? 'animate-float2' : 'animate-float3',
+        delay: `${Math.random() * 5}s`,
+        size: Math.random() * 3 + 2, // 2 to 5px
+        color: color,
+        blur: Math.random() > 0.5 ? 'blur-[1px]' : 'blur-[2px]'
+      };
+    });
+
+    const starParticles = Array.from({ length: 45 }).map((_, i) => ({
+      id: `star-${i}`,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      animation: `animate-float${(i % 3) + 1}`,
-      delay: `${Math.random() * 5}s`,
-      size: Math.random() * 3 + 2, // 2 to 5px
-      color: i % 2 === 0 ? '#A78BFA' : '#14b8a6', // Violet or Teal
-      blur: Math.random() > 0.5 ? 'blur-[1px]' : 'blur-[2px]'
+      size: Math.random() * 1.5 + 0.5, // 0.5 to 2px
+      delay: `${Math.random() * 6}s`,
+      duration: `${Math.random() * 4 + 4}s` // 4s to 8s
     }));
 
-    return { dust: dustParticles, molecularNodes: nodes };
+    return { dust: dustParticles, molecularNodes: nodes, stars: starParticles };
   }, []);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden perspective-[1000px]">
       
-      {/* Background layer: Moves slightly opposite to mouse */}
+      {/* Mouse-reactive Ambient Spotlight */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full opacity-35 blur-[120px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(244, 63, 94, 0.05) 50%, transparent 70%)',
+          x: useTransform(smoothX, [-1, 1], [-200, 200]),
+          y: useTransform(smoothY, [-1, 1], [-200, 200]),
+          left: 'calc(50% - 300px)',
+          top: 'calc(50% - 300px)',
+        }}
+      />
+
+      {/* Background Starfield Layer (Twinkling) */}
+      <div className="absolute inset-0">
+        {stars.map((s) => (
+          <div
+            key={s.id}
+            className="absolute bg-[#FAF6F0] rounded-full animate-pulse opacity-20"
+            style={{
+              width: s.size,
+              height: s.size,
+              top: s.top,
+              left: s.left,
+              animationDelay: s.delay,
+              animationDuration: s.duration,
+              boxShadow: s.size > 1.2 ? '0 0 4px #FAF6F0' : 'none'
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating Dust Layer: Moves slightly opposite to mouse for depth */}
       <motion.div 
         className="absolute inset-0"
-        style={{ x: useTransform(smoothX, v => v * -30), y: useTransform(smoothY, v => v * -30) }}
+        style={{ 
+          x: useTransform(smoothX, v => v * -20), 
+          y: useTransform(smoothY, v => v * -20) 
+        }}
       >
         {dust.map((p) => (
           <div
             key={p.id}
-            className={`absolute bg-[#fdfbf7] rounded-full opacity-[0.15] ${p.animation}`}
+            className={`absolute bg-[#FAF6F0] rounded-full opacity-[0.12] ${p.animation}`}
             style={{
               width: p.size,
               height: p.size,
@@ -65,15 +112,18 @@ const FloatingParticles = () => {
         ))}
       </motion.div>
 
-      {/* Foreground layer: Moves with mouse, creating parallax depth */}
+      {/* Foreground Glowing Nodes: Moves with mouse, creating 3D parallax depth */}
       <motion.div 
         className="absolute inset-0"
-        style={{ x: useTransform(smoothX, v => v * 50), y: useTransform(smoothY, v => v * 50) }}
+        style={{ 
+          x: useTransform(smoothX, v => v * 35), 
+          y: useTransform(smoothY, v => v * 35) 
+        }}
       >
         {molecularNodes.map((p) => (
           <div
             key={p.id}
-            className={`absolute rounded-full opacity-[0.3] ${p.blur} ${p.animation}`}
+            className={`absolute rounded-full opacity-[0.25] ${p.blur} ${p.animation}`}
             style={{
               width: p.size,
               height: p.size,

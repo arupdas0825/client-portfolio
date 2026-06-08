@@ -38,9 +38,13 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-16">
         <ScrollReveal>
-          <span className="section-label">✦ What I Do</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent mb-4">My Skills</h2>
-          <p className="font-body text-[#fdfbf7]/50 max-w-2xl mx-auto">
+          <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+            WHAT I DO
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(216,180,254,0.15)] mb-4">
+            My Skills
+          </h2>
+          <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
             Blending academic excellence with creative digital skills to build a unique personal brand.
           </p>
         </ScrollReveal>

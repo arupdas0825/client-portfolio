@@ -59,10 +59,10 @@ const CertificateCard = ({ item, index }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-300 overflow-hidden transform-gpu ${
+        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#1C0D38]/55 to-[#0B0618]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-300 overflow-hidden transform-gpu ${
           item.isElite 
-            ? 'border-[#14b8a6]/30 hover:border-[#ff7eb3]/60 shadow-[0_0_40px_rgba(20, 184, 166,0.15)] hover:shadow-[0_40px_80px_rgba(255, 126, 179,0.25)]' 
-            : 'border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 shadow-2xl'
+            ? 'border-[#7C3AED]/30 hover:border-[#ff7eb3]/60 shadow-[0_0_40px_rgba(124,58,237,0.15)] hover:shadow-[0_40px_80px_rgba(255, 126, 179,0.25)]' 
+            : 'border-[#2A1350]/50 hover:border-[#7C3AED]/40 shadow-2xl'
         }`}
         style={{ transformStyle: 'preserve-3d' }}
       >
@@ -72,7 +72,7 @@ const CertificateCard = ({ item, index }) => {
         {/* Visual Header Area */}
         <div className="relative h-60 overflow-hidden bg-[#fdfbf7]/[0.02]">
           {/* Top Masking Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-transparent to-black/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           {item.image ? (
             <img 
@@ -155,10 +155,12 @@ export default function Certificates() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
-              Certificates & <br className="md:hidden"/>
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
-                Milestones
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+              VALIDATIONS & MILESTONES
+            </span>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
+              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
+                Certificates & Achievements
               </span>
             </h2>
             <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">

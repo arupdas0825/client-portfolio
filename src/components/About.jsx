@@ -9,10 +9,12 @@ const About = () => {
         {/* Standardized Section Header */}
         <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
-              About My <br className="md:hidden"/>
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
-                Journey
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+              BIOGRAPHY
+            </span>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
+              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
+                About Me
               </span>
             </h2>
             <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
@@ -59,8 +61,10 @@ const About = () => {
           {/* RIGHT COLUMN — Text Content */}
           <div className="flex flex-col">
             <ScrollReveal>
-              <span className="section-label">✦ My Story</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#fdfbf7] to-[#fdfbf7]/60 bg-clip-text text-transparent leading-tight mb-8">
+              <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#14b8a6] mb-3 block">
+                MY STORY
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent leading-tight mb-8">
                 Hi, I'm Shatarupa
               </h2>
             </ScrollReveal>

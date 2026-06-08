@@ -5,6 +5,7 @@ import { HiMenuAlt3, HiX } from 'react-icons/hi'
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Academic Journey', href: '#academic-journey' },
   { name: 'Experience', href: '#experience' },
   { name: 'Internship', href: '#internship' },
   { name: 'Certificates', href: '#certificates' },

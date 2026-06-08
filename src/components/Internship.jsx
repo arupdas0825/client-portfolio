@@ -46,15 +46,15 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
       <motion.div
         ref={tiltRef}
         whileHover={{ scale: 1.02 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
+        className="group relative h-full flex flex-col bg-gradient-to-br from-[#1C0D38]/55 to-[#0B0618]/90 backdrop-blur-3xl rounded-[32px] border border-[#2A1350]/50 hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#14b8a6]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Visual Header Area */}
         <div className="relative h-56 overflow-hidden bg-[#fdfbf7]/[0.02]">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-transparent to-black/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
             src="/Internship 1.jpg" 
@@ -151,7 +151,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="mt-auto flex flex-col sm:flex-row items-center gap-3">
             <button 
               onClick={() => onViewDetails(item)}
-              className="w-full flex-1 px-6 py-4 rounded-2xl bg-[#14b8a6]/10 text-[#14b8a6] font-bold text-[10px] tracking-[0.2em] uppercase border border-[#14b8a6]/20 hover:bg-[#14b8a6] hover:text-[#0A0F1F] transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.3)] text-center"
+              className="w-full flex-1 px-6 py-4 rounded-2xl bg-[#14b8a6]/10 text-[#14b8a6] font-bold text-[10px] tracking-[0.2em] uppercase border border-[#14b8a6]/20 hover:bg-[#14b8a6] hover:text-[#0B0618] transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.3)] text-center"
             >
               View Details
             </button>
@@ -179,7 +179,7 @@ const InternshipDetailsModal = ({ item, onClose }) => {
         initial={{ scale: 0.95, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 20 }}
-        className="relative bg-gradient-to-br from-[#0A0F1F] to-[#02040a] border border-[#14b8a6]/30 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(20, 184, 166,0.2)] p-8 max-h-[90vh] overflow-y-auto"
+        className="relative bg-gradient-to-br from-[#1C0D38] to-[#0B0618] border border-[#2A1350]/50 rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(124,58,237,0.2)] p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Background Grid Accent */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(253, 251, 247,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(253, 251, 247,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />
@@ -356,8 +356,11 @@ const Internship = () => {
         {/* Section Title */}
         <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+              PROFESSIONAL TRAINING
+            </span>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
+              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
                 Internship
               </span>
             </h2>

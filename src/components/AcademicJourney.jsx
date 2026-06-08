@@ -80,7 +80,7 @@ const TimelineCard = ({ item, index }) => {
     <div className={`relative flex items-center justify-between md:justify-normal w-full mb-16 ${isEven ? 'md:flex-row-reverse' : ''}`}>
       
       {/* Center Timeline Node */}
-      <div className="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-[#0A0F1F] shadow-[0_0_20px_rgba(20,184,166,0.3)] z-20 flex items-center justify-center transform -translate-x-1/2 bg-[#02040a]"
+      <div className="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-[#0B0618] shadow-[0_0_20px_rgba(124,58,237,0.3)] z-20 flex items-center justify-center transform -translate-x-1/2 bg-[#1C0D38]"
            style={{ borderColor: item.color === '#ff7eb3' ? 'rgba(255, 126, 179, 0.4)' : 'rgba(20, 184, 166, 0.4)' }}>
         <Icon size={16} color={item.color} className="animate-pulse" />
       </div>
@@ -94,7 +94,7 @@ const TimelineCard = ({ item, index }) => {
           <motion.div
             ref={tiltRef}
             whileHover={{ scale: 1.02 }}
-            className={`group relative flex flex-col bg-gradient-to-br from-[#0A0F1F]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[${item.color}]/40 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu`}
+            className="group relative flex flex-col bg-gradient-to-br from-[#1C0D38]/55 to-[#0B0618]/90 backdrop-blur-3xl rounded-[32px] border border-[#2A1350]/50 hover:border-[#7C3AED]/40 transition-all duration-500 overflow-hidden shadow-2xl p-8 transform-gpu"
             style={{ transformStyle: 'preserve-3d' }}
           >
             {/* Hover Glow Gradient */}
@@ -191,10 +191,12 @@ export default function AcademicJourney() {
         {/* Section Header */}
         <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
-              Academic <br className="md:hidden"/>
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
-                Journey
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+              ACADEMIC HIGHLIGHT
+            </span>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
+              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
+                Academic Journey
               </span>
             </h2>
             <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">

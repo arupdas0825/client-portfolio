@@ -27,10 +27,12 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-24 md:mb-32">
           <ScrollReveal>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#fdfbf7] mb-6 leading-tight">
-              Get in <br className="md:hidden"/>
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#F5EFFF] to-[#D8B4FE] bg-clip-text text-transparent">
-                Touch
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
+              GET IN TOUCH
+            </span>
+            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
+              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
+                Contact
               </span>
             </h2>
             <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
@@ -50,7 +52,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Shatarupa Basak"
-                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#7c3aed]/50 transition-colors placeholder:text-[#fdfbf7]/20"
                   />
                 </div>
                 
@@ -59,7 +61,7 @@ const Contact = () => {
                   <input
                     type="email"
                     placeholder="hello@example.com"
-                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#7c3aed]/50 transition-colors placeholder:text-[#fdfbf7]/20"
                   />
                 </div>
 
@@ -68,7 +70,7 @@ const Contact = () => {
                   <textarea
                     rows="5"
                     placeholder="Tell me about your project or just say hi..."
-                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#14b8a6]/50 transition-colors placeholder:text-[#fdfbf7]/20 resize-none"
+                    className="bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 rounded-xl px-4 py-4 text-[#fdfbf7] font-body text-sm outline-none focus:border-[#7c3aed]/50 transition-colors placeholder:text-[#fdfbf7]/20 resize-none"
                   ></textarea>
                 </div>
 

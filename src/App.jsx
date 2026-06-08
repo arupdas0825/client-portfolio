@@ -35,13 +35,13 @@ export default function App() {
   });
 
   return (
-    <div className={`text-[#fdfbf7] min-h-screen selection:bg-[#14b8a6]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}
+    <div className={`text-[#fdfbf7] min-h-screen selection:bg-[#7c3aed]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}
          style={{
            background: `
-             radial-gradient(circle at top left, rgba(125,211,252,0.12), transparent 35%),
-             radial-gradient(circle at top right, rgba(167,139,250,0.10), transparent 40%),
-             radial-gradient(circle at bottom center, rgba(20,184,166,0.08), transparent 45%),
-             linear-gradient(180deg, #0A0F1F, #111827)
+             radial-gradient(circle at 20% 10%, rgba(124, 58, 237, 0.15), transparent 45%),
+             radial-gradient(circle at 80% 40%, rgba(251, 207, 232, 0.08), transparent 35%),
+             radial-gradient(circle at 30% 80%, rgba(124, 58, 237, 0.08), transparent 45%),
+             linear-gradient(180deg, #0B0618 0%, #140726 35%, #1C0D38 65%, #0B0618 100%)
            `
          }}>
       <AnimatePresence mode="wait">
@@ -101,9 +101,9 @@ export default function App() {
       {/* Global Background Layer */}
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <FloatingParticles />
-        <div className="absolute w-[800px] h-[800px] bg-[#7DD3FC]/10 blur-[150px] rounded-full -top-40 -left-40 animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute w-[800px] h-[800px] bg-[#A78BFA]/10 blur-[150px] rounded-full top-[30%] -right-40 animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
-        <div className="absolute w-[1000px] h-[1000px] bg-[#14B8A6]/10 blur-[180px] rounded-full bottom-[-20%] left-[20%] animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
+        <div className="absolute w-[800px] h-[800px] bg-[#7C3AED]/08 blur-[150px] rounded-full -top-40 -left-40 animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute w-[800px] h-[800px] bg-[#2A1350]/12 blur-[150px] rounded-full top-[30%] -right-40 animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <div className="absolute w-[1000px] h-[1000px] bg-[#1C0D38]/15 blur-[180px] rounded-full bottom-[-20%] left-[20%] animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
       </div>
 
       {/* Background Noise/Stars Overlay */}
