@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiExternalLink, HiEye, HiX, HiBadgeCheck, HiOfficeBuilding, HiStar, HiAcademicCap } from 'react-icons/hi'
 import ScrollReveal from './ScrollReveal'
+import useTilt from '../hooks/useTilt'
 
 // 1. Data Structure
 const certificateData = [
@@ -51,15 +52,19 @@ const certificateData = [
 
 // 2. Card Component
 const CertificateCard = ({ item, index }) => {
+  const tiltRef = useTilt();
+
   return (
     <ScrollReveal delay={index * 100}>
       <motion.div
-        whileHover={{ y: -12 }}
-        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-700 overflow-hidden ${
+        ref={tiltRef}
+        whileHover={{ scale: 1.02 }}
+        className={`group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border transition-all duration-300 overflow-hidden transform-gpu ${
           item.isElite 
             ? 'border-[#14b8a6]/30 hover:border-[#ff7eb3]/60 shadow-[0_0_40px_rgba(20, 184, 166,0.15)] hover:shadow-[0_40px_80px_rgba(255, 126, 179,0.25)]' 
             : 'border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 shadow-2xl'
         }`}
+        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#14b8a6]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

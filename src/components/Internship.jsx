@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
+import useTilt from '../hooks/useTilt';
 import { FlaskConical, Calendar, MapPin, X, FileText, Award, User } from 'lucide-react';
 import { HiExternalLink } from 'react-icons/hi';
 
@@ -38,12 +39,15 @@ const internshipData = [
 // ==========================================
 const InternshipCard = ({ item, index, onViewDetails }) => {
   const [expanded, setExpanded] = useState(false);
+  const tiltRef = useTilt();
 
   return (
     <ScrollReveal delay={index * 100}>
       <motion.div
-        whileHover={{ y: -12 }}
-        className="group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 transition-all duration-700 overflow-hidden shadow-2xl max-w-[400px] mx-auto"
+        ref={tiltRef}
+        whileHover={{ scale: 1.02 }}
+        className="group relative h-full flex flex-col bg-gradient-to-br from-[#060913]/80 to-[#02040a]/90 backdrop-blur-3xl rounded-[32px] border border-[#fdfbf7]/5 hover:border-[#14b8a6]/40 transition-all duration-300 overflow-hidden shadow-2xl max-w-[400px] mx-auto transform-gpu"
+        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#14b8a6]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

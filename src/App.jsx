@@ -11,6 +11,7 @@ import Certificates from './components/Certificates'
 import CV from './components/CV'
 import Contact from './components/Contact'
 import FloatingParticles from './components/FloatingParticles'
+import AcademicJourney from './components/AcademicJourney'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import './index.css'
@@ -60,6 +61,10 @@ export default function App() {
             <SectionWrapper id="about">
               <About />
               <Skills />
+            </SectionWrapper>
+            
+            <SectionWrapper id="academic-journey">
+              <AcademicJourney />
             </SectionWrapper>
             
             <SectionWrapper id="experience">

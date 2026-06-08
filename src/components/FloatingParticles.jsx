@@ -1,23 +1,21 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import React, { useMemo, useEffect } from 'react';
+import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
 
 const FloatingParticles = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      // Normalize mouse position between -1 and 1
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
+      mouseX.set((e.clientX / window.innerWidth) * 2 - 1);
+      mouseY.set((e.clientY / window.innerHeight) * 2 - 1);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const smoothX = useSpring(mousePosition.x * 30, { stiffness: 50, damping: 20 });
-  const smoothY = useSpring(mousePosition.y * 30, { stiffness: 50, damping: 20 });
+  }, [mouseX, mouseY]);
 
   // Generate different particle layers
   const { dust, molecularNodes } = useMemo(() => {
@@ -50,7 +48,7 @@ const FloatingParticles = () => {
       {/* Background layer: Moves slightly opposite to mouse */}
       <motion.div 
         className="absolute inset-0"
-        style={{ x: useTransform(smoothX, v => -v), y: useTransform(smoothY, v => -v) }}
+        style={{ x: useTransform(smoothX, v => v * -30), y: useTransform(smoothY, v => v * -30) }}
       >
         {dust.map((p) => (
           <div
@@ -70,7 +68,7 @@ const FloatingParticles = () => {
       {/* Foreground layer: Moves with mouse, creating parallax depth */}
       <motion.div 
         className="absolute inset-0"
-        style={{ x: useTransform(smoothX, v => v * 1.5), y: useTransform(smoothY, v => v * 1.5) }}
+        style={{ x: useTransform(smoothX, v => v * 50), y: useTransform(smoothY, v => v * 50) }}
       >
         {molecularNodes.map((p) => (
           <div
