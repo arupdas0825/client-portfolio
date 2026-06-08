@@ -114,7 +114,7 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-[999] transition-all duration-500 rounded-full border backdrop-blur-[20px] shadow-2xl ${isScrolled
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-[1000] transition-all duration-500 rounded-full border backdrop-blur-[20px] shadow-2xl ${isScrolled
           ? 'py-3 bg-white/[0.03] border-white/[0.08] shadow-[0_8px_32px_rgba(124,58,237,0.15)]'
           : 'py-4 bg-white/[0.01] border-white/[0.04]'
           }`}
@@ -133,7 +133,7 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1 glass-teal p-1.5 border border-[#fdfbf7]/10 rounded-full">
+          <div className="hidden lg:flex items-center gap-1.5 p-1.5 rounded-full">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1)
               return (

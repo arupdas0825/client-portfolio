@@ -4,14 +4,14 @@ import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center pt-28 pb-12 relative overflow-hidden">
 
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative mb-8"
+          className="relative z-10 mb-8"
         >
           <img
             src={profileImg}
