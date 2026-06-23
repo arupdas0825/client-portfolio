@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import profileImg from '../public/profile.jpg';
 
 const Hero = () => {
   return (
@@ -21,15 +20,27 @@ const Hero = () => {
           <div className="absolute -bottom-2 right-4 w-3.5 h-3.5 bg-[#7C3AED]/35 rounded-full blur-[1px] animate-float2 pointer-events-none" />
           <div className="absolute top-1/2 -right-8 w-2 h-2 bg-[#FAF6F0]/50 rounded-full blur-[0.5px] animate-float3 pointer-events-none" style={{ animationDelay: '1.5s' }} />
 
-          <img
-            src={profileImg}
-            alt="Shatarupa Basak"
-            className="w-48 h-48 rounded-full object-cover object-center relative z-10"
+          {/* Stable Image Container with required styles */}
+          <div 
+            className="w-48 h-48 relative z-10 rounded-full overflow-hidden aspect-square flex items-center justify-center bg-[#150a26]/40 backdrop-blur-md"
             style={{
-              border: '1.5px solid rgba(253,251,247,0.2)',
-              boxShadow: '0 0 0 12px rgba(253,251,247,0.03), 0 0 60px rgba(124, 58, 237, 0.25), 0 0 100px rgba(255, 126, 179, 0.15)'
+              border: '2px solid rgba(253, 251, 247, 0.25)', // Glass ring border
+              boxShadow: `
+                0 0 0 8px rgba(253, 251, 247, 0.03),
+                0 0 35px rgba(124, 58, 237, 0.4), 
+                0 0 60px rgba(255, 126, 179, 0.3)
+              ` // Premium glows: soft purple glow + soft pink outer glow
             }}
-          />
+          >
+            <img
+              src="/profile.png"
+              alt="Shatarupa Basak"
+              className="w-full h-full object-cover block"
+              style={{
+                objectPosition: 'center 18%'
+              }}
+            />
+          </div>
         </motion.div>
 
         <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-4 block">
