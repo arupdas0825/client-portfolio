@@ -114,7 +114,7 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-[1000] transition-all duration-500 rounded-full border backdrop-blur-[20px] shadow-2xl ${isScrolled
+        className={`hidden lg:block fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-[1000] transition-all duration-500 rounded-full border backdrop-blur-[20px] shadow-2xl ${isScrolled
           ? 'py-3 bg-white/[0.03] border-white/[0.08] shadow-[0_8px_32px_rgba(124,58,237,0.15)]'
           : 'py-4 bg-white/[0.01] border-white/[0.04]'
           }`}
