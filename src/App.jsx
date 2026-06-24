@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import MobileNavbar from './components/MobileNavbar'
 import MobileTopNavbar from './components/MobileTopNavbar'
 import WelcomeScreen from './components/WelcomeScreen'
 import Hero from './components/Hero'
@@ -73,8 +72,6 @@ export default function App() {
           <Navbar />
           {/* Mobile sticky top navbar — overlays hero */}
           <MobileTopNavbar />
-          {/* Mobile bottom dock */}
-          <MobileNavbar />
           
           <main className="pb-[calc(80px+var(--safe-area-bottom))]">
             {/* Mobile full-screen hero (lg:hidden inside component) */}
