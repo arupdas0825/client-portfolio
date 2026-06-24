@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /* ── Ambient particle blob ── */
@@ -11,7 +11,7 @@ const Blob = ({ style }) => (
       background: style.bg,
       top: style.top,
       left: style.left,
-      filter: 'blur(60px)',
+      filter: 'blur(80px)',
       opacity: style.opacity,
       animation: `welcomeBlobDrift ${style.duration}s ease-in-out infinite`,
       animationDelay: style.delay,
@@ -19,40 +19,40 @@ const Blob = ({ style }) => (
   />
 );
 
-/* ── Tiny sparkle particle ── */
-const Sparkle = ({ style }) => (
+/* ── Floating pink particles ── */
+const PinkParticle = ({ style }) => (
   <div
     className="absolute rounded-full pointer-events-none"
     style={{
       width: style.size,
       height: style.size,
-      background: style.color,
+      background: '#FF66C7',
       top: style.top,
       left: style.left,
       opacity: style.opacity,
       filter: 'blur(0.5px)',
-      animation: `welcomeSparkle ${style.duration}s ease-in-out infinite`,
+      boxShadow: '0 0 8px #FF66C7',
+      animation: `welcomePinkParticle ${style.duration}s ease-in-out infinite`,
       animationDelay: style.delay,
     }}
   />
 );
 
 const blobs = [
-  { size:'320px', bg:'radial-gradient(circle,rgba(124,58,237,0.5),transparent 70%)',  top:'-80px',  left:'-60px',  opacity:0.6, duration:9,  delay:'0s' },
-  { size:'260px', bg:'radial-gradient(circle,rgba(255,126,179,0.35),transparent 70%)', top:'55%',    left:'-80px',  opacity:0.5, duration:11, delay:'2s' },
-  { size:'200px', bg:'radial-gradient(circle,rgba(43,20,72,0.8),transparent 70%)',     top:'20%',    left:'60%',    opacity:0.7, duration:8,  delay:'1s' },
-  { size:'280px', bg:'radial-gradient(circle,rgba(124,58,237,0.3),transparent 70%)',   top:'70%',    left:'50%',    opacity:0.4, duration:13, delay:'3s' },
+  { size: '350px', bg: 'radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 70%)', top: '-10%', left: '-5%', opacity: 0.8, duration: 12, delay: '0s' },
+  { size: '300px', bg: 'radial-gradient(circle, rgba(255,102,199,0.12) 0%, transparent 70%)', top: '60%', left: '-10%', opacity: 0.6, duration: 14, delay: '2s' },
+  { size: '280px', bg: 'radial-gradient(circle, rgba(120,80,255,0.14) 0%, transparent 70%)', top: '25%', left: '70%', opacity: 0.7, duration: 10, delay: '1s' },
 ];
 
-const sparkles = [
-  { size:'3px',  color:'rgba(255,126,179,0.9)',  top:'18%', left:'15%', opacity:0.8, duration:5, delay:'0s'   },
-  { size:'2px',  color:'rgba(255,255,255,0.7)',   top:'35%', left:'8%',  opacity:0.6, duration:7, delay:'1.2s' },
-  { size:'4px',  color:'rgba(216,180,254,0.8)',   top:'62%', left:'20%', opacity:0.7, duration:6, delay:'0.5s' },
-  { size:'2.5px',color:'rgba(255,126,179,0.6)',   top:'80%', left:'30%', opacity:0.5, duration:8, delay:'2s'   },
-  { size:'3px',  color:'rgba(255,255,255,0.5)',   top:'10%', left:'75%', opacity:0.5, duration:9, delay:'1.8s' },
-  { size:'2px',  color:'rgba(216,180,254,0.7)',   top:'45%', left:'85%', opacity:0.6, duration:6, delay:'0.8s' },
-  { size:'3.5px',color:'rgba(255,126,179,0.55)',  top:'72%', left:'78%', opacity:0.5, duration:7, delay:'3s'   },
-  { size:'2px',  color:'rgba(255,255,255,0.4)',   top:'25%', left:'55%', opacity:0.4, duration:10,delay:'4s'   },
+const pinkParticles = [
+  { size: '4px', top: '15%', left: '12%', opacity: 0.8, duration: 6, delay: '0s' },
+  { size: '3px', top: '38%', left: '8%', opacity: 0.6, duration: 8, delay: '1.5s' },
+  { size: '5px', top: '65%', left: '18%', opacity: 0.7, duration: 7, delay: '0.8s' },
+  { size: '3px', top: '82%', left: '28%', opacity: 0.5, duration: 9, delay: '2.2s' },
+  { size: '4px', top: '12%', left: '78%', opacity: 0.7, duration: 8, delay: '1.2s' },
+  { size: '3px', top: '48%', left: '88%', opacity: 0.6, duration: 7, delay: '0.5s' },
+  { size: '5px', top: '75%', left: '82%', opacity: 0.8, duration: 9, delay: '2.8s' },
+  { size: '3px', top: '28%', left: '52%', opacity: 0.5, duration: 11, delay: '3.5s' },
 ];
 
 /* ── Letter-by-letter reveal for "SHATARUPA" ── */
@@ -62,11 +62,11 @@ const LetterReveal = ({ text, delay = 0 }) => {
       {text.split('').map((char, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+          initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{
-            duration: 0.55,
-            delay: delay + i * 0.07,
+            duration: 0.6,
+            delay: delay + i * 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
           style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
@@ -83,13 +83,13 @@ const ProgressBar = ({ duration }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const steps = 80;
+    const steps = 100;
     const interval = (duration * 1000) / steps;
     let step = 0;
     const timer = setInterval(() => {
       step++;
-      // Ease-in-out curve: fast start, slow middle, fast end
       const t = step / steps;
+      // Smooth ease-in-out curve
       const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
       setProgress(Math.min(eased * 100, 100));
       if (step >= steps) clearInterval(timer);
@@ -100,9 +100,9 @@ const ProgressBar = ({ duration }) => {
   return (
     <div
       style={{
-        width: '200px',
+        width: '180px',
         height: '1.5px',
-        background: 'rgba(255,255,255,0.08)',
+        background: 'rgba(255,255,255,0.06)',
         borderRadius: '9999px',
         overflow: 'hidden',
         position: 'relative',
@@ -112,21 +112,18 @@ const ProgressBar = ({ duration }) => {
         style={{
           height: '100%',
           width: `${progress}%`,
-          background: 'linear-gradient(90deg, rgba(124,58,237,0.8), rgba(255,126,179,0.9), rgba(216,180,254,0.8))',
+          background: 'linear-gradient(90deg, #FF66C7, #DAAF37, #FF66C7)',
           borderRadius: '9999px',
-          boxShadow: '0 0 12px rgba(255,126,179,0.5)',
+          boxShadow: '0 0 8px #FF66C7',
         }}
       />
     </div>
   );
 };
 
-/* ══════════════════════════════════════════════
-   WELCOME SCREEN COMPONENT
-   ══════════════════════════════════════════════ */
-const WelcomeScreen = ({ onComplete }) => {
+export default function WelcomeScreen({ onComplete }) {
   const TOTAL_DURATION = 4200; // ms before auto-dismiss
-  const PROGRESS_DURATION = 3.4; // seconds for progress bar
+  const PROGRESS_DURATION = 3.2; // seconds for progress bar
 
   const [isVisible, setIsVisible] = useState(() => {
     return !sessionStorage.getItem('welcomeShown');
@@ -151,21 +148,20 @@ const WelcomeScreen = ({ onComplete }) => {
     <>
       <style>{`
         @keyframes welcomeBlobDrift {
-          0%,100% { transform: translate(0,0) scale(1); }
-          33%      { transform: translate(15px,-15px) scale(1.06); }
-          66%      { transform: translate(-10px,12px) scale(0.96); }
+          0%, 100% { transform: translate(0,0) scale(1); }
+          50%      { transform: translate(10px,-15px) scale(1.05); }
         }
-        @keyframes welcomeSparkle {
-          0%,100% { opacity: 0.2; transform: scale(0.8); }
-          50%      { opacity: 1;   transform: scale(1.4); }
+        @keyframes welcomePinkParticle {
+          0%, 100% { opacity: 0.3; transform: translateY(0px) scale(0.9); }
+          50%      { opacity: 1;   transform: translateY(-12px) scale(1.2); }
         }
-        @keyframes welcomeLineExpand {
-          from { width: 0px; opacity: 0; }
-          to   { width: 100px; opacity: 1; }
+        @keyframes lineGlowPulse {
+          0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 2px #FF66C7); }
+          50%      { opacity: 1;   filter: drop-shadow(0 0 6px #FF66C7); }
         }
-        @keyframes glassSweep {
-          0%   { left: -100%; }
-          100% { left: 200%; }
+        @keyframes orbPulse {
+          0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 6px #FF66C7; }
+          50%      { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #FF66C7, 0 0 20px #FF66C7; }
         }
       `}</style>
 
@@ -175,35 +171,29 @@ const WelcomeScreen = ({ onComplete }) => {
             key="welcome"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.01 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 1.0, ease: 'easeInOut' }}
             className="fixed inset-0 z-[10000] flex items-center justify-center overflow-hidden"
             style={{
               background: `radial-gradient(
                 circle at center,
-                #2b1448 0%,
-                #170d2d 40%,
-                #0b0716 100%
+                rgba(120,80,255,0.18),
+                transparent 45%
+              ),
+              linear-gradient(
+                180deg,
+                #080511 0%,
+                #120A24 100%
               )`,
             }}
           >
-            {/* ── Ambient blobs ── */}
+            {/* ── Soft moving blobs ── */}
             {blobs.map((b, i) => <Blob key={i} style={b} />)}
 
-            {/* ── Glass reflection overlay ── */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.015) 0%, transparent 50%, rgba(255,255,255,0.008) 100%)',
-                pointerEvents: 'none',
-              }}
-            />
+            {/* ── Floating pink particles ── */}
+            {pinkParticles.map((p, i) => <PinkParticle key={i} style={p} />)}
 
-            {/* ── Sparkle particles ── */}
-            {sparkles.map((s, i) => <Sparkle key={i} style={s} />)}
-
-            {/* ══ MAIN CONTENT ══ */}
+            {/* ── Center Container ── */}
             <div
               style={{
                 position: 'relative',
@@ -212,135 +202,147 @@ const WelcomeScreen = ({ onComplete }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                padding: '0 32px',
-                maxWidth: '420px',
+                padding: '0 24px',
                 width: '100%',
+                maxWidth: '440px',
               }}
             >
-              {/* "WELCOME TO" */}
-              <motion.p
-                initial={{ opacity: 0, y: -8 }}
+              {/* Line 1: "Welcome to" */}
+              <motion.span
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+                transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '10px',
-                  letterSpacing: '0.45em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,200,220,0.65)',
-                  marginBottom: '18px',
+                  fontFamily: "'Playfair Display', 'Cormorant Garamond', serif",
+                  fontSize: 'clamp(14px, 4.5vw, 18px)',
+                  fontWeight: 500,
+                  color: '#FFFFFF',
+                  letterSpacing: '0.12em',
+                  marginBottom: '10px',
+                  display: 'block',
                 }}
               >
-                Welcome&nbsp;to
-              </motion.p>
+                Welcome to
+              </motion.span>
 
-              {/* "SHATARUPA" — letter-by-letter */}
+              {/* Line 2: "SHATARUPA" (Pure Gold) */}
               <div
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 'clamp(44px, 14vw, 64px)',
+                  fontFamily: "'Cinzel', 'Cormorant Garamond', serif",
+                  fontSize: 'clamp(36px, 11vw, 54px)',
                   fontWeight: 700,
-                  letterSpacing: '0.06em',
-                  lineHeight: 1,
-                  background: 'linear-gradient(135deg, #ffffff 0%, #ff7eb3 45%, #FAF6F0 80%, #e9d5ff 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  filter: 'drop-shadow(0 0 30px rgba(255,126,179,0.4))',
-                  marginBottom: '4px',
+                  color: '#DAAF37',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.4em',
+                  lineHeight: 1.1,
+                  display: 'block',
+                  margin: '8px 0',
+                  textAlign: 'center',
+                  paddingLeft: '0.4em', // offsets the letter spacing for center alignment
+                  textShadow: '0 0 15px rgba(218, 175, 55, 0.25)',
                 }}
               >
                 <LetterReveal text="SHATARUPA" delay={0.7} />
               </div>
 
-              {/* "PORTFOLIO" — fade up */}
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
+              {/* Line 3: "portfolio" (Pink handwritten script) */}
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.85, delay: 1.9, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.9, delay: 1.7, ease: 'easeOut' }}
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 'clamp(13px, 3.5vw, 18px)',
-                  fontWeight: 400,
-                  letterSpacing: '0.45em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(253,251,247,0.55)',
-                  marginTop: '6px',
+                  fontFamily: "'Pinyon Script', cursive, italic",
+                  fontSize: 'clamp(32px, 9vw, 46px)',
+                  color: '#FF66C7',
+                  display: 'block',
+                  marginTop: '-4px',
+                  marginBottom: '16px',
+                  textShadow: '0 0 10px rgba(255, 102, 199, 0.2)',
                 }}
               >
-                Portfolio
-              </motion.p>
+                portfolio
+              </motion.span>
 
-              {/* Animated thin luxury line */}
-              <motion.div
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: '90px', opacity: 1 }}
-                transition={{ duration: 1.2, delay: 2.1, ease: 'easeInOut' }}
+              {/* ── Underline & Orb ── */}
+              <div
                 style={{
-                  height: '1px',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,126,179,0.7), rgba(216,180,254,0.6), transparent)',
-                  marginTop: '22px',
-                  marginBottom: '20px',
-                  boxShadow: '0 0 12px rgba(255,126,179,0.3)',
+                  position: 'relative',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: '32px',
                 }}
-              />
+              >
+                {/* Thin glowing pink line */}
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: '130px', opacity: 1 }}
+                  transition={{ duration: 1.1, delay: 1.9, ease: 'easeInOut' }}
+                  style={{
+                    height: '1px',
+                    background: 'linear-gradient(90deg, transparent, #FF66C7 20%, #FF66C7 80%, transparent)',
+                    animation: 'lineGlowPulse 4s ease-in-out infinite',
+                  }}
+                />
+
+                {/* Glowing pink orb in the center */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 2.3, ease: 'easeOut' }}
+                  style={{
+                    position: 'absolute',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    background: '#FF66C7',
+                    animation: 'orbPulse 3s ease-in-out infinite',
+                  }}
+                />
+              </div>
 
               {/* Tagline */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 2.3 }}
+                transition={{ duration: 1, delay: 2.4 }}
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '10px',
+                  fontSize: '9px',
                   letterSpacing: '0.3em',
                   textTransform: 'uppercase',
-                  color: 'rgba(216,180,254,0.65)',
+                  color: 'rgba(255, 255, 255, 0.45)',
                   marginBottom: '28px',
                 }}
               >
                 Biotechnology&nbsp;•&nbsp;Research&nbsp;•&nbsp;Innovation
               </motion.p>
 
-              {/* Loading bar container (glassmorphism) */}
+              {/* Loading indicator */}
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 2.5 }}
+                transition={{ duration: 0.8, delay: 2.6 }}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '12px',
-                  padding: '18px 28px',
-                  background: 'rgba(255,255,255,0.03)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: '16px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
-                  position: 'relative',
-                  overflow: 'hidden',
+                  gap: '10px',
+                  padding: '16px 24px',
+                  background: 'rgba(255,255,255,0.02)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,255,255,0.04)',
+                  borderRadius: '12px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
                 }}
               >
-                {/* Glass sweep shine */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: '-100%',
-                    width: '60%',
-                    height: '100%',
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent)',
-                    animation: 'glassSweep 3s ease-in-out infinite',
-                    animationDelay: '2.5s',
-                  }}
-                />
                 <p
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '9px',
-                    letterSpacing: '0.28em',
+                    fontSize: '8.5px',
+                    letterSpacing: '0.24em',
                     textTransform: 'uppercase',
                     color: 'rgba(255,255,255,0.3)',
                     margin: 0,
@@ -351,19 +353,18 @@ const WelcomeScreen = ({ onComplete }) => {
                 <ProgressBar duration={PROGRESS_DURATION} />
               </motion.div>
 
-              {/* Optional quote — fades in near end */}
+              {/* Quote */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, delay: 3.0 }}
+                transition={{ duration: 1.2, delay: 3.1 }}
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontStyle: 'italic',
                   fontSize: '11px',
-                  color: 'rgba(253,251,247,0.25)',
+                  color: 'rgba(255,255,255,0.25)',
                   lineHeight: 1.7,
                   marginTop: '20px',
-                  textAlign: 'center',
                 }}
               >
                 "Future Scientist.
@@ -376,6 +377,4 @@ const WelcomeScreen = ({ onComplete }) => {
       </AnimatePresence>
     </>
   );
-};
-
-export default WelcomeScreen;
+}
