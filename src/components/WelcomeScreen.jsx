@@ -58,7 +58,7 @@ const pinkParticles = [
 /* ── Letter-by-letter reveal for "SHATARUPA" ── */
 const LetterReveal = ({ text, delay = 0 }) => {
   return (
-    <span style={{ whiteSpace: 'nowrap' }}>
+    <span style={{ whiteSpace: 'nowrap', color: '#DAAF37' }}>
       {text.split('').map((char, i) => (
         <motion.span
           key={i}
@@ -69,7 +69,7 @@ const LetterReveal = ({ text, delay = 0 }) => {
             delay: delay + i * 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
-          style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
+          style={{ display: 'inline-block', whiteSpace: 'nowrap', color: '#DAAF37' }}
         >
           {char}
         </motion.span>
@@ -152,8 +152,9 @@ export default function WelcomeScreen({ onComplete }) {
           50%      { transform: translate(10px,-15px) scale(1.05); }
         }
         @keyframes welcomePinkParticle {
-          0%, 100% { opacity: 0.3; transform: translateY(0px) scale(0.9); }
-          50%      { opacity: 1;   transform: translateY(-12px) scale(1.2); }
+          0%   { opacity: 0; transform: translateY(30px) translateX(0) scale(0.8); }
+          50%  { opacity: 0.9; transform: translateY(-30px) translateX(15px) scale(1.2); }
+          100% { opacity: 0; transform: translateY(-90px) translateX(30px) scale(0.8); }
         }
         @keyframes lineGlowPulse {
           0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 2px #FF66C7); }
@@ -204,7 +205,7 @@ export default function WelcomeScreen({ onComplete }) {
                 alignItems: 'center',
                 padding: '0 24px',
                 width: '100%',
-                maxWidth: '440px',
+                maxWidth: '600px',
               }}
             >
               {/* Line 1: "Welcome to" */}
@@ -228,8 +229,8 @@ export default function WelcomeScreen({ onComplete }) {
               {/* Line 2: "SHATARUPA" (Pure Gold) */}
               <div
                 style={{
-                  fontFamily: "'Cinzel', 'Cormorant Garamond', serif",
-                  fontSize: 'clamp(24px, 7.8vw, 54px)',
+                  fontFamily: "'Cormorant SC', 'Cinzel', serif",
+                  fontSize: 'clamp(24px, 6vw, 64px)',
                   fontWeight: 700,
                   color: '#DAAF37',
                   textTransform: 'uppercase',
