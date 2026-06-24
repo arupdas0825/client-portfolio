@@ -58,7 +58,7 @@ const pinkParticles = [
 /* ── Letter-by-letter reveal for "SHATARUPA" ── */
 const LetterReveal = ({ text, delay = 0 }) => {
   return (
-    <span>
+    <span style={{ whiteSpace: 'nowrap' }}>
       {text.split('').map((char, i) => (
         <motion.span
           key={i}
@@ -69,7 +69,7 @@ const LetterReveal = ({ text, delay = 0 }) => {
             delay: delay + i * 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
-          style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+          style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
         >
           {char}
         </motion.span>
@@ -229,17 +229,18 @@ export default function WelcomeScreen({ onComplete }) {
               <div
                 style={{
                   fontFamily: "'Cinzel', 'Cormorant Garamond', serif",
-                  fontSize: 'clamp(36px, 11vw, 54px)',
+                  fontSize: 'clamp(24px, 7.8vw, 54px)',
                   fontWeight: 700,
                   color: '#DAAF37',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.4em',
+                  letterSpacing: '0.35em',
                   lineHeight: 1.1,
                   display: 'block',
                   margin: '8px 0',
                   textAlign: 'center',
-                  paddingLeft: '0.4em', // offsets the letter spacing for center alignment
+                  paddingLeft: '0.35em', // offsets the letter spacing for center alignment
                   textShadow: '0 0 15px rgba(218, 175, 55, 0.25)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <LetterReveal text="SHATARUPA" delay={0.7} />
