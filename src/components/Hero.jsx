@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center pt-28 pb-12 relative overflow-hidden">
+    <section className="hidden lg:flex min-h-screen flex-col items-center justify-center pt-28 pb-12 relative overflow-hidden">
 
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.div

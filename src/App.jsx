@@ -1,8 +1,10 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import MobileNavbar from './components/MobileNavbar'
+import MobileTopNavbar from './components/MobileTopNavbar'
 import WelcomeScreen from './components/WelcomeScreen'
 import Hero from './components/Hero'
+import MobileHero from './components/MobileHero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
@@ -67,10 +69,17 @@ export default function App() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative z-10"
         >
+          {/* Desktop navbar (hidden on mobile via its own lg: classes) */}
           <Navbar />
+          {/* Mobile sticky top navbar — overlays hero */}
+          <MobileTopNavbar />
+          {/* Mobile bottom dock */}
           <MobileNavbar />
           
           <main className="pb-[calc(80px+var(--safe-area-bottom))]">
+            {/* Mobile full-screen hero (lg:hidden inside component) */}
+            <MobileHero />
+            {/* Desktop hero (hidden lg:flex inside component) */}
             <SectionWrapper id="home" glowColor="pink">
               <Hero />
             </SectionWrapper>
