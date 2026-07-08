@@ -120,12 +120,12 @@ export default function Navbar() {
           : 'py-4 bg-white/[0.01] border-white/[0.04]'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between flex-nowrap w-full">
           {/* Logo */}
           <motion.a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer flex-shrink-0"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
@@ -134,7 +134,7 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1.5 p-1.5 rounded-full">
+          <div className="hidden lg:flex items-center gap-0.5 p-1 rounded-full flex-nowrap">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1)
               return (
@@ -142,7 +142,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className={`px-5 py-2 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 relative ${isActive
+                  className={`px-3 py-2 rounded-full text-[10.5px] font-medium tracking-wider uppercase transition-all duration-300 relative whitespace-nowrap flex-shrink-0 ${isActive
                     ? 'text-[#fdfbf7]'
                     : 'text-[#fdfbf7]/40 hover:text-[#fdfbf7]/70'
                     }`}
@@ -168,13 +168,13 @@ export default function Navbar() {
           </div>
 
           {/* CTA / Contact Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block flex-shrink-0">
             <motion.a
               href="#contact"
               onClick={(e) => scrollToSection(e, '#contact')}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="glass-pink px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#ff7eb3] hover:scale-105 transition-all border border-[#ff7eb3]/20 shadow-[0_0_20px_rgba(255, 126, 179,0.1)]"
+              className="glass-pink px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#ff7eb3] hover:scale-105 transition-all border border-[#ff7eb3]/20 shadow-[0_0_20px_rgba(255, 126, 179,0.1)] whitespace-nowrap block"
             >
               Let's Connect
             </motion.a>
