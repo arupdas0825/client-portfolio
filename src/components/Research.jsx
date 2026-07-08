@@ -18,7 +18,7 @@ import {
 
 const Research = () => {
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
-  const pdfUrl = "/research thesis.pdf";
+  const pdfUrl = "/internship thesis.pdf";
 
   const timelineSteps = [
     { label: "Research Started", desc: "COX-2 receptors targeting formulation", date: "June 3, 2026" },
