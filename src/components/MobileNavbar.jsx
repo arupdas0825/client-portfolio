@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, GraduationCap, Briefcase, FlaskConical, Award, Mail, FileText } from 'lucide-react';
+import { Home, User, GraduationCap, Briefcase, FlaskConical, BookOpen, Award, Mail, FileText } from 'lucide-react';
 
 const navItems = [
   { name: 'home', href: '#home', icon: Home },
@@ -8,6 +8,7 @@ const navItems = [
   { name: 'academic', href: '#academic-journey', icon: GraduationCap },
   { name: 'experience', href: '#experience', icon: Briefcase },
   { name: 'internship', href: '#internship', icon: FlaskConical },
+  { name: 'research', href: '#research', icon: BookOpen },
   { name: 'certificates', href: '#certificates', icon: Award },
   { name: 'cv', href: '#cv', icon: FileText },
   { name: 'contact', href: '#contact', icon: Mail },

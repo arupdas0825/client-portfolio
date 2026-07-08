@@ -9,6 +9,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Internship from './components/Internship'
+import Research from './components/Research'
 import Certificates from './components/Certificates'
 import CV from './components/CV'
 import Contact from './components/Contact'
@@ -99,6 +100,10 @@ export default function App() {
             
             <SectionWrapper id="internship" glowColor="teal">
               <Internship />
+            </SectionWrapper>
+            
+            <SectionWrapper id="research" glowColor="purple">
+              <Research />
             </SectionWrapper>
             
             <SectionWrapper id="certificates" glowColor="pink">

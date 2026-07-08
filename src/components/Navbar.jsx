@@ -8,6 +8,7 @@ const navItems = [
   { name: 'Academic Journey', href: '#academic-journey' },
   { name: 'Experience', href: '#experience' },
   { name: 'Internship', href: '#internship' },
+  { name: 'Research', href: '#research' },
   { name: 'Certificates', href: '#certificates' },
   { name: 'CV', href: '#cv' },
   { name: 'Contact', href: '#contact' },
