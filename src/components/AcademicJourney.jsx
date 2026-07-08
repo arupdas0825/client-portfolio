@@ -50,11 +50,11 @@ const journeyData = [
   {
     id: 4,
     title: "Research Internship",
-    institution: "Jadavpur University",
-    department: "Biotechnology",
+    institution: "Subhami Biopharma (OPC) Pvt. Ltd.",
+    department: "Biotechnology (Collab: Jadavpur University)",
     module: "In Silico Drug Design: Integrating Molecular Dynamics & Computational Chemistry for Novel Therapeutic Innovation",
-    duration: "3 June 2026 – 6 July 2026",
-    description: "Participated in advanced computational biotechnology training focused on molecular dynamics, computational chemistry, virtual screening, and modern drug discovery approaches.",
+    duration: "3 June 2026 – 7 July 2026",
+    description: "Successfully completed a research internship focused on computational drug discovery, molecular dynamics simulations, and computational chemistry workflows under academic guidance.",
     badge: "Completed",
     icon: FlaskConical,
     color: "#14b8a6"

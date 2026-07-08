@@ -39,14 +39,13 @@ const certificateData = [
   },
   {
     id: 4,
-    title: "Upcoming Professional Experience",
-    issuer: "Research Institutions",
-    year: "2025",
+    title: "Research Internship in In Silico Drug Design",
+    issuer: "Subhami Biopharma (OPC) Pvt. Ltd. (Collab: Jadavpur University)",
+    year: "2026",
     type: "Internship",
-    description: "Currently preparing for future internship opportunities in biotechnology, bioinformatics, and research-oriented domains.",
-    image: null, 
-    isUpcoming: true,
-    tags: ["Future", "Growth"]
+    description: "Completed an intensive research internship on computational drug design, molecular dynamics, and molecular docking methodologies.",
+    image: "/Internship certificate.jpeg", 
+    tags: ["In Silico", "Drug Design", "Biotech"]
   }
 ]
 

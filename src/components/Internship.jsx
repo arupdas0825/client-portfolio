@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
-import useTilt from '../hooks/useTilt';
-import { FlaskConical, Calendar, MapPin, X, FileText, Award, User } from 'lucide-react';
+import { FlaskConical, Calendar, MapPin, X, FileText, Award, User, Briefcase, ShieldCheck, Download, Maximize2 } from 'lucide-react';
 import { HiExternalLink } from 'react-icons/hi';
 
 // ==========================================
@@ -11,26 +10,22 @@ import { HiExternalLink } from 'react-icons/hi';
 const internshipData = [
   {
     id: 1,
-    institution: "Jadavpur University (Main Campus)",
+    status: "Completed",
+    organization: "Subhami Biopharma (OPC) Pvt. Ltd.",
+    academicCollaboration: "Jadavpur University (Main Campus)",
     department: "Biotechnology",
+    startDate: "3 June 2026",
+    endDate: "7 July 2026",
+    duration: "60 Hours",
+    location: "Kolkata, West Bengal, India",
+    type: "Research Internship",
     title: "In Silico Drug Design",
     module: "In Silico Drug Design: Integrating Molecular Dynamics & Computational Chemistry for Novel Therapeutic Innovation",
-    duration: "1 Month+",
-    startDate: "3 June 2026",
-    endDate: "6 July 2026",
-    location: "Kolkata, India",
-    status: "Completed",
-    year: "2026",
-    summary: "Completed a biotechnology internship at Jadavpur University focused on computational drug discovery methodologies. The program explored molecular dynamics simulations, computational chemistry workflows, and modern in-silico approaches used in therapeutic innovation and pharmaceutical research.",
-    badges: ["Biotechnology", "Drug Design", "Computational Chemistry", "Molecular Dynamics", "Research Training"],
-    
-    // Future-proofing placeholders
-    supervisorName: "",
-    researchOutcome: "",
-    skillsAcquired: [],
-    projectWork: "",
-    certificateUrl: "",
-    reportUrl: "",
+    summary: "Successfully completed a research internship focused on computational drug discovery and molecular docking. Worked on molecular dynamics, computational chemistry, virtual screening, scientific literature review, and preparation of an internship report under academic guidance. This internship strengthened research methodology, analytical thinking, and practical understanding of in-silico drug design.",
+    badges: ["Molecular Docking", "Computational Chemistry", "Molecular Dynamics", "Drug Discovery", "Bioinformatics", "Scientific Research"],
+    researchReport: "A Comprehensive In-Silico Study of Celecoxib, a Non-Opioid Analgesic and Alternatives via Molecular Docking",
+    certificateUrl: "/Internship certificate.jpeg",
+    year: "2026"
   }
 ];
 
@@ -39,15 +34,13 @@ const internshipData = [
 // ==========================================
 const InternshipCard = ({ item, index, onViewDetails }) => {
   const [expanded, setExpanded] = useState(false);
-  const tiltRef = useTilt();
 
   return (
     <ScrollReveal delay={index * 100}>
       <motion.div
-        ref={tiltRef}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ y: -6, scale: 1.015 }}
+        transition={{ duration: 0.3 }}
         className="group relative w-full min-h-[480px] max-w-[480px] mx-auto flex flex-col bg-white/[0.04] backdrop-blur-[20px] rounded-[32px] border border-white/[0.08] hover:border-[#7C3AED]/40 transition-all duration-300 overflow-hidden shadow-2xl transform-gpu"
-        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Hover Glow Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/10 via-transparent to-[#ff7eb3]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -64,9 +57,9 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           
           {/* Category Badges */}
           <div className="absolute top-6 left-6 z-20 flex gap-2">
-            <div className="px-5 py-2 rounded-full bg-black/40 backdrop-blur-md border border-[#14b8a6]/30 text-[10px] font-bold text-[#14b8a6] tracking-[0.2em] uppercase flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.4)]">
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#14b8a6]" />
-              {item.status}
+            <div className="px-5 py-2 rounded-full bg-black/40 backdrop-blur-md border border-emerald-500/30 text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-emerald-400" />
+              {item.status} ✅
             </div>
             <div className="px-5 py-2 rounded-full bg-[#fdfbf7]/10 backdrop-blur-md border border-[#fdfbf7]/20 text-[10px] font-bold text-[#fdfbf7] tracking-[0.2em] uppercase">
               {item.year}
@@ -78,9 +71,12 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
         <div className="p-5 flex-1 flex flex-col relative z-20">
           
           {/* Metadata Row */}
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-[#14b8a6] font-bold text-[10px] tracking-[0.3em] uppercase flex items-center gap-1.5">
-              <FlaskConical size={12} /> {item.institution}
+          <div className="flex flex-col gap-1 mb-3">
+            <span className="text-emerald-400 font-bold text-[10px] tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <FlaskConical size={12} /> {item.organization}
+            </span>
+            <span className="text-[#fdfbf7]/50 text-[9px] tracking-wider uppercase font-medium pl-4">
+              Collab: {item.academicCollaboration}
             </span>
           </div>
 
@@ -96,8 +92,8 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           {/* Compact Timeline Block */}
           <div className="flex flex-col gap-2 mb-2 p-2.5 rounded-xl bg-[#fdfbf7]/[0.02] border border-[#fdfbf7]/5">
             <div className="flex items-center gap-2">
-              <Calendar size={14} className="text-[#14b8a6]" />
-              <span className="text-[#fdfbf7]/80 font-mono text-[11px]">{item.startDate} → {item.endDate}</span>
+              <Calendar size={14} className="text-emerald-400" />
+              <span className="text-[#fdfbf7]/80 font-mono text-[11px]">{item.startDate} – {item.endDate}</span>
             </div>
             <div className="h-[1px] w-full bg-[#fdfbf7]/5 my-0.5" />
             <div className="flex items-center gap-2">
@@ -151,7 +147,7 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="mt-auto flex flex-col sm:flex-row items-center gap-3">
             <button 
               onClick={() => onViewDetails(item)}
-              className="w-full flex-1 px-6 py-4 rounded-2xl bg-[#14b8a6]/10 text-[#14b8a6] font-bold text-[10px] tracking-[0.2em] uppercase border border-[#14b8a6]/20 hover:bg-[#14b8a6] hover:text-[#0B0618] transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.3)] text-center"
+              className="w-full flex-1 px-6 py-4 rounded-2xl bg-emerald-500/10 text-emerald-400 font-bold text-[10px] tracking-[0.2em] uppercase border border-emerald-500/20 hover:bg-emerald-500 hover:text-[#0B0618] transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:shadow-[0_0_25px_rgba(16,185,129,0.3)] text-center"
             >
               View Details
             </button>
@@ -166,6 +162,8 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
 // DETAILS OVERLAY MODAL COMPONENT
 // ==========================================
 const InternshipDetailsModal = ({ item, onClose }) => {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   if (!item) return null;
 
   return (
@@ -173,13 +171,13 @@ const InternshipDetailsModal = ({ item, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl"
+      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl"
     >
       <motion.div 
         initial={{ scale: 0.95, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 20 }}
-        className="relative bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/[0.08] backdrop-blur-[30px] rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(124,58,237,0.2)] p-8 max-h-[90vh] overflow-y-auto"
+        className="relative bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/[0.08] backdrop-blur-[30px] rounded-[32px] max-w-2xl w-full overflow-hidden shadow-[0_0_100px_rgba(124,58,237,0.2)] p-6 md:p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Background Grid Accent */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(253, 251, 247,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(253, 251, 247,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />
@@ -192,152 +190,223 @@ const InternshipDetailsModal = ({ item, onClose }) => {
           <X size={20} />
         </button>
 
-        <div className="relative z-10 flex flex-col gap-8">
+        <div className="relative z-10 flex flex-col gap-6">
           {/* Header */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1.5 rounded-full bg-[#14b8a6]/20 text-[#14b8a6] text-[10px] font-bold uppercase tracking-[0.2em] border border-[#14b8a6]/30 shadow-[0_0_15px_rgba(20, 184, 166,0.2)]">
-                {item.status} Internship
+              <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                {item.status} ✅
               </span>
               <span className="px-3 py-1.5 rounded-full bg-[#fdfbf7]/10 text-[#fdfbf7]/60 text-[10px] font-bold font-mono border border-[#fdfbf7]/10">
                 {item.year}
               </span>
             </div>
 
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-[#fdfbf7] leading-tight mb-2">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-[#fdfbf7] leading-tight mb-1">
               {item.title}
             </h3>
-            <p className="text-[#ff7eb3] text-sm italic font-body">
-              {item.module}
+            <p className="text-[#ff7eb3] text-sm font-semibold tracking-wide uppercase font-body mb-2">
+              {item.type}
             </p>
           </div>
 
           <div className="w-full h-[1px] bg-[#fdfbf7]/10" />
 
-          {/* Details list */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Premium Timeline Layout */}
+          <div className="relative border-l border-white/10 pl-6 ml-4 space-y-10 my-2">
             
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#fdfbf7]/5 flex items-center justify-center text-[#14b8a6] border border-[#fdfbf7]/10 flex-shrink-0">
-                <FlaskConical size={18} />
+            {/* NODE 1: INTERNSHIP PROFILE */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="relative"
+            >
+              {/* Indicator Dot */}
+              <div className="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-[#0B0618] border-2 border-emerald-400 flex items-center justify-center shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               </div>
-              <div>
-                <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Institution</span>
-                <span className="text-[#fdfbf7]/90 text-sm font-semibold">{item.institution}</span>
-                <span className="text-[#fdfbf7]/50 text-xs block font-body mt-0.5">{item.department}</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#fdfbf7]/5 flex items-center justify-center text-[#ff7eb3] border border-[#fdfbf7]/10 flex-shrink-0">
-                <Calendar size={18} />
-              </div>
-              <div>
-                <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Duration & Period</span>
-                <span className="text-[#fdfbf7]/90 text-xs font-mono block">{item.startDate} – {item.endDate}</span>
-                <span className="text-[#fdfbf7]/50 text-xs block mt-0.5">{item.duration}</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 md:col-span-2">
-              <div className="w-10 h-10 rounded-xl bg-[#fdfbf7]/5 flex items-center justify-center text-[#14b8a6] border border-[#fdfbf7]/10 flex-shrink-0">
-                <MapPin size={18} />
-              </div>
-              <div>
-                <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Location</span>
-                <span className="text-[#fdfbf7]/90 text-sm">{item.location}</span>
-              </div>
-            </div>
-
-            {/* RESEARCH SUMMARY */}
-            <div className="md:col-span-2 bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 rounded-2xl p-6 mt-2 shadow-inner">
-              <span className="text-[#ff7eb3] text-[10px] font-mono tracking-widest uppercase block mb-3 font-bold">Overview Summary</span>
-              <p className="text-[#fdfbf7]/70 text-sm leading-relaxed font-body">
-                {item.summary}
-              </p>
-            </div>
-
-            {/* DYNAMIC FUTURE-PROOF DETAILS */}
-            {(item.supervisorName || item.projectWork || item.researchOutcome || (item.skillsAcquired && item.skillsAcquired.length > 0)) && (
-              <div className="md:col-span-2 space-y-4 pt-4 border-t border-[#fdfbf7]/10">
-                <span className="text-[#14b8a6] text-[10px] font-mono uppercase tracking-widest block mb-2 font-bold">// Research Addendum</span>
+              
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 backdrop-blur-md">
+                <span className="text-[#ff7eb3] text-[9px] font-mono tracking-widest uppercase block mb-1 font-bold">INTERNSHIP PROFILE</span>
+                <h4 className="text-lg font-bold text-[#fdfbf7] mb-3">{item.organization}</h4>
                 
-                {item.supervisorName && (
-                  <div className="bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 rounded-2xl p-4 flex items-start gap-4">
-                    <User size={18} className="text-[#14b8a6] mt-0.5 flex-shrink-0" />
-                    <div>
-                      <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-1">Supervisor</span>
-                      <span className="text-[#fdfbf7]/90 text-sm font-semibold">{item.supervisorName}</span>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs mt-3">
+                  <div className="flex items-center gap-2 text-white/70">
+                    <Briefcase size={14} className="text-emerald-400 flex-shrink-0" />
+                    <span><strong>Academic Partner:</strong> {item.academicCollaboration}</span>
                   </div>
-                )}
-
-                {item.projectWork && (
-                  <div className="bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 rounded-2xl p-5">
-                    <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-2">Project Details</span>
-                    <p className="text-[#fdfbf7]/70 text-sm leading-relaxed font-body">{item.projectWork}</p>
+                  <div className="flex items-center gap-2 text-white/70">
+                    <FlaskConical size={14} className="text-[#ff7eb3] flex-shrink-0" />
+                    <span><strong>Department:</strong> {item.department}</span>
                   </div>
-                )}
-
-                {item.researchOutcome && (
-                  <div className="bg-[#fdfbf7]/[0.03] border border-[#14b8a6]/20 rounded-2xl p-5 flex items-start gap-4 shadow-[0_0_20px_rgba(20, 184, 166,0.05)]">
-                    <Award size={20} className="text-[#ff7eb3] mt-0.5 flex-shrink-0" />
-                    <div>
-                      <span className="text-[#ff7eb3] text-[9px] font-mono tracking-widest uppercase block mb-1 font-bold">Key Outcome</span>
-                      <span className="text-[#fdfbf7]/90 text-sm leading-relaxed">{item.researchOutcome}</span>
-                    </div>
+                  <div className="flex items-center gap-2 text-white/70">
+                    <Calendar size={14} className="text-[#D8B4FE] flex-shrink-0" />
+                    <span><strong>Duration:</strong> {item.duration} ({item.startDate} – {item.endDate})</span>
                   </div>
-                )}
-
-                {item.skillsAcquired && item.skillsAcquired.length > 0 && (
-                  <div className="bg-[#fdfbf7]/[0.03] border border-[#fdfbf7]/10 rounded-2xl p-5">
-                    <span className="text-[#fdfbf7]/40 text-[9px] font-mono tracking-widest uppercase block mb-3">Extended Skills Acquired</span>
-                    <div className="flex flex-wrap gap-2">
-                      {item.skillsAcquired.map((skill, sIdx) => (
-                        <span key={sIdx} className="px-3 py-1.5 rounded-lg bg-[#14b8a6]/10 text-[#14b8a6] text-[10px] font-mono border border-[#14b8a6]/20 font-bold">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex items-center gap-2 text-white/70">
+                    <MapPin size={14} className="text-emerald-400 flex-shrink-0" />
+                    <span><strong>Location:</strong> {item.location}</span>
                   </div>
-                )}
+                </div>
               </div>
-            )}
-          </div>
+            </motion.div>
 
-          <div className="w-full h-[1px] bg-[#fdfbf7]/10 mt-2" />
-
-          {/* Action Links */}
-          <div className="flex flex-wrap gap-4 mt-2">
-            {item.certificateUrl ? (
-              <a 
-                href={item.certificateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#14b8a6]/20 border border-[#14b8a6]/40 text-[#fdfbf7] hover:bg-[#14b8a6] font-bold text-xs tracking-widest uppercase hover:shadow-[0_0_20px_rgba(20, 184, 166,0.4)] transition-all"
-              >
-                <HiExternalLink className="text-lg" /> View Certificate
-              </a>
-            ) : (
-              <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 text-[#fdfbf7]/30 font-bold text-xs tracking-widest uppercase cursor-not-allowed">
-                <HiExternalLink className="text-lg" /> Certificate (Pending)
+            {/* NODE 2: RESEARCH FOCUS & METHODOLOGY */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="relative"
+            >
+              {/* Indicator Dot */}
+              <div className="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-[#0B0618] border-2 border-[#ff7eb3] flex items-center justify-center shadow-[0_0_10px_rgba(255,126,179,0.3)]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ff7eb3]" />
               </div>
-            )}
-            
-            {item.reportUrl && (
-              <a 
-                href={item.reportUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#ff7eb3]/10 border border-[#ff7eb3]/30 text-[#ff7eb3] hover:bg-[#ff7eb3]/20 hover:text-[#fdfbf7] font-bold text-xs tracking-widest uppercase hover:shadow-[0_0_20px_rgba(255, 126, 179,0.3)] transition-all"
-              >
-                <FileText size={16} /> Research Report
-              </a>
-            )}
+              
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 backdrop-blur-md">
+                <span className="text-[#ff7eb3] text-[9px] font-mono tracking-widest uppercase block mb-1 font-bold">RESEARCH TITLE & METHODOLOGY</span>
+                <h4 className="text-base font-bold text-[#fdfbf7] mb-2 leading-snug">{item.module}</h4>
+                <p className="text-white/60 text-sm leading-relaxed mb-4 font-body">{item.summary}</p>
+                
+                <span className="text-white/40 text-[9px] font-mono tracking-widest uppercase block mb-2">CORE SKILLS INVOLVED</span>
+                <div className="flex flex-wrap gap-2">
+                  {item.badges.map((skill, idx) => (
+                    <span key={idx} className="px-2.5 py-1 rounded-md bg-[#7C3AED]/10 text-[#D8B4FE] text-[11px] font-mono border border-[#7C3AED]/20 hover:bg-[#7C3AED]/20 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* NODE 3: RESEARCH DELIVERABLE */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="relative"
+            >
+              {/* Indicator Dot */}
+              <div className="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-[#0B0618] border-2 border-[#D8B4FE] flex items-center justify-center shadow-[0_0_10px_rgba(216,180,254,0.3)]">
+                <FileText size={11} className="text-[#D8B4FE]" />
+              </div>
+              
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 backdrop-blur-md">
+                <span className="text-[#ff7eb3] text-[9px] font-mono tracking-widest uppercase block mb-1 font-bold">RESEARCH REPORT DELIVERABLE</span>
+                <h4 className="text-sm font-bold text-[#fdfbf7] mb-2 leading-snug">{item.researchReport}</h4>
+                <p className="text-white/50 text-xs font-body">
+                  A comprehensive in-silico scientific analysis documenting pharmacological observations, docking scores, binding affinities, and molecular dynamic simulations of Celecoxib alternatives.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* NODE 4: VERIFIED CERTIFICATE */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="relative"
+            >
+              {/* Indicator Dot */}
+              <div className="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-[#0B0618] border-2 border-emerald-400 flex items-center justify-center shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                <Award size={11} className="text-emerald-400" />
+              </div>
+              
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 backdrop-blur-md relative overflow-hidden">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span className="text-[#ff7eb3] text-[9px] font-mono tracking-widest uppercase font-bold">ACADEMIC & INDUSTRY CERTIFICATION</span>
+                  <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 tracking-wider uppercase">
+                    <ShieldCheck size={12} /> Verified Completion
+                  </div>
+                </div>
+
+                {/* PREMIUM GLASS CARD FOR CERTIFICATE */}
+                <div className="relative group/cert rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] p-2 hover:border-[#ff7eb3]/30 transition-all duration-300">
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer" onClick={() => setIsLightboxOpen(true)}>
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/cert:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-10">
+                      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white scale-90 group-hover/cert:scale-100 transition-transform duration-300">
+                        <Maximize2 size={16} />
+                      </div>
+                      <span className="text-white text-xs font-bold font-mono tracking-wider">Click to Enlarge</span>
+                    </div>
+
+                    <img 
+                      src={item.certificateUrl} 
+                      alt="Internship Certificate" 
+                      className="w-full h-full object-cover filter brightness-90 group-hover/cert:brightness-100 transition-all duration-500"
+                    />
+                  </div>
+                  
+                  {/* Certificate Caption */}
+                  <p className="text-white/60 text-[11px] italic text-center mt-3 px-2 leading-relaxed">
+                    Internship Completion Certificate – Subhami Biopharma (OPC) Pvt. Ltd.
+                  </p>
+                  
+                  {/* Download Button */}
+                  <div className="mt-4 pt-3 border-t border-white/5 flex justify-center">
+                    <a 
+                      href={item.certificateUrl}
+                      download="Shatarupa_Internship_Certificate.jpeg"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-[#0B0618] hover:border-emerald-500 font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+                    >
+                      <Download size={14} /> Download Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
 
       </motion.div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            {/* Close Lightbox Button */}
+            <button 
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all z-50 border border-white/10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsLightboxOpen(false);
+              }}
+            >
+              <X size={20} />
+            </button>
+            
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              className="relative max-w-4xl max-h-[85vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={item.certificateUrl} 
+                alt="Enlarged Internship Certificate" 
+                className="max-w-full max-h-[85vh] object-contain rounded-lg border border-white/10"
+              />
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white/80 text-xs font-mono flex items-center gap-2">
+                <span>Internship Completion Certificate</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <a href={item.certificateUrl} download="Shatarupa_Internship_Certificate.jpeg" className="text-emerald-400 hover:text-emerald-300 font-bold ml-1 flex items-center gap-1">
+                  <Download size={12} /> Download
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
