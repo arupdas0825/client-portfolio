@@ -105,6 +105,9 @@ export default function MobileHero() {
             ref={imgRef}
             src="/profile.png"
             alt=""
+            width={640}
+            height={736}
+            loading="lazy"
             style={{
               position: 'absolute',
               inset: 0,

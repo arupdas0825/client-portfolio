@@ -1,4 +1,5 @@
 import React from 'react'
+import useTilt from '../hooks/useTilt'
 
 export default function PlatformCard({
   href,
@@ -10,13 +11,16 @@ export default function PlatformCard({
   statLabel,        // "Followers"
   statStyle,        // Tailwind text color class
 }) {
+  const cardRef = useTilt();
+
   return (
     <a
+      ref={cardRef}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative overflow-hidden block group cursor-pointer transition-transform duration-300 hover:translate-y-[-6px] hover:scale-[1.02]"
-      style={{ borderRadius: '20px' }}
+      className="relative overflow-hidden block group cursor-pointer"
+      style={{ borderRadius: '20px', transformStyle: 'preserve-3d' }}
     >
       {/* Animated gradient border/glow layer */}
       <div
@@ -41,6 +45,8 @@ export default function PlatformCard({
           border: '1px solid rgba(253, 251, 247,0.08)',
           // Layered shadow for depth
           boxShadow: 'inset 0 1px 0 rgba(253, 251, 247,0.06), 0 24px 48px rgba(0,0,0,0.4)',
+          transformStyle: 'preserve-3d',
+          transform: 'translateZ(10px)',
         }}
       >
         {/* Icon with 3D lift */}

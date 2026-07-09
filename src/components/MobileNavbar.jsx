@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+/**
+ * MobileNavbar — a floating bottom tab navigation dock for mobile viewports.
+ * Contains navigation anchors to skip to page sections.
+ * Works in tandem with MobileTopNavbar (which is the top brand logo header).
+ */
 import { Home, User, GraduationCap, Briefcase, FlaskConical, BookOpen, Award, Mail, FileText } from 'lucide-react';
 
 const navItems = [
@@ -102,14 +108,15 @@ export default function MobileNavbar() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => scrollToSection(e, item.href)}
-                    className="relative flex flex-col items-center justify-center transition-all duration-300"
+                    aria-label={`Navigate to ${item.name}`}
+                    className="relative flex flex-col items-center justify-center transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none rounded-full"
                   >
                     <motion.div
                       whileTap={{ scale: 0.8 }}
                       className={`relative p-2.5 rounded-full transition-all duration-300 ${
                         isActive 
                           ? 'text-[#ff7eb3]' 
-                          : 'text-[#fdfbf7]/30 hover:text-[#fdfbf7]/60'
+                          : 'text-[#fdfbf7]/55 hover:text-[#fdfbf7]/70'
                       }`}
                     >
                       <Icon size={18} strokeWidth={isActive ? 2.5 : 2} className="relative z-10" />

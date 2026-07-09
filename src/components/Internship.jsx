@@ -24,7 +24,7 @@ const internshipData = [
     summary: "Successfully completed a research internship focused on computational drug discovery and molecular docking. Worked on molecular dynamics, computational chemistry, virtual screening, scientific literature review, and preparation of an internship report under academic guidance. This internship strengthened research methodology, analytical thinking, and practical understanding of in-silico drug design.",
     badges: ["Molecular Docking", "Computational Chemistry", "Molecular Dynamics", "Drug Discovery", "Bioinformatics", "Scientific Research"],
     researchReport: "A Comprehensive In-Silico Study of Celecoxib, a Non-Opioid Analgesic and Alternatives via Molecular Docking",
-    certificateUrl: "/Internship certificate.jpeg",
+    certificateUrl: "/internship-certificate.jpeg",
     year: "2026"
   }
 ];
@@ -50,8 +50,11 @@ const InternshipCard = ({ item, index, onViewDetails }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B0618] via-transparent to-black/20 z-10" />
           
           <img 
-            src="/Internship 1.jpg" 
+            src="/internship-1.jpg" 
             alt="Internship at Jadavpur University" 
+            width={480}
+            height={160}
+            loading="lazy"
             className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter brightness-90 group-hover:brightness-100"
           />
           
@@ -335,6 +338,9 @@ const InternshipDetailsModal = ({ item, onClose }) => {
                     <img 
                       src={item.certificateUrl} 
                       alt="Internship Certificate" 
+                      width={640}
+                      height={480}
+                      loading="lazy"
                       className="w-full h-full object-cover filter brightness-90 group-hover/cert:brightness-100 transition-all duration-500"
                     />
                   </div>
@@ -394,6 +400,9 @@ const InternshipDetailsModal = ({ item, onClose }) => {
               <img 
                 src={item.certificateUrl} 
                 alt="Enlarged Internship Certificate" 
+                width={800}
+                height={600}
+                loading="lazy"
                 className="max-w-full max-h-[85vh] object-contain rounded-lg border border-white/10"
               />
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white/80 text-xs font-mono flex items-center gap-2">

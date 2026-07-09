@@ -35,6 +35,9 @@ const Hero = () => {
             <img
               src="/profile.png"
               alt="Shatarupa Basak"
+              width={192}
+              height={192}
+              loading="lazy"
               className="w-full h-full object-cover block"
               style={{
                 objectPosition: 'center 18%'

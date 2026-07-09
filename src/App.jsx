@@ -9,14 +9,20 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Internship from './components/Internship'
-import Research from './components/Research'
-import Certificates from './components/Certificates'
+const Research = React.lazy(() => import('./components/Research'))
+const Certificates = React.lazy(() => import('./components/Certificates'))
+
+const LoadingFallback = () => (
+  <div className="w-full py-20 flex items-center justify-center">
+    <div className="w-8 h-8 rounded-full border-2 border-[#7C3AED]/20 border-t-[#ff7eb3] animate-spin" />
+  </div>
+)
 import CV from './components/CV'
 import Contact from './components/Contact'
 import FloatingParticles from './components/FloatingParticles'
 import AcademicJourney from './components/AcademicJourney'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import './index.css'
 
 const SectionWrapper = ({ children, id, glowColor = 'purple' }) => (
@@ -45,9 +51,23 @@ export default function App() {
   const [showPortfolio, setShowPortfolio] = useState(() => {
     return !!sessionStorage.getItem('welcomeShown');
   });
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <div className={`text-[#fdfbf7] min-h-screen selection:bg-[#7c3aed]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}
+    <MotionConfig reducedMotion="user">
+      <div className={`text-[#fdfbf7] min-h-screen selection:bg-[#7c3aed]/30 ${!showPortfolio ? 'overflow-hidden h-screen' : ''}`}
          style={{
            background: `
              radial-gradient(circle at 20% 10%, rgba(124, 58, 237, 0.15), transparent 45%),
@@ -103,11 +123,15 @@ export default function App() {
             </SectionWrapper>
             
             <SectionWrapper id="research" glowColor="purple">
-              <Research />
+              <React.Suspense fallback={<LoadingFallback />}>
+                <Research />
+              </React.Suspense>
             </SectionWrapper>
             
             <SectionWrapper id="certificates" glowColor="pink">
-              <Certificates />
+              <React.Suspense fallback={<LoadingFallback />}>
+                <Certificates />
+              </React.Suspense>
             </SectionWrapper>
             
             <SectionWrapper id="cv" glowColor="purple">
@@ -118,6 +142,24 @@ export default function App() {
               <Contact />
             </SectionWrapper>
           </main>
+
+          {/* Floating Back to Top Button */}
+          <AnimatePresence>
+            {showScrollTop && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                onClick={scrollToTop}
+                aria-label="Back to top"
+                className="fixed bottom-24 right-6 lg:bottom-8 lg:right-8 z-[999] w-12 h-12 rounded-full glass-pink border border-[#ff7eb3]/30 text-[#ff7eb3] hover:text-[#fdfbf7] hover:bg-[#ff7eb3] hover:border-[#ff7eb3] flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(255,126,179,0.15)] focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none"
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </motion.button>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
       
@@ -134,5 +176,6 @@ export default function App() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
     </div>
+    </MotionConfig>
   )
 }

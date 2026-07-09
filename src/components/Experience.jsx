@@ -1,25 +1,18 @@
 import React from 'react';
 import ScrollReveal from './ScrollReveal';
+import SectionHeader from './SectionHeader';
+import Badge from './Badge';
 
 const Experience = () => {
   return (
     <section className="py-24 relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-24 md:mb-32">
-        <ScrollReveal>
-          <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
-            RESEARCH & WORK
-          </span>
-          <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
-            <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
-              Experience
-            </span>
-          </h2>
-          <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
-            Hands-on laboratory work, academic projects, and continuous learning in the life sciences.
-          </p>
-        </ScrollReveal>
-      </div>
+      <SectionHeader 
+        eyebrow="RESEARCH & WORK" 
+        title="Experience" 
+        subtitle="Hands-on laboratory work, academic projects, and continuous learning in the life sciences." 
+        className="max-w-7xl mx-auto px-6 relative z-10"
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col gap-10 mt-12">
@@ -53,13 +46,7 @@ const Experience = () => {
                     <p className="font-body text-[#fdfbf7]/50 text-sm mb-8">2024 – Present</p>
                   </div>
 
-                  <div
-                    className="inline-flex items-center gap-2 px-5 py-2.5 text-[10px] text-[#14b8a6] rounded-full font-body font-bold tracking-[0.2em] uppercase self-start"
-                    style={{ border: '1px solid rgba(20,184,166,0.3)', background: 'rgba(20,184,166,0.08)' }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#14b8a6] animate-pulse" />
-                    Currently Enrolled
-                  </div>
+                  <Badge variant="teal" pulse>Currently Enrolled</Badge>
                 </div>
 
                 {/* Right Column: Detailed Content */}

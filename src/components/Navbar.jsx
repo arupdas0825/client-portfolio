@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 
 const navItems = [
@@ -18,7 +18,13 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
 
   // Handle scroll events
   useEffect(() => {
@@ -29,11 +35,6 @@ export default function Navbar() {
       
       // Update scrolled state for navbar background
       setIsScrolled(scrollY > 20);
-
-      // Update scroll progress bar
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      setScrollProgress(height > 0 ? (winScroll / height) * 100 : 0);
 
       // Fast & immediate section detection
       const sections = navItems.map(item => item.href.substring(1));
@@ -107,10 +108,8 @@ export default function Navbar() {
       {/* Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 w-full h-[3px] z-[1000] pointer-events-none">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3]"
-          style={{ width: `${scrollProgress}%` }}
-          initial={{ width: 0 }}
-          transition={{ duration: 0.1 }}
+          className="h-full bg-gradient-to-r from-[#ff7eb3] via-[#14b8a6] to-[#ff7eb3] origin-left"
+          style={{ scaleX }}
         />
       </div>
 
@@ -125,11 +124,12 @@ export default function Navbar() {
           <motion.a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="flex items-center gap-2 cursor-pointer flex-shrink-0"
+            className="flex items-center gap-2 cursor-pointer flex-shrink-0 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none rounded-full"
+            aria-label="Home Logo"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <img src="/favicon.png" alt="Logo" className="w-10 h-10 object-contain rounded-full" />
+            <img src="/favicon.png" alt="Logo" width={40} height={40} loading="lazy" className="w-10 h-10 object-contain rounded-full" />
 
           </motion.a>
 
@@ -142,9 +142,10 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className={`px-3 py-2 rounded-full text-[10.5px] font-medium tracking-wider uppercase transition-all duration-300 relative whitespace-nowrap flex-shrink-0 ${isActive
+                  aria-label={`Navigate to ${item.name}`}
+                  className={`px-3 py-2 rounded-full text-[10.5px] font-medium tracking-wider uppercase transition-all duration-300 relative whitespace-nowrap flex-shrink-0 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none ${isActive
                     ? 'text-[#fdfbf7]'
-                    : 'text-[#fdfbf7]/40 hover:text-[#fdfbf7]/70'
+                    : 'text-[#fdfbf7]/60 hover:text-[#fdfbf7]/70'
                     }`}
                 >
                   {isActive && (
@@ -174,7 +175,8 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, '#contact')}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="glass-pink px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#ff7eb3] hover:scale-105 transition-all border border-[#ff7eb3]/20 shadow-[0_0_20px_rgba(255, 126, 179,0.1)] whitespace-nowrap block"
+              aria-label="Contact Shatarupa Basak"
+              className="glass-pink px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#ff7eb3] hover:scale-105 transition-all border border-[#ff7eb3]/20 shadow-[0_0_20px_rgba(255, 126, 179,0.1)] whitespace-nowrap block focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none btn-sheen"
             >
               Let's Connect
             </motion.a>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shatarupa-portfolio.vercel.app/sitemap.xml

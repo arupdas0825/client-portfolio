@@ -80,6 +80,9 @@ export default function CV() {
                       <img 
                         src="/cv-image.png" 
                         alt="CV Preview" 
+                        width={480}
+                        height={240}
+                        loading="lazy"
                         className="w-full h-full object-cover object-top"
                       />
                       {/* Fade to dark overlay */}
@@ -122,7 +125,8 @@ export default function CV() {
 
                         <button 
                           onClick={() => setIsExpanded(!isExpanded)}
-                          className="text-[10px] font-black tracking-widest uppercase text-[#7C3AED] hover:text-[#c084fc] transition-colors mt-1 block"
+                          aria-label={isExpanded ? 'Show less information' : 'Show more information'}
+                          className="text-[10px] font-black tracking-widest uppercase text-[#7C3AED] hover:text-[#c084fc] transition-colors mt-1 block focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none rounded"
                         >
                           {isExpanded ? 'SHOW LESS' : 'SHOW MORE'}
                         </button>
@@ -136,7 +140,8 @@ export default function CV() {
                           href={CV_PATH} 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6366f1] text-[#fdfbf7] text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-500/20"
+                          aria-label="View CV in a new tab"
+                          className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6366f1] text-[#fdfbf7] text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-500/20 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none btn-sheen"
                         >
                           <Eye size={14} />
                           <span>View CV</span>
@@ -145,7 +150,8 @@ export default function CV() {
                         <a 
                           href={CV_PATH} 
                           download="Shatarupa_Basak_CV.pdf"
-                          className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/[0.15] bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/[0.25] text-[#fdfbf7] text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105"
+                          aria-label="Download Shatarupa's CV as PDF"
+                          className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/[0.15] bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/[0.25] text-[#fdfbf7] text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none btn-sheen"
                         >
                           <Download size={14} />
                           <span>Download</span>

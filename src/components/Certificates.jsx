@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { HiExternalLink, HiEye, HiX, HiBadgeCheck, HiOfficeBuilding, HiStar, HiAcademicCap } from 'react-icons/hi'
 import ScrollReveal from './ScrollReveal'
 import useTilt from '../hooks/useTilt'
+import SectionHeader from './SectionHeader'
+import Badge from './Badge'
 
 // 1. Data Structure
 const certificateData = [
@@ -33,7 +35,7 @@ const certificateData = [
     year: "2026", 
     type: "Exam",
     description: "Successfully completed the 12-week NPTEL course with Elite certification.",
-    image: "/nptel result.jpeg",
+    image: "/nptel-result.jpeg",
     isElite: true,
     tags: ["Pharmacology", "NPTEL", "Elite"]
   },
@@ -44,7 +46,7 @@ const certificateData = [
     year: "2026",
     type: "Internship",
     description: "Completed an intensive research internship on computational drug design, molecular dynamics, and molecular docking methodologies.",
-    image: "/Internship certificate.jpeg", 
+    image: "/internship-certificate.jpeg", 
     tags: ["In Silico", "Drug Design", "Biotech"]
   }
 ]
@@ -77,6 +79,9 @@ const CertificateCard = ({ item, index }) => {
             <img 
               src={item.image} 
               alt={item.title} 
+              width={480}
+              height={360}
+              loading="lazy"
               className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter brightness-90 group-hover:brightness-100" 
             />
           ) : (
@@ -87,14 +92,9 @@ const CertificateCard = ({ item, index }) => {
           
           {/* Category Badge */}
           <div className="absolute top-6 left-6 z-20 flex gap-2">
-            <div className="px-5 py-2 rounded-full bg-black/40 backdrop-blur-md border border-[#ff7eb3]/30 text-[10px] font-bold text-[#ff7eb3] tracking-[0.2em] uppercase">
-              {item.type}
-            </div>
+            <Badge variant="pink">{item.type}</Badge>
             {item.isElite && (
-              <div className="px-5 py-2 rounded-full bg-[#14b8a6]/10 backdrop-blur-md border border-[#14b8a6]/40 text-[10px] font-bold text-[#fdfbf7] tracking-[0.2em] uppercase flex items-center gap-2 shadow-[0_0_20px_rgba(20, 184, 166,0.4)]">
-                <HiStar className="text-[#ff7eb3] animate-pulse" /> 
-                Elite
-              </div>
+              <Badge variant="teal" pulse>Elite</Badge>
             )}
           </div>
         </div>
@@ -127,7 +127,8 @@ const CertificateCard = ({ item, index }) => {
                 href={item.image} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex-1 flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 text-[#fdfbf7]/40 font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-[#fdfbf7]/10 hover:border-[#ff7eb3]/50 hover:text-[#fdfbf7] transition-all duration-300 active:scale-95 shadow-lg group/btn"
+                aria-label={`View original source of ${item.title} certificate`}
+                className="flex-1 flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-[#fdfbf7]/5 border border-[#fdfbf7]/10 text-[#fdfbf7]/60 font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-[#fdfbf7]/10 hover:border-[#ff7eb3]/50 hover:text-[#fdfbf7] transition-all duration-300 active:scale-95 shadow-lg group/btn focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none"
               >
                 <HiExternalLink className="text-lg group-hover/btn:scale-110 transition-transform" /> 
                 Original Source
@@ -152,21 +153,11 @@ export default function Certificates() {
 
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-24 md:mb-32">
-          <ScrollReveal>
-            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#ff7eb3]/80 mb-3 block">
-              VALIDATIONS & MILESTONES
-            </span>
-            <h2 className="font-display text-[40px] md:text-[52px] lg:text-[64px] font-bold leading-tight tracking-tight relative mb-6">
-              <span className="bg-gradient-to-r from-[#FAF6F0] via-[#FBCFE8] to-[#D8B4FE] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(216,180,254,0.15)]">
-                Certificates & Achievements
-              </span>
-            </h2>
-            <p className="font-body text-white/75 text-lg max-w-[700px] mx-auto leading-relaxed text-center">
-              Validating academic excellence and professional growth through specialized certifications and training.
-            </p>
-          </ScrollReveal>
-        </div>
+        <SectionHeader 
+          eyebrow="VALIDATIONS & MILESTONES" 
+          title="Certificates & Achievements" 
+          subtitle="Validating academic excellence and professional growth through specialized certifications and training." 
+        />
 
         <div className="flex justify-center mb-16">
           <div className="flex items-center gap-1 p-1.5 glass-teal rounded-full border border-[#fdfbf7]/10">
@@ -174,7 +165,8 @@ export default function Certificates() {
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-8 md:px-10 py-3 rounded-full text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-500 ${activeTab === cat ? 'bg-[#fdfbf7]/10 text-[#fdfbf7] border border-[#fdfbf7]/20' : 'text-[#fdfbf7]/30 hover:text-[#fdfbf7]/60'}`}
+                aria-label={`View ${cat} certificates`}
+                className={`px-8 md:px-10 py-3 rounded-full text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-500 focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none ${activeTab === cat ? 'bg-[#fdfbf7]/10 text-[#fdfbf7] border border-[#fdfbf7]/20' : 'text-[#fdfbf7]/55 hover:text-[#fdfbf7]/70'}`}
               >
                 {cat}s
               </button>

@@ -52,12 +52,16 @@ export default function MobileTopNavbar() {
         <a
           href="#home"
           onClick={scrollTop}
+          className="focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none rounded-full"
           style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}
           aria-label="Home"
         >
           <img
             src="/favicon.png"
             alt="SB Logo"
+            width={26}
+            height={26}
+            loading="lazy"
             style={{
               width: '26px',
               height: '26px',
@@ -82,6 +86,7 @@ export default function MobileTopNavbar() {
         <a
           href="#home"
           onClick={scrollTop}
+          className="focus-visible:ring-2 focus-visible:ring-[#ff7eb3] focus-visible:outline-none rounded-md"
           style={{ textDecoration: 'none' }}
           aria-label="Shatarupa"
         >
