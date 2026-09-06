@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464 513" width="464" height="513" fill="none">
+  <!-- Clean subtle background badge -->
+  <rect width="464" height="513" rx="48" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="6"/>
+  
+  <!-- Outer gear/circle motif representing CSIR scientific emblem -->
+  <circle cx="232" cy="210" r="130" stroke="#38bdf8" stroke-width="10" stroke-dasharray="16 10" opacity="0.85"/>
+  <circle cx="232" cy="210" r="100" stroke="#818cf8" stroke-width="6" opacity="0.6"/>
+  <circle cx="232" cy="210" r="68" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="4"/>
+  
+  <!-- Central Scientific Rays & Atom Symbol -->
+  <path d="M 232 152 L 232 268 M 174 210 L 290 210 M 191 169 L 273 251 M 191 251 L 273 169" stroke="#fdfbf7" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="232" cy="210" r="18" fill="#38bdf8"/>
+
+  <!-- CSIR Text -->
+  <text x="232" y="385" text-anchor="middle" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="52" font-weight="900" fill="#fdfbf7" letter-spacing="6">CSIR</text>
+  <text x="232" y="425" text-anchor="middle" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" font-weight="600" fill="#94a3b8" letter-spacing="3">INDIA • ESTD. 1942</text>
+  <text x="232" y="455" text-anchor="middle" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="13" font-weight="500" fill="#64748b" letter-spacing="1.5">OFFICIAL LOGO PLACEHOLDER</text>
+</svg>

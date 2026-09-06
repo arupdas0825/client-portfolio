@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export default function ScrollReveal({ children, delay = 0 }) {
+export default function ScrollReveal({ children, delay = 0, className = "" }) {
   const ref = useRef(null)
   useEffect(() => {
     const el = ref.current
@@ -23,5 +23,5 @@ export default function ScrollReveal({ children, delay = 0 }) {
     observer.observe(el)
     return () => observer.disconnect()
   }, [delay])
-  return <div ref={ref}>{children}</div>
+  return <div ref={ref} className={className}>{children}</div>
 }
