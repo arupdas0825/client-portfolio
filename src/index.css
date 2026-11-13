@@ -10,9 +10,9 @@
   }
   html {
     scroll-behavior: smooth;
+    background-color: #0B0618;
   }
   html, body, #root {
-    background-color: #0B0618;
     color: #fdfbf7;
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
@@ -21,6 +21,9 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-overflow-scrolling: touch;
     user-select: none;
+  }
+  body, #root {
+    background-color: transparent;
   }
   
   /* Support for bottom navbar safe area */
@@ -100,11 +103,51 @@
     }
   }
   @keyframes sheen-sweep {
-    0% {
-      left: -60%;
-    }
-    100% {
-      left: 140%;
-    }
+    0% { left: -60%; }
+    100% { left: 140%; }
+  }
+
+  /* ── BioTech Background Animations ── */
+  @keyframes float-dna {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%       { transform: translateY(-18px) rotate(1.5deg); }
+    66%       { transform: translateY(10px) rotate(-1deg); }
+  }
+  @keyframes float-mol {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-14px) scale(1.04); }
+  }
+  @keyframes float-atom {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    40%       { transform: translateX(12px) rotate(2deg); }
+    80%       { transform: translateX(-8px) rotate(-1.5deg); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes spin-rev {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    25%       { transform: translate(8px, -12px); }
+    50%       { transform: translate(-6px, -20px); }
+    75%       { transform: translate(10px, -8px); }
+  }
+
+  /* Animate SVG atom orbital ellipses */
+  .orbit-spin {
+    transform-origin: center;
+    animation: spin-slow 12s linear infinite;
+  }
+  .orbit-spin-rev {
+    transform-origin: center;
+    animation: spin-rev 16s linear infinite;
+  }
+  .orbit-spin-mid {
+    transform-origin: center;
+    animation: spin-slow 20s linear infinite;
   }
 }
